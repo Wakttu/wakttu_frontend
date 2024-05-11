@@ -12,7 +12,7 @@ const Auth = () => {
 
   return (
     <TemporaryLayout>
-      {toggleButton === '회원가입하기' ? (
+      {toggleButton === '로그인하기' ? (
         <AuthForm>
           <AuthInput placeholderText="아이디" />
           <AuthInput placeholderText="닉네임" />
