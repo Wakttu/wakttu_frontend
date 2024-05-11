@@ -7,7 +7,7 @@ interface Props {
 const AuthButton = ({ buttonText = '회원가입' }: Props) => {
   return (
     <div className={authForm.buttonWrapper}>
-      <button className={authForm.loginButton}>{buttonText}</button>
+      <button className={authForm.authButton}>{buttonText}</button>
     </div>
   );
 };

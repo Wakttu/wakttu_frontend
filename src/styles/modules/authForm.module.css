@@ -34,7 +34,7 @@
 }
 
 .formItem,
-.loginButton {
+.authButton {
   box-sizing: border-box;
 
   width: 18.75rem;
@@ -46,11 +46,11 @@
   outline: none;
 }
 
-.loginButton {
+.authButton {
   cursor: pointer;
 }
 
-.loginButton:hover {
+.authButton:hover {
   color: #fff;
   background-color: #000;
 
