@@ -12,7 +12,7 @@ const Auth = () => {
     <TemporaryLayout>
       {toggleButton === '로그인하기' ? (
         <AuthForm>
-          <AuthInput placeholderText="아이디" />
+          <AuthInput placeholderText="이메일" />
           <AuthInput placeholderText="닉네임" />
           <AuthInput placeholderText="비밀번호" />
           <AuthInput placeholderText="비밀번호 확인" />
@@ -20,7 +20,7 @@ const Auth = () => {
         </AuthForm>
       ) : (
         <AuthForm formTitle="로그인">
-          <AuthInput placeholderText="아이디" />
+          <AuthInput placeholderText="이메일" />
           <AuthInput placeholderText="비밀번호" />
           <AuthButton buttonText="로그인" />
         </AuthForm>
