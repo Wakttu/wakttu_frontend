@@ -1,0 +1,12 @@
+.formItem,
+.loginButton {
+  box-sizing: border-box;
+
+  width: 18.75rem;
+  padding: 1rem;
+
+  border: 0.06rem solid #5f5f5f;
+  border-radius: 1.25rem;
+
+  outline: none;
+}
