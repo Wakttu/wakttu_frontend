@@ -46,6 +46,10 @@
   outline: none;
 }
 
+.loginButton {
+  cursor: pointer;
+}
+
 .loginButton:hover {
   color: #fff;
   background-color: #000;
