@@ -1,26 +1,17 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
-import LoginedMain from "@/components/main/Logined";
-
-import { useSelector } from "react-redux";
-import { selectUserId } from "@/redux/user/userSlice";
+import { selectUserId } from '@/redux/user/userSlice';
+import { Auth, LoginedMain } from '@/components/index';
 
 const Main = () => {
-    const userId = useSelector(selectUserId);
-    const [isLogined, setIsLogined] = useState(false);
+  const userId = useSelector(selectUserId);
+  const [isLogined, setIsLogined] = useState(false);
 
-    useEffect(() => {
-        if (userId) setIsLogined(true);
-    }, [userId])
-    return (
-        <div>
-            {isLogined ? (
-                <LoginedMain isLogined={isLogined} />
-            ) : (
-                <h1>로그인 전</h1>
-            )}
-        </div>
-    )
-}
+  useEffect(() => {
+    if (userId) setIsLogined(true);
+  }, [userId]);
+  return <div>{isLogined ? <LoginedMain isLogined={isLogined} /> : <Auth />}</div>;
+};
 
-export default Main
+export default Main;
