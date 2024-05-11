@@ -2,12 +2,10 @@ import { useState } from 'react';
 import { TemporaryLayout, AuthForm, AuthInput, AuthButton } from '@/components/index';
 
 const Auth = () => {
-  const buttonLabels: string[] = ['로그인하기', '회원가입하기'];
-  const [toggleButton, setToggleButton] = useState(buttonLabels[0]);
+  const [toggleButton, setToggleButton] = useState('로그인하기');
 
-  const handleToggleButton = (label: string) => {
-    const nextLabel = label === buttonLabels[0] ? buttonLabels[1] : buttonLabels[0];
-    setToggleButton(nextLabel);
+  const handleToggleButton = () => {
+    setToggleButton((current) => (current === '로그인하기' ? '회원가입하기' : '로그인하기'));
   };
 
   return (
@@ -27,7 +25,7 @@ const Auth = () => {
           <AuthButton buttonText="로그인" />
         </AuthForm>
       )}
-      <button onClick={() => handleToggleButton(toggleButton)}>{toggleButton}</button>
+      <button onClick={handleToggleButton}>{toggleButton}</button>
     </TemporaryLayout>
   );
 };
