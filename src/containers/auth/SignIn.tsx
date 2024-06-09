@@ -44,7 +44,7 @@ const SignIn = () => {
 
     return sameId;
   };
-  
+
   const router = useRouter();
   const dispatch = useDispatch();
   const [cookies, setCookie] = useCookies(['ACCOUNT_TOKEN']);
@@ -72,7 +72,6 @@ const SignIn = () => {
     await axios
       .post(`${API_URL}/auth/login`, userInfo)
       .then((response) => {
-        // console.log(response);
         if (response.status === 201) {
           setErrors({ message: '', type: 'success' });
           console.log('로그인 완료!');
