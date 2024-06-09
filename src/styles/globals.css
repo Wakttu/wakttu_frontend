@@ -1,66 +1,89 @@
 @font-face {
-    font-family:WantedSans-Medium;
-    font-style:normal;
-    font-weight:400;
-    font-display:swap;
-    src:local("WantedSans-Medium"),
-    url('/media/WantedSans-Medium.woff2') format("woff2")
+  font-family: WantedSans-Medium;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src:
+    local('WantedSans-Medium'),
+    url('/media/WantedSans-Medium.woff2') format('woff2');
 }
 @font-face {
-    font-family:WantedSans-Regular;
-    font-style:normal;
-    font-weight:400;
-    font-display:swap;
-    src:local("WantedSans-Regular"),
-    url('/media/WantedSans-Regular.woff2') format("woff2")
+  font-family: WantedSans-Regular;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src:
+    local('WantedSans-Regular'),
+    url('/media/WantedSans-Regular.woff2') format('woff2');
 }
 @font-face {
-    font-family:WantedSans-SemiBold;
-    font-style:normal;
-    font-weight:400;
-    font-display:swap;
-    src:local("WantedSans-SemiBold"),
-    url('/media/WantedSans-SemiBold.woff2') format("woff2")
+  font-family: WantedSans-SemiBold;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src:
+    local('WantedSans-SemiBold'),
+    url('/media/WantedSans-SemiBold.woff2') format('woff2');
 }
 @font-face {
-    font-family:WantedSans-Bold;
-    font-style:normal;
-    font-weight:400;
-    font-display:swap;
-    src:local("WantedSans-Bold"),
-    url('/media/WantedSans-Bold.woff2') format("woff2")
+  font-family: WantedSans-Bold;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src:
+    local('WantedSans-Bold'),
+    url('/media/WantedSans-Bold.woff2') format('woff2');
 }
 @font-face {
-    font-family:WantedSans-Black;
-    font-style:normal;
-    font-weight:400;
-    font-display:swap;
-    src:local("WantedSans-Black"),
-    url('/media/WantedSans-Black.woff2') format("woff2")
+  font-family: WantedSans-Black;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src:
+    local('WantedSans-Black'),
+    url('/media/WantedSans-Black.woff2') format('woff2');
 }
 @font-face {
-    font-family:WantedSans-ExtraBold;
-    font-style:normal;
-    font-weight:400;
-    font-display:swap;
-    src:local("WantedSans-ExtraBold"),
-    url('/media/WantedSans-ExtraBold.woff2') format("woff2")
+  font-family: WantedSans-ExtraBold;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src:
+    local('WantedSans-ExtraBold'),
+    url('/media/WantedSans-ExtraBold.woff2') format('woff2');
 }
 @font-face {
-    font-family:WantedSans-ExtraBlack;
-    font-style:normal;
-    font-weight:400;
-    font-display:swap;
-    src:local("WantedSans-ExtraBlack"),
-    url('/media/WantedSans-ExtraBlack.woff2') format("woff2")
+  font-family: WantedSans-ExtraBlack;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src:
+    local('WantedSans-ExtraBlack'),
+    url('/media/WantedSans-ExtraBlack.woff2') format('woff2');
 }
-#__next, body, html {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    /* -webkit-user-select: none;
-    -moz-user-select: none;
-    user-select: none; */
+
+#__next,
+body,
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  /* -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none; */
+}
+
+ul,
+li {
+  padding: 0;
+  margin: 0;
+
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
 }
