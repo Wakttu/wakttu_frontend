@@ -1,0 +1,14 @@
+/* tab component
+ * menuTab: 최상단 menu
+ * optionGroip: 방 목록 설정 menu
+**/
+.menuTab {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: #eee;
+  border-radius: 3rem;
+
+  cursor: pointer;
+}
