@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
 import Auth from '@/containers/auth/Auth';
-import SocketManager from '@/services/socketManager';
+import ConnectSocket from '@/services/ConnectSocket';
 import { selectUserId } from '@/redux/user/userSlice';
 import { LoginedMain } from '@/components/index';
 
@@ -17,7 +17,7 @@ const Main = () => {
 
   return (
     <div>
-      <SocketManager />
+      <ConnectSocket />
       {isLogined ? <LoginedMain isLogined={isLogined} /> : <Auth />}
     </div>
   );

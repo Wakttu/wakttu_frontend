@@ -6,7 +6,7 @@ import io, { Socket } from 'socket.io-client';
 import { selectUserId } from '@/redux/user/userSlice';
 import { API_URL } from '@/services/api';
 
-const SocketManager = () => {
+const ConnectSocket = () => {
   const userId = useSelector(selectUserId);
   const router = useRouter();
 
@@ -22,11 +22,6 @@ const SocketManager = () => {
         socket.on('connect', () => {
           setSocketConnected(true);
           console.log('서버와 연결되었습니다.');
-        });
-
-        socket.on('disconnect', () => {
-          setSocketConnected(false);
-          console.log('서버와 연결이 끊어졌습니다.');
         });
       }
     }
@@ -48,9 +43,9 @@ const SocketManager = () => {
     };
   }, [userId]);
 
-  if (socketConnected) router.push('/waiting');
+  if (socketConnected) router.push('/roomlist');
 
   return null;
 };
 
-export default SocketManager;
+export default ConnectSocket;
