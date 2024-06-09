@@ -1,7 +1,130 @@
+/* 전체 컨테이너 */
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100vw;
+  height: 100vh;
+
+  min-width: 102.063rem;
+  min-height: 52.063rem;
+
+  background: #d9d9d9;
+}
+
+.contentWrapper {
+  display: grid;
+  grid-template-columns: 3fr 7fr;
+
+  width: 100%;
+}
+
+/* 좌측 우측 section 구분 */
+.infoSection,
+.roomListSection {
+  display: grid;
+  grid-template-rows: 5fr 1fr;
+
+  padding: 3rem;
+  gap: 3rem;
+}
+
+.roomInfo,
+.characterInfo,
+.menuGroup,
+.roomList,
+.lobbyChat {
+  border-radius: 1rem;
+
+  font-size: 1.4rem;
+  font-weight: 600;
+
+  word-spacing: -0.1rem;
+}
+
+.roomInfo,
+.characterInfo,
+.roomList,
+.lobbyChat {
+  background: #fff;
+  padding: 1.8rem;
+}
+
+/* 방 정보 관련 */
+.roomInfo {
+  display: grid;
+  grid-template-rows: 1fr 6fr 3fr;
+
+  padding: 3rem;
+  gap: 2rem;
+}
+
+.roomName,
+.gameImage,
+.gameOptions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 1.4rem;
+  font-weight: 600;
+
+  word-spacing: -0.1rem;
+
+  background: #d1d1d1;
+}
+
+/* 방 목록 관련 style (화면 설계서 우측) */
+.roomListTop {
+  display: grid;
+  grid-template-rows: 1fr 8fr;
+
+  gap: 2rem;
+}
+
+.roomList {
+  display: grid;
+  grid-template-rows: 1fr 8.5fr 0.5fr;
+
+  gap: 2rem;
+}
+
+.roomWrapper {
+  display: grid;
+  grid-template-columns: 5fr 5fr;
+  grid-template-rows: 2fr 2fr 2fr 2fr;
+
+  gap: 1.1rem;
+}
+
+.room {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 1rem;
+  background-color: #d9d9d9;
+}
+
+.arrows {
+  display: flex;
+  justify-content: space-evenly;
+}
+
 /* tab component
  * menuTab: 최상단 menu
  * optionGroip: 방 목록 설정 menu
 **/
+.menuGroup {
+  display: grid;
+  grid-template-columns: 2fr 2fr 2fr 2fr 2fr;
+
+  height: 5rem;
+
+  gap: 2rem;
+}
+
 .menuTab {
   display: flex;
   justify-content: center;
@@ -11,4 +134,14 @@
   border-radius: 3rem;
 
   cursor: pointer;
+}
+
+.optionGroup {
+  display: grid;
+  grid-template-columns: 2fr 2fr 2fr 2fr 2fr;
+
+  width: 50rem;
+  height: 3.6rem;
+
+  gap: 1.2rem;
 }
