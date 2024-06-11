@@ -2,9 +2,7 @@ import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
 import Auth from '@/containers/auth/Auth';
-import ConnectSocket from '@/services/ConnectSocket';
 import { selectUserId } from '@/redux/user/userSlice';
-import { LoginedMain } from '@/components/index';
 
 const Main = () => {
   const userId = useSelector(selectUserId);
@@ -15,12 +13,7 @@ const Main = () => {
     if (!userId) setIsLogined(false);
   }, [userId]);
 
-  return (
-    <div>
-      <ConnectSocket />
-      {isLogined ? <LoginedMain isLogined={isLogined} /> : <Auth />}
-    </div>
-  );
+  return !isLogined && <Auth />;
 };
 
 export default Main;

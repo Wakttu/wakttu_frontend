@@ -2,7 +2,7 @@ import axios from 'axios';
 import { FormEvent, useState } from 'react';
 
 import useInput from '@/hooks/useInput';
-import { API_URL } from '@/services/api';
+import { API_URL, SOCKET } from '@/services/api';
 import { ERROR_MESSAGE } from '@/constants/auth';
 import { AuthForm, AuthInput, AuthButton } from '@/components/index';
 import { isExistError, isIdValidError } from '@/containers/auth/checkAuth';
@@ -74,8 +74,12 @@ const SignIn = () => {
       .then((response) => {
         if (response.status === 201) {
           setErrors({ message: '', type: 'success' });
-          console.log('로그인 완료!');
-          dispatch(setUserId('사용자의 아이디 값'));
+          dispatch(setUserId(response.data.id));
+
+          SOCKET.on('connect', () => {
+            router.push('/roomlist');
+            console.log('서버와 연결되었습니다.');
+          });
         }
       })
       .catch((error) => {
