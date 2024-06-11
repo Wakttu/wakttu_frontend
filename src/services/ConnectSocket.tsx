@@ -16,7 +16,7 @@ const ConnectSocket = () => {
   useEffect(() => {
     if (userId) {
       if (!socketRef.current) {
-        const socket = io(`${API_URL}`);
+        const socket = io(`${API_URL}/wakttu`);
         socketRef.current = socket;
 
         socket.on('connect', () => {
