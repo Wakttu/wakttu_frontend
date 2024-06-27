@@ -35,14 +35,14 @@ const App = ({ Component, pageProps }: AppProps) => {
 
   return (
     <QueryClientProvider client={queryClient}>
-            <CookiesProvider>
-                <Provider store={store}>
-                    <div className={layout.contentContainer}>
-                    {isMobile ? <h1>PC로 접속해 주세요.</h1> : <Component {...pageProps} />}
-                    </div>
-                </Provider>
-                <ReactQueryDevtools initialIsOpen={false} />
-            </CookiesProvider>
+      <CookiesProvider>
+        <Provider store={store}>
+          <div className={layout.contentContainer}>
+            {isMobile ? <h1>PC로 접속해 주세요.</h1> : <Component {...pageProps} />}
+          </div>
+        </Provider>
+        <ReactQueryDevtools initialIsOpen={false} />
+      </CookiesProvider>
     </QueryClientProvider>
   );
 };
