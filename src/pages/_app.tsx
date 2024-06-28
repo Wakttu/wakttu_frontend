@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
-import '@/styles/globals.css';
+import { GlobalStyle } from '@/styles/GlobalStyle';
 import layout from '@/styles/modules/layout.module.css';
 
 import { CookiesProvider } from 'react-cookie';
@@ -37,6 +37,7 @@ const App = ({ Component, pageProps }: AppProps) => {
     <QueryClientProvider client={queryClient}>
       <CookiesProvider>
         <Provider store={store}>
+          <GlobalStyle />
           <div className={layout.contentContainer}>
             {isMobile ? <h1>PC로 접속해 주세요.</h1> : <Component {...pageProps} />}
           </div>
