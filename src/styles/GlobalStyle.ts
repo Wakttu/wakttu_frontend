@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import { COLORS } from './theme';
 
 export const GlobalStyle = createGlobalStyle`
   @font-face {
@@ -93,7 +94,7 @@ export const GlobalStyle = createGlobalStyle`
   a,
   p,
   span {
-    color: #000;
+    color: ${COLORS.text};
     font-family: 'Wanted Sans';
     font-style: normal;
     line-height: normal;
