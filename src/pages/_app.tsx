@@ -4,7 +4,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 import { GlobalStyle } from '@/styles/GlobalStyle';
-import layout from '@/styles/modules/layout.module.css';
+import { ContentContainer } from '@/styles/modules/Layout';
 
 import { CookiesProvider } from 'react-cookie';
 import { Provider } from 'react-redux';
@@ -38,9 +38,9 @@ const App = ({ Component, pageProps }: AppProps) => {
       <CookiesProvider>
         <Provider store={store}>
           <GlobalStyle />
-          <div className={layout.contentContainer}>
+          <ContentContainer>
             {isMobile ? <h1>PC로 접속해 주세요.</h1> : <Component {...pageProps} />}
-          </div>
+          </ContentContainer>
         </Provider>
         <ReactQueryDevtools initialIsOpen={false} />
       </CookiesProvider>

@@ -1,4 +1,4 @@
-import authForm from '@/styles/modules/authForm.module.css';
+import { ButtonWrapper, LoginButton } from '@/styles/modules/AuthForm';
 
 interface Props {
   buttonText?: string;
@@ -6,9 +6,9 @@ interface Props {
 
 const AuthButton = ({ buttonText = '회원가입' }: Props) => {
   return (
-    <div className={authForm.buttonWrapper}>
-      <button className={authForm.authButton}>{buttonText}</button>
-    </div>
+    <ButtonWrapper>
+      <LoginButton>{buttonText}</LoginButton>
+    </ButtonWrapper>
   );
 };
 

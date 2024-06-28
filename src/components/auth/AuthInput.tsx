@@ -1,7 +1,7 @@
-import authForm from '@/styles/modules/authForm.module.css';
+import { FormItem } from '@/styles/modules/AuthForm';
 
 const AuthInput = ({ ...props }) => {
-  return <input className={authForm.formItem} {...props} />;
+  return <FormItem {...props} />;
 };
 
 export default AuthInput;

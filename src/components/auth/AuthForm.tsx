@@ -1,5 +1,5 @@
 import { FormEvent } from 'react';
-import authForm from '@/styles/modules/authForm.module.css';
+import { FormContainer, FormSection } from '@/styles/modules/AuthForm';
 
 interface Props {
   children: React.ReactNode;
@@ -9,12 +9,10 @@ interface Props {
 
 const AuthForm = ({ children, formTitle = '회원가입', onSubmit }: Props) => {
   return (
-    <div className={authForm.formContainer}>
+    <FormContainer>
       <h1>{formTitle}</h1>
-      <form className={authForm.formSection} onSubmit={onSubmit}>
-        {children}
-      </form>
-    </div>
+      <FormSection onSubmit={onSubmit}>{children}</FormSection>
+    </FormContainer>
   );
 };
 
