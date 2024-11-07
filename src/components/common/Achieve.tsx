@@ -3,10 +3,12 @@ import { AchieveState } from '@/redux/achieve/achieveSlice';
 import { getAchieveURL } from '@/services/api';
 import {
   Badge,
+  Box,
   CAchieve,
   Content,
   Desc,
   Info,
+  Left,
   Name,
 } from '@/styles/common/Achieve';
 
@@ -30,24 +32,21 @@ const Achieve = ({ achieves }: Props) => {
     <>
       {achieves.map((achieve: AchieveState, idx: number) => {
         return (
-          <CAchieve
-            idx={idx}
-            key={achieve.id}
-            style={{
-              visibility: loadedImages[achieve.id] ? 'visible' : 'hidden',
-            }}
-          >
-            <Content>
-              <Badge
-                src={getAchieveURL(achieve.id)}
-                onLoad={() => handleImageLoad(achieve.id)}
-              />
-              <Info>
-                <Name>{achieve.name}</Name>
-                <Desc>{achieve.desc}</Desc>
-              </Info>
-            </Content>
-          </CAchieve>
+          <Box key={achieve.id} idx={idx}>
+            <Left />
+            <CAchieve>
+              <Content>
+                <Badge
+                  src={getAchieveURL(achieve.id)}
+                  onLoad={() => handleImageLoad(achieve.id)}
+                />
+                <Info>
+                  <Name>{achieve.name}</Name>
+                  <Desc>{achieve.desc}</Desc>
+                </Info>
+              </Content>
+            </CAchieve>
+          </Box>
         );
       })}
     </>

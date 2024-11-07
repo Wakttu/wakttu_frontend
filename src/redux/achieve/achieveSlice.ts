@@ -4,10 +4,10 @@ export interface AchieveState {
   id: string;
   name: string;
   desc: string;
-  img: string;
-  regDate: number;
-  statId: string;
-  targetStatVal: number;
+  img?: string;
+  regDate?: number;
+  statId?: string;
+  targetStatVal?: number;
 }
 
 const initialState: AchieveState[] = [];

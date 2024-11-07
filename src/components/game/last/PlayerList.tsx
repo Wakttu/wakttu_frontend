@@ -10,11 +10,9 @@ import {
 import { Game } from '@/services/socket/socket';
 import { Answer } from '@/redux/answer/answerSlice';
 import { ScoreBox } from '@/components';
-import { getR2URL } from '@/services/api';
 import { Bubble } from '@/containers/game/last/PlayerList';
 import BubbleBox from '../Bubble';
 import Difference from './DifferenceBox';
-import { getCharacter } from '@/modules/UserInfo';
 import Character from '@/components/common/Character';
 
 interface Props {
@@ -45,7 +43,7 @@ const PlayList = ({ users, game, answer, bubble, team }: Props) => {
         const isFail = isTurn && answer.success === false;
 
         const lastBubble = bubble.findLast(
-          (item: Bubble) => item.user.name === user.name
+          (item: Bubble) => item.user.userId === user.id
         );
         return (
           <CPlayer

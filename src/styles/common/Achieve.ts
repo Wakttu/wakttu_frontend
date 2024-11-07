@@ -10,10 +10,20 @@ const keyframe = keyframes`
 }
 `;
 
-export const CAchieve = styled.div<{ idx?: number }>`
+export const Box = styled.div<{ idx?: number }>`
   position: fixed;
   bottom: ${({ idx }) => (idx ? idx * 5.5 + 'rem' : '0')};
   right: 0;
+  display: flex;
+  width: 21.75rem;
+  height: 5.5rem;
+
+  animation: ${keyframe} 3s linear;
+  opacity: 1;
+`;
+
+export const CAchieve = styled.div`
+  position: relative;
   display: flex;
   width: 21.75rem;
   height: 5.5rem;
@@ -23,16 +33,26 @@ export const CAchieve = styled.div<{ idx?: number }>`
   align-items: flex-start;
   gap: 0.25rem;
 
-  border-left: 8px solid #00d068;
+  border-top: 2px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
   background: linear-gradient(
       90deg,
       rgba(0, 208, 104, 0.2) 0%,
-      rgba(0, 0, 0, 0.2) 100%
+      rgba(255, 255, 255, 0.2) 100%
     ),
-    #000;
+    ${COLORS.bg};
+`;
 
-  animation: ${keyframe} 3s linear;
-  opacity: 1;
+export const Left = styled.div`
+  position: absolute;
+  left: -0.5rem;
+  width: 0.5rem;
+  height: 5.5rem;
+  padding: 0.5rem 0;
+  background-color: ${COLORS.primary};
+  border-top: 2px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+  border-left: 2px solid rgba(0, 0, 0, 0.1);
 `;
 
 export const CTitle = styled.div`
@@ -76,7 +96,7 @@ export const Info = styled.div`
 `;
 
 export const Name = styled.span`
-  color: ${COLORS.bg};
+  color: ${COLORS.text};
 
   font-family: 'Wanted Sans Variable', 'Wanted Sans', sans-serif;
   font-size: ${FONT_SIZES['subtitle-1']};
@@ -88,7 +108,7 @@ export const Name = styled.span`
 export const Desc = styled.span`
   width: 13.6875rem;
 
-  color: ${COLORS.bg};
+  color: ${COLORS.text};
 
   font-family: 'Wanted Sans Variable', 'Wanted Sans', sans-serif;
   font-size: ${FONT_SIZES.caption};

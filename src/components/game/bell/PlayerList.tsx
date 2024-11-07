@@ -40,7 +40,7 @@ const PlayList = ({ users, game, answer, bubble, team }: Props) => {
       {users.map((user: any, index: number) => {
         const myTeam = checkMyTeam(user.userId);
         const lastBubble = bubble.findLast(
-          (item: Bubble) => item.user.name === user.name
+          (item: Bubble) => item.user.userId === user.id
         );
         return (
           <CPlayer key={user.id} $success={user.success}>
