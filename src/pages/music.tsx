@@ -1,10 +1,11 @@
 import { socket } from '@/services/socket/socket';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import YouTube from 'react-youtube';
 
 const Music: React.FC = () => {
   const [gameData, setGameData] = useState(null);
   const [music, setMusic] = useState<{ [key: string]: any } | null>(null);
+  const playerRef = useRef<any>(null);
 
   useEffect(() => {
     socket.on('connect', () => {
@@ -19,6 +20,13 @@ const Music: React.FC = () => {
       console.log(gameData);
       setGameData(gameData);
       setMusic(gameData.music[gameData.round]);
+    });
+
+    socket.on('music.play', (gameData) => {
+      console.log(gameData);
+      if (playerRef.current) {
+        playerRef.current.playVideo();
+      }
     });
 
     return () => {
@@ -43,6 +51,13 @@ const Music: React.FC = () => {
   const connectSocket = () => {
     socket.connect();
   };
+
+  const onReady = useCallback((event: any) => {
+    console.log('onReady');
+    socket.emit('music.ready', { roomId: '123' });
+    playerRef.current = event.target;
+  }, []);
+
   return (
     <div>
       <button onClick={connectSocket}>소켓 연결</button>
@@ -56,14 +71,12 @@ const Music: React.FC = () => {
             width: '560',
             height: '315',
             playerVars: {
-              allow:
-                'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture',
-              allowFullScreen: true,
+              autoplay: 0,
             },
           }}
+          onReady={onReady}
         />
       )}
-      {/* 다른 UI 요소들 */}
     </div>
   );
 };
