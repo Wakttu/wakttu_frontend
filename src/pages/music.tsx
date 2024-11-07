@@ -12,18 +12,20 @@ const Music: React.FC = () => {
       console.log('소켓 연결 성공');
     });
     socket.on('music.start', (gameData) => {
-      console.log(gameData);
+      console.log('start:', gameData);
       setGameData(gameData);
     });
 
     socket.on('music.round', (gameData) => {
-      console.log(gameData);
+      console.log('round:', gameData);
       setGameData(gameData);
-      setMusic(gameData.music[gameData.round]);
+      if (gameData.music && gameData.round > 0) {
+        setMusic(gameData.music[gameData.round - 1]);
+      }
     });
 
     socket.on('music.play', (gameData) => {
-      console.log(gameData);
+      console.log('play:', gameData);
       if (playerRef.current) {
         playerRef.current.playVideo();
       }
@@ -33,30 +35,30 @@ const Music: React.FC = () => {
       socket.off('connect');
       socket.off('music.start');
       socket.off('music.round');
+      socket.off('music.play');
     };
-  }, []);
-
-  useEffect(() => {
-    console.log(music);
   }, [music]);
 
   const handleStartGame = () => {
-    socket.emit('music.start', { roomId: '123' });
+    socket.emit('music.start', '123');
   };
 
   const handleNextRound = () => {
-    socket.emit('music.round', { roomId: '123' });
+    socket.emit('music.round', '123');
   };
 
   const connectSocket = () => {
     socket.connect();
   };
 
-  const onReady = useCallback((event: any) => {
+  const onReady = (event: any) => {
     console.log('onReady');
-    socket.emit('music.ready', { roomId: '123' });
+    console.log(music?.videoId);
+    socket.emit('music.ready', '123');
     playerRef.current = event.target;
-  }, []);
+
+    console.log(playerRef.current);
+  };
 
   return (
     <div>
@@ -65,7 +67,6 @@ const Music: React.FC = () => {
       <button onClick={handleNextRound}>다음 라운드</button>
       {music && (
         <YouTube
-          key={music.videoId}
           videoId={music.videoId}
           opts={{
             width: '560',
