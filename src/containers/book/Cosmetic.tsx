@@ -8,6 +8,7 @@ import {
   getMyAchieve,
   getMyItemList,
   achieveItem,
+  getMyAchieveLocal,
 } from '@/services/api';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -106,14 +107,15 @@ const Cosmetic = () => {
 
   useEffect(() => {
     const getAchieves = async () => {
-      const res = await getMyAchieve();
+      const res =
+        user.provider === 'waktaverse.games'
+          ? await getMyAchieve()
+          : await getMyAchieveLocal();
       if (res) {
         setData(res);
       }
     };
-    if (user.provider === 'waktaverse.games') {
-      getAchieves();
-    }
+    getAchieves();
   }, [user.provider]);
 
   useEffect(() => {

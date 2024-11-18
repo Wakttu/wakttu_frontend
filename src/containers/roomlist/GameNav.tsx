@@ -5,10 +5,14 @@ import FilterBox from './FilterBox';
 import { getRoomList } from '@/services/socket/socket';
 import { clearRoomInfo } from '@/redux/roomInfo/roomInfoSlice';
 import useInput from '@/hooks/useInput';
-import { useEffect, useState } from 'react';
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { selectFilter, setFilter } from '@/redux/filter/filterSlice';
 
-const GameNav = () => {
+interface Props {
+  setToggle: Dispatch<SetStateAction<boolean>>;
+}
+
+const GameNav = ({ setToggle }: Props) => {
   const { inputs, setInputs, onInputChange } = useInput({
     keyword: undefined,
   });
@@ -31,6 +35,7 @@ const GameNav = () => {
   const onRoomList = () => {
     dispatch(clearRoomInfo());
     getRoomList();
+    setToggle(false);
   };
 
   useEffect(() => {

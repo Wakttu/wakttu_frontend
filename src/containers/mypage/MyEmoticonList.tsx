@@ -7,8 +7,8 @@ const MyEmoticonList = () => {
       {isLoading ? (
         ''
       ) : (
-        <div>
-          MyEmoticonList
+        <div style={{ padding: '3rem' }}>
+          준비중
         </div>
       )}
     </>

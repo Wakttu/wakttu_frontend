@@ -41,18 +41,34 @@ const CreateRoom = () => {
 
   const onRoomInfo = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, type } = e.target;
+
     if (type === 'number') {
+      // 공백일 경우 early return
+      if (value === '') {
+        setRoom((prev) => ({ ...prev, [name]: value }));
+        return;
+      }
+
       let onlyNumber = parseInt(value, 10);
-      if (Number.isNaN(onlyNumber) || onlyNumber < 2 || onlyNumber > 30)
-        onlyNumber = 10;
-      setRoom((prev) => {
-        return { ...prev, [name]: onlyNumber };
-      });
+
+      // name에 따라 min과 max 값 설정
+      const min = name === 'round' ? 2 : 2;
+      const max = name === 'round' ? 30 : 8;
+
+      // onlyNumber가 숫자가 아니거나 범위를 벗어날 경우 min 또는 max로 설정
+      if (Number.isNaN(onlyNumber)) {
+        onlyNumber = min;
+      } else if (onlyNumber < min) {
+        onlyNumber = min;
+      } else if (onlyNumber > max) {
+        onlyNumber = max;
+      }
+
+      setRoom((prev) => ({ ...prev, [name]: onlyNumber }));
       return;
     }
-    setRoom((prev) => {
-      return { ...prev, [name]: value };
-    });
+
+    setRoom((prev) => ({ ...prev, [name]: value }));
   };
 
   const onSelect = (name: string, value: any) => {
@@ -69,7 +85,12 @@ const CreateRoom = () => {
       });
     } else if (name === 'type') {
       setRoom((prev) => {
-        return { ...prev, [name]: value, round: value === 2 ? 10 : 6 };
+        return {
+          ...prev,
+          [name]: value,
+          round: value === 2 ? 10 : 6,
+          option: [],
+        };
       });
     } else {
       setRoom((prev) => {
@@ -83,6 +104,15 @@ const CreateRoom = () => {
   };
 
   const onCreate = () => {
+    if (!room.round) {
+      alert('라운드 값이 비어있습니다.');
+      return;
+    }
+    if (!room.total) {
+      alert('플레이어 수 값이 비어있습니다.');
+      return;
+    }
+
     dispatch(closeModal());
     let roomInfo = {
       ...room,

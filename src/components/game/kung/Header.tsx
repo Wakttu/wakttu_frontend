@@ -11,9 +11,12 @@ import {
   Index,
   Title,
 } from '@/styles/kung/Header';
-import { useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 import HelpModal from '../HelpModal';
-
+import { Option } from '@/components';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectVolume, setVolume as setAudio } from '@/redux/audio/audioSlice';
+import ExitModal from '../ExitModal';
 interface Props {
   roomInfo: Room;
   exit: () => void;
@@ -21,6 +24,12 @@ interface Props {
 
 const Header = ({ roomInfo, exit }: Props) => {
   const [isHelpOpen, setIsHelpOpen] = useState(false);
+  const [isExitOpen, setIsExitOpen] = useState(false);
+
+  const onConfirm = () => {
+    exit();
+    setIsExitOpen(false);
+  };
 
   return (
     <CHeader>
@@ -34,12 +43,18 @@ const Header = ({ roomInfo, exit }: Props) => {
         <Title>{roomInfo.title}</Title>
       </CTitle>
       <CButton>
-        <ExitButton onClick={exit}>
+        <ExitButton onClick={() => setIsExitOpen(true)}>
           <ButtonText>나가기</ButtonText>
           <ExitIcon src={R2_URL + '/assets/game/game-exit.svg'} />
         </ExitButton>
       </CButton>
       {isHelpOpen && <HelpModal onClose={() => setIsHelpOpen(false)} />}
+      {isExitOpen && (
+        <ExitModal
+          onConfirm={onConfirm}
+          onCancle={() => setIsExitOpen(false)}
+        />
+      )}
     </CHeader>
   );
 };

@@ -133,7 +133,12 @@ const ResultSolo = ({ list, offModal, user }: Props) => {
                     <NowLevel>
                       <Grade src={getIcon(user.score, user.provider)} />
                       <Exp>
-                        +{list.find((item) => item.userId === user.id)!.score}xp
+                        +
+                        {Math.ceil(
+                          list.find((item) => item.userId === user.id)!.score /
+                            10
+                        )}
+                        xp
                       </Exp>
                     </NowLevel>
                     <Grade src={getIcon(user.score + 1000, user.provider)} />

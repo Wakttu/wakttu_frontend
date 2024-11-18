@@ -78,6 +78,10 @@ const MainFormContainer = () => {
         try {
           // 기존 소켓 연결이 있다면 먼저 연결 해제
           if (socket.connected) {
+            if (user.provider === 'guest') {
+              await router.push('/roomlist');
+              return;
+            }
             socket.disconnect();
           }
 
@@ -121,7 +125,7 @@ const MainFormContainer = () => {
         });
       }
     },
-    [isLogined, router]
+    [isLogined, router, user.provider]
   );
 
   const logout = useCallback(

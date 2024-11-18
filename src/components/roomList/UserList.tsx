@@ -23,7 +23,7 @@ const UserList = ({ users }: Props) => {
       </ListTitle>
       <List>
         {Object.keys(users).map((key) => {
-          const level = getIcon(users[key].score);
+          const level = getIcon(users[key].score, users[key].provider);
           return (
             <CPlayer key={key}>
               <Icon src={level} />

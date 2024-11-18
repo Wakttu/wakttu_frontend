@@ -82,7 +82,7 @@ const RoomList = () => {
           </Copyright>
         </LeftWrapper>
         <RightWrapper>
-          <GameNav />
+          <GameNav setToggle={setToggle} />
           <List setToggle={setToggle} />
           <Chat />
         </RightWrapper>

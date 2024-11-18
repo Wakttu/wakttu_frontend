@@ -14,7 +14,9 @@ const CMessage = styled.span<{ $error: boolean }>`
     return $error ? '#FF6565;' : `${COLORS.primary}`;
   }};
 
-  font-family: 'WantedSans-Medium';
+  font-family: 'Wanted Sans Variable', 'Wanted Sans', sans-serif;
+  white-space: normal;
+  overflow-wrap: break-word;
 `;
 
 export default Message;

@@ -29,14 +29,16 @@ const ChangeHost = () => {
   };
 
   const onConfirm = useCallback(() => {
-    if (selected) {
+    if (selected && roomUsers.some((user: any) => user.id === selected.id)) {
       socket.emit('host', { roomId, userId: selected.id });
-      dispatch(closeModal());
     }
-  }, [dispatch, roomId, selected]);
+    dispatch(closeModal());
+    setSelected(undefined);
+  }, [dispatch, roomId, selected, roomUsers]);
 
   const onCancle = () => {
     dispatch(closeModal());
+    setSelected(undefined);
   };
 
   return (

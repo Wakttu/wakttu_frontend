@@ -6,7 +6,6 @@ const WrapRoom = styled.div`
   grid-template-columns: 2.5fr 7.5fr;
 
   width: 100%;
-  height: 100%;
 
   gap: 1rem;
 `;
@@ -32,7 +31,7 @@ const LeftFooter = styled.div`
   align-items: center;
   align-self: stretch;
 
-  height: 21.2rem;
+  height: 100%;
 `;
 
 const Copyright = styled.span`

@@ -9,14 +9,21 @@ import {
 
 interface Props {
   character: any;
+  style?: React.CSSProperties; // style 속성 추가
+  transform?: React.CSSProperties; // transform
 }
 
-const Character = ({ character }: Props) => {
+const Character = ({ character, style, transform }: Props) => {
   const src = getCharacter(character);
 
   return (
     <>
-      <CharacterImage>
+      <CharacterImage
+        style={{
+          ...style,
+          ...transform, // transform 적용
+        }}
+      >
         <SkinItem
           skin={character.skin ? character.skin : 'S-1'}
           src={src.skin ? src.skin : getCharacterUrl('S-1')}

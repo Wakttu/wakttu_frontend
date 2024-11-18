@@ -11,6 +11,7 @@ import { useDispatch } from 'react-redux';
 import { socket } from '@/services/socket/socket';
 import { setUserInfo } from '@/redux/user/userSlice';
 import { closeModal } from '@/redux/modal/modalSlice';
+import { isInSlang } from '@/modules/Slang';
 
 interface ErrorProps {
   errorId: string;
@@ -73,6 +74,10 @@ const SignUp = ({ onToggle }: Props) => {
   const isSameNicknameValid = async (nickname: string) => {
     if (!REGEXP.userNickname.test(nickname)) {
       setNicknameMessage(ERROR_MESSAGE.nicknameRegexError);
+      return;
+    }
+    if (isInSlang(nickname)) {
+      setNicknameMessage(ERROR_MESSAGE.filterError);
       return;
     }
     try {

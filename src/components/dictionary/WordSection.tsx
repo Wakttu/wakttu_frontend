@@ -36,7 +36,7 @@ const WordSection: React.FC = () => {
       <Container type='content'>
         <h3>오늘의 단어</h3>
         {loading ? (
-          <p>Loading...</p>
+          <p>검색 중...</p>
         ) : error ? (
           <p>Error loading word of the day.</p>
         ) : todayWord ? (

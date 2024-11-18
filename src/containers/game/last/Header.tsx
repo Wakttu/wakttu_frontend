@@ -17,8 +17,8 @@ const Header = () => {
 
   const exitGame = useCallback(async () => {
     await router.push('/roomlist');
-    await dispatch(clearRoomInfo());
-    await dispatch(clearGame());
+    dispatch(clearRoomInfo());
+    dispatch(clearGame());
     exit(roomInfo.id as string);
     const achieves =
       user.provider === 'waktaverse.games'

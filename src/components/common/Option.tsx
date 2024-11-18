@@ -66,7 +66,7 @@ const OptionBox = ({
           </VolumeContainer>
         </CVolume>
         <CVolume>
-          <VoulmeText>음 성 볼륨</VoulmeText>
+          <VoulmeText>음성 볼륨</VoulmeText>
           <VolumeContainer range={audio.voiceVolume}>
             <VInput
               type="range"

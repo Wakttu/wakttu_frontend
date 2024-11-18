@@ -3,11 +3,12 @@ import { COLORS, FONT_SIZES } from '../theme';
 
 const Info = styled.div`
   display: flex;
-  width: 22rem;
   flex-direction: column;
   align-items: center;
   align-self: center;
+  margin-top: auto;
   gap: 0.5rem;
+  margin-bottom: 2rem;
 `;
 
 const CopyRight = styled.span`
@@ -19,6 +20,8 @@ const CopyRight = styled.span`
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+
+  cursor: pointer;
 `;
 
 const Pdf = styled.span`

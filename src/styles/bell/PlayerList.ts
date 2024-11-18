@@ -39,7 +39,7 @@ export const CPlayer = styled.div<{
   flex-shrink: 0;
 
   position: relative;
-
+  z-index: 100;
   border-radius: 0.75rem;
   box-shadow: ${DROM_SHADOW};
 

@@ -230,6 +230,7 @@ const Bell = () => {
         await router.push('/room');
         await dispatch(setRoomInfo(roomInfo));
         await dispatch(setGame(game));
+        await dispatch(clearTimer());
       } catch (error) {
         console.error('게임 종료 처리 중 오류 발생:', error);
         // 오류 발생 시 기본 페이지로 리다이렉트

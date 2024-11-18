@@ -7,6 +7,8 @@ const Wrapper = styled.div`
 `;
 
 const LeftWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
   gap: 1rem;
 `;
 
@@ -142,6 +144,9 @@ const ContentFooter = styled.div`
   display: flex;
   justify-content: center;
   margin-top: 1.5rem;
+
+  flex: 1;
+  align-items: end;
 `;
 
 export {

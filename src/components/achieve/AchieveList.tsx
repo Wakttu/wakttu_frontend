@@ -1,5 +1,5 @@
 import { Item } from '@/containers/achieve/Achieve';
-import { getAchieveURL, getR2URL, getWAKURL } from '@/services/api';
+import { getAchieveURL } from '@/services/api';
 import { Badge, BadgeBox, Hidden, List } from '@/styles/achieve/AchieveList';
 import { RightWrapper } from '@/styles/achieve/Layout';
 

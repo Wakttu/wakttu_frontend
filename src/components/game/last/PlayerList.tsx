@@ -43,7 +43,7 @@ const PlayList = ({ users, game, answer, bubble, team }: Props) => {
         const isFail = isTurn && answer.success === false;
 
         const lastBubble = bubble.findLast(
-          (item: Bubble) => item.user.userId === user.id
+          (item: Bubble) => item.user.id === user.userId
         );
         return (
           <CPlayer

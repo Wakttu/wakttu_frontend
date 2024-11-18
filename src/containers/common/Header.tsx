@@ -2,13 +2,19 @@ import { Header as CHeader, Option } from '@/components';
 import { getIcon } from '@/modules/UserInfo';
 import { selectVolume, setVolume as setAudio } from '@/redux/audio/audioSlice';
 import { clearGame, selectGame } from '@/redux/game/gameSlice';
-import { closeModal, openModal, selectModal } from '@/redux/modal/modalSlice';
+import {
+  closeModal,
+  openModal,
+  selectModal,
+  setDataModal,
+} from '@/redux/modal/modalSlice';
 import { clearRoomInfo, selectRoomInfo } from '@/redux/roomInfo/roomInfoSlice';
 import { selectUserInfo } from '@/redux/user/userSlice';
 import { exit } from '@/services/socket/socket';
 import { useRouter } from 'next/router';
 import { ChangeEvent, useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import RouteModal from './RouteModal';
 
 const Header = () => {
   const [isConnected, setIsConnected] = useState(false);
@@ -28,21 +34,34 @@ const Header = () => {
 
   const goRouter = useCallback(
     async (src: string = '/') => {
-      if (src === router.asPath) return;
+      const path = router.asPath;
+      if (src === path) return;
       if (game.host !== '' || roomInfo.id) {
-        const check = confirm(
-          '현재 방에서 나가집니다. 동의하면 확인 아니면 취소 해주세요!'
-        );
-        if (!check) return;
-        await router.replace(src);
-        await exit(roomInfo.id as string);
-        await dispatch(clearGame());
-        await dispatch(clearRoomInfo());
+        if (path === '/room') {
+          dispatch(openModal('ROUTE'));
+          dispatch(setDataModal({ src }));
+        } else {
+          await router.replace(src);
+          await exit(roomInfo.id as string);
+          await dispatch(clearGame());
+          await dispatch(clearRoomInfo());
+        }
       } else {
         await router.replace(src);
       }
     },
     [dispatch, game.host, roomInfo.id, router]
+  );
+
+  const onExit = useCallback(
+    async (src: string) => {
+      await router.replace(src);
+      await exit(roomInfo.id as string);
+      await dispatch(clearGame());
+      await dispatch(clearRoomInfo());
+      await dispatch(closeModal());
+    },
+    [dispatch, roomInfo.id, router]
   );
 
   const onModal = () => {
@@ -104,6 +123,9 @@ const Header = () => {
           onEffectChange={onEffectChange}
           onVoiceChange={onVoiceChange}
         />
+      )}
+      {modal.modalType === 'ROUTE' && modal.open && (
+        <RouteModal onConfirm={onExit} onCancle={offModal} />
       )}
     </>
   );

@@ -6,7 +6,6 @@ const WrapRoomList = styled.div`
   grid-template-columns: 2.5fr 7.5fr;
 
   width: 100%;
-  height: 100%;
 
   gap: 1rem;
 `;

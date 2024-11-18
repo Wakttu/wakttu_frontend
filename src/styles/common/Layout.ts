@@ -13,7 +13,9 @@ const ContentContainer = styled.div<{ path?: string }>`
   ${({ path }) => {
     if (path === '/')
       return `height: 100vh;
-  background: url('${R2_URL}/assets/background.png') lightgray 50% / cover no-repeat;
+background: url('${R2_URL}/assets/main.png') no-repeat center center; 
+background-size: cover;
+
 `;
     else if (path?.includes('/last'))
       return `height: 100vh;
@@ -25,9 +27,6 @@ const ContentContainer = styled.div<{ path?: string }>`
     `;
     else if (path?.includes('/kung'))
       return `height: 100vh; background: linear-gradient(180deg, #C3FFB4 0%, #C3FFB4 100%);  padding-bottom:0;`;
-    else if (path === '/dictionary') return `height: 100vh; padding-bottom: 0;`;
-    else if (path === '/dictionary/search')
-      return `height: 100vh; background: var(--Gray-5, #F7F7F7); padding-bottom: 0;`;
     else if (path?.includes('/bell'))
       return `height: 100vh;
     background: url('${R2_URL}/assets/checker.png');

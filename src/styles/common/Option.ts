@@ -12,7 +12,7 @@ const Modal = styled.div`
   width: 100vw;
   height: 100vh;
 
-  z-index: 100;
+  z-index: 4000;
   background: rgb(0, 0, 0, 0.1);
 `;
 

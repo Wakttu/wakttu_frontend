@@ -17,11 +17,16 @@ const SearchSection = () => {
 
   useEffect(() => {
     const getWords = async () => {
-      if (!keyword) return;  // keyword가 없으면 요청하지 않음
+      if (!keyword) {
+        setWords([])
+        setLoading(false);
+        setError(false);
+        return;
+      };  // keyword가 없으면 요청하지 않음
       setLoading(true);
       setError(false);  // 요청 시작 시 에러 상태 초기화
       try {
-        const response = await client.get(`/dictionary/search?keyword=${keyword}&take=4&skip=0`);
+        const response = await client.get(`/dictionary/search?keyword=${keyword}&take=20&skip=0`);
         const words_: Words_ = response.data;
         const processedWords = processWordsData(words_);
         setWords(processedWords);
@@ -40,7 +45,7 @@ const SearchSection = () => {
     <Container>
       <SearchBar inputValue={inputValue} setInputValue={setInputValue} />
       {loading ? (
-        <p>Loading...</p>  // 로딩 중일 때 보여줄 텍스트
+        <p>검색 중...</p>  // 로딩 중일 때 보여줄 텍스트
       ) : error ? (
         <p>Error loading words. Please try again later.</p>  // 에러 발생 시
       ) : words.length === 0 ? (

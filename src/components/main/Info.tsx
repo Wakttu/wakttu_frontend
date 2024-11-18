@@ -6,19 +6,19 @@ const WakttuInfo = () => {
   return (
     <Info>
       <>
-        <CopyRight>© copyright WAKTTU.</CopyRight>
+        <CopyRight>© 2024 WAKTTU</CopyRight>
         <CopyRight>
           왁뚜는 왁타버스에서 제공하는 공식 콘텐츠가 아닙니다.
         </CopyRight>
         <Flex>
-          <Pdf onClick={() => window.open('/privacy', '_blank')}>
-            개인정보처리방침
+          <Pdf onClick={() => window.open('/info/privacy', '_blank')}>
+            개인정보 처리방침
           </Pdf>
-          <Pdf onClick={() => window.open('/service', '_blank')}>
-            서비스이용방침
+          <Pdf onClick={() => window.open('/info/service', '_blank')}>
+            서비스 이용약관
           </Pdf>
 
-          <CopyRight>문의 : admin@wakttu.kr</CopyRight>
+          <CopyRight onClick={() => location.href = 'mailto:admin@wakttu.kr'}>문의 : admin@wakttu.kr</CopyRight>
         </Flex>
       </>
     </Info>

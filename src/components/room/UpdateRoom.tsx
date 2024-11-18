@@ -59,6 +59,7 @@ const UpdateRoom = ({
             defaultValue={roomInfo.title}
             onChange={onRoomInfo}
             onKeyDown={handleKeyDown}
+            maxLength={10}
           />
         </CCreate>
         <CCreate>
@@ -69,6 +70,7 @@ const UpdateRoom = ({
             defaultValue={roomInfo.password}
             onChange={onRoomInfo}
             autoComplete="off"
+            maxLength={8}
           />
         </CCreate>
         <CCreate>
@@ -152,18 +154,20 @@ const UpdateRoom = ({
         ) : null}
         <CCreate>
           <CLabel>특수규칙</CLabel>
-          <CheckBox onClick={() => onSelect('option', '팀전')}>
-            <CCheck>
-              {roomInfo.option!.indexOf('팀전') === -1 ? (
-                <CheckIcon src={getR2URL('/assets/icons/check-off.svg')} />
-              ) : (
-                <CheckIcon src={getR2URL('/assets/icons/check-on.svg')} />
-              )}
-              <Selected tooltip="팀전이 가능해 집니다. 총 4팀까지 나눌 수 있습니다.">
-                팀전
-              </Selected>
-            </CCheck>
-          </CheckBox>
+          {roomInfo.type !== 2 ? (
+            <CheckBox onClick={() => onSelect('option', '팀전')}>
+              <CCheck>
+                {roomInfo.option!.indexOf('팀전') === -1 ? (
+                  <CheckIcon src={getR2URL('/assets/icons/check-off.svg')} />
+                ) : (
+                  <CheckIcon src={getR2URL('/assets/icons/check-on.svg')} />
+                )}
+                <Selected tooltip="팀전이 가능해 집니다. 총 4팀까지 나눌 수 있습니다.">
+                  팀전
+                </Selected>
+              </CCheck>
+            </CheckBox>
+          ) : null}
           {roomInfo.type !== 2 ? (
             <>
               <CheckBox onClick={() => onSelect('option', '매너')}>

@@ -15,7 +15,7 @@ interface Props {
 }
 
 const Chat = ({ user, chat, date }: Props) => {
-  const icon = getIcon(user.score);
+  const icon = getIcon(user.score, user.provider);
 
   return (
     <PlayerChat>

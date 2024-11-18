@@ -121,13 +121,16 @@ const Chat = () => {
     if (inputRef.current) inputRef.current.focus();
   }, [game.target, inputs.chat, roomId, setInputs]);
 
-  const handleEnter = (e: React.KeyboardEvent) => {
-    if (e.nativeEvent.isComposing) return;
-    if (e.key === 'Enter') {
-      if (pause && myTurn) onSendAnswer();
-      else onSendMessage();
-    }
-  };
+  const handleEnter = useCallback(
+    (e: React.KeyboardEvent) => {
+      if (e.nativeEvent.isComposing) return;
+      if (e.key === 'Enter') {
+        if (pause && myTurn) onSendAnswer();
+        else onSendMessage();
+      }
+    },
+    [pause, myTurn, onSendAnswer, onSendMessage]
+  );
 
   useEffect(() => {
     socket.on('alarm', (data) => {

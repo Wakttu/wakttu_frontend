@@ -13,6 +13,7 @@ import {
 } from '@/styles/bell/Header';
 import { useState } from 'react';
 import HelpModal from '../HelpModal';
+import ExitModal from '../ExitModal';
 
 interface Props {
   roomInfo: Room;
@@ -21,6 +22,12 @@ interface Props {
 
 const Header = ({ roomInfo, exit }: Props) => {
   const [isHelpOpen, setIsHelpOpen] = useState(false);
+  const [isExitOpen, setIsExitOpen] = useState(false);
+
+  const onConfirm = () => {
+    exit();
+    setIsExitOpen(false);
+  };
 
   return (
     <CHeader>
@@ -34,12 +41,18 @@ const Header = ({ roomInfo, exit }: Props) => {
         <Title>{roomInfo.title}</Title>
       </CTitle>
       <CButton>
-        <ExitButton onClick={exit}>
+        <ExitButton onClick={() => setIsExitOpen(true)}>
           <ButtonText>나가기</ButtonText>
           <ExitIcon src={R2_URL + '/assets/game/game-exit.svg'} />
         </ExitButton>
       </CButton>
       {isHelpOpen && <HelpModal onClose={() => setIsHelpOpen(false)} />}
+      {isExitOpen && (
+        <ExitModal
+          onConfirm={onConfirm}
+          onCancle={() => setIsExitOpen(false)}
+        />
+      )}
     </CHeader>
   );
 };

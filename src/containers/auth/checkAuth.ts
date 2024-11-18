@@ -1,4 +1,5 @@
 import { REGEXP, ERROR_MESSAGE } from '@/constants/auth';
+import { isInSlang } from '@/modules/Slang';
 
 const onCheckId = (id: string, sameId: boolean) => {
   if (id === '') return ERROR_MESSAGE.requiredError('아이디');
@@ -29,6 +30,8 @@ const onCheckConfirmPw = (pw: string, confirmPw: string) => {
 const onCheckNickname = (nickname: string, sameNickname: boolean) => {
   if (nickname === '') return ERROR_MESSAGE.requiredError('닉네임');
 
+  if (isInSlang(nickname)) return ERROR_MESSAGE.filterError;
+
   if (!REGEXP.userNickname.test(nickname)) {
     return ERROR_MESSAGE.nicknameRegexError;
   }
@@ -42,8 +45,10 @@ const isExistError = (id: string, pw: string) => {
   const isExistId = !!id;
   const isExistPw = !!pw;
 
-  if (!isExistId) return { message: ERROR_MESSAGE.isExistError('아이디'), type: 'id' };
-  if (!isExistPw) return { message: ERROR_MESSAGE.isExistError('비밀번호'), type: 'pw' };
+  if (!isExistId)
+    return { message: ERROR_MESSAGE.isExistError('아이디'), type: 'id' };
+  if (!isExistPw)
+    return { message: ERROR_MESSAGE.isExistError('비밀번호'), type: 'pw' };
 };
 
 const isIdValidError = (idValid: boolean) => {
@@ -59,7 +64,14 @@ interface Props {
   sameNickname: boolean;
 }
 
-const onError = ({ id, sameId, pw, confirmPw, nickname, sameNickname }: Props) => {
+const onError = ({
+  id,
+  sameId,
+  pw,
+  confirmPw,
+  nickname,
+  sameNickname,
+}: Props) => {
   const errorId = onCheckId(id, sameId);
   const errorPw = onCheckPw(pw);
   const errorConfirmPw = onCheckConfirmPw(pw, confirmPw);

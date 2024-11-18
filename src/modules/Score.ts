@@ -23,7 +23,7 @@ const countScore = ({
   const timeTaken = (timeLimit - remainingTime) / 1000;
   const calculate =
     2 *
-    ((5 + 5 * wordLength) ** 0.74 + 0.88 * chainCount) *
+    ((3 + 3 * wordLength) ** 0.74 + 0.88 * chainCount) *
     (1 - timeTaken / ((2 * timeLimit) / 1000));
   return parseInt(calculate.toFixed(), 10);
 };

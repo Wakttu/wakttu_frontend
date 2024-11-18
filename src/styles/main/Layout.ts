@@ -1,10 +1,13 @@
 import styled from 'styled-components';
-import { Container } from '../common/Layout';
 
-const Wrapper = styled(Container)`
-  padding-top: 21.625rem;
-
-  align-items: flex-end;
-  gap: 0;
+const Wrapper = styled.div`
+  display: flex;
+  width: 88rem;
+  height: auto;
+  padding-top: 11.725rem;
+  flex-direction: column;
+  align-items: center;
+  gap: 16.625rem;
+  flex-shrink: 0;
 `;
 export { Wrapper };
