@@ -51,14 +51,27 @@ const Music: React.FC = () => {
     socket.connect();
   };
 
-  const onReady = (event: any) => {
-    console.log('onReady');
-    console.log(music?.videoId);
-    socket.emit('music.ready', '123');
-    playerRef.current = event.target;
+  const [isPlayerReady, setIsPlayerReady] = useState(false);
 
-    console.log(playerRef.current);
+  const onReady = (event: any) => {
+    if (!playerRef.current) {
+      playerRef.current = event.target;
+      setIsPlayerReady(true);
+      if (music?.videoId) {
+        socket.emit('music.ready', '123');
+      } else {
+        console.warn('Music data or video ID is not ready');
+      }
+    }
   };
+
+  // `music` 상태가 업데이트될 때 추가 작업 수행
+  useEffect(() => {
+    if (isPlayerReady && music?.videoId) {
+      console.log('Player is ready and music is updated:', music.videoId);
+      // 필요하면 추가 로직 실행
+    }
+  }, [isPlayerReady, music]);
 
   return (
     <div>
