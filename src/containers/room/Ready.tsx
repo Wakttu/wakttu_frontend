@@ -15,6 +15,7 @@ import {
   bellStart,
   kungStart,
   lastStart,
+  musicStart,
   ready,
   selectTeam,
   socket,
@@ -99,6 +100,7 @@ const Ready = () => {
         0: lastStart,
         1: kungStart,
         2: bellStart,
+        3: musicStart,
       };
 
       const startFunction =
@@ -151,12 +153,21 @@ const Ready = () => {
       router.push('/game/bell');
     });
 
+    socket.on('music.start', async (data) => {
+      await dispatch(clearHistory());
+      await dispatch(clearTimer());
+      await dispatch(clearAnswer());
+      await dispatch(setGame(data));
+      router.push('/game/music');
+    });
+
     return () => {
       socket.off('ready');
       socket.off('team');
       socket.off('last.start');
       socket.off('kung.start');
       socket.off('bell.start');
+      socket.off('music.start');
     };
   }, [dispatch, roomInfo.id, router]);
 
