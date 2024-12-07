@@ -47,6 +47,11 @@ const RoomDesc = ({ roomInfo, onEnter }: Props) => {
         ) : (
           ''
         )}
+        {roomInfo.type === 3 ? (
+          <GameInfo src={getR2URL('/assets/game-info-3.png')} alt="음악 맞추기 배경 이미지" />
+        ) : (
+          ''
+        )}
         <RoomInfo>
           <WrapInfo>
             <Info $variant="title">플레이어</Info>

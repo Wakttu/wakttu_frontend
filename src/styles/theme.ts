@@ -15,6 +15,7 @@ const COLORS = {
   red: '#FFA2A2',
   yellow: '#FFF6A2',
   green: '#B6ECC5',
+  deepPurple: '#320392',
 };
 
 const FONT_SIZES = {

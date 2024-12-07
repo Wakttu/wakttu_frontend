@@ -110,6 +110,7 @@ const MainFormContainer = () => {
         await new Promise<void>((resolve, reject) => {
           socket.connect();
 
+          /*
           const timer = setTimeout(() => {
             reject(
               new Error(
@@ -117,6 +118,7 @@ const MainFormContainer = () => {
               )
             );
           }, 5000);
+          */
 
           socket.on('connected', () => {
             setIsConnected(true);

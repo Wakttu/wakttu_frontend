@@ -63,5 +63,10 @@ export { default as BChatBox } from './game/bell/ChatBox';
 export { default as BPlayerList } from './game/bell/PlayerList';
 export { default as Bell } from './game/bell/Bell';
 
+export { default as SHeader } from './game/music/Header';
+export { default as SChatBox } from './game/music/ChatBox';
+export { default as SPlayerList } from './game/music/PlayerList'
+export { default as SMusic } from './game/music/Music';
+
 export { default as MyStyleList } from './mypage/MystyleList';
 export { default as MypageHeader } from './mypage/MypageHeader';

@@ -12,6 +12,7 @@ import historyReducer from './history/historySlice';
 import audioReducer from './audio/audioSlice';
 import resultReducer from './result/resultSlice';
 import achieveReducer from './achieve/achieveSlice';
+import musicReducer from './music/musicSlice';
 
 export interface RootState {
   user: ReturnType<typeof userReducer>;
@@ -25,6 +26,7 @@ export interface RootState {
   audio: ReturnType<typeof audioReducer>;
   result: ReturnType<typeof resultReducer>;
   achieve: ReturnType<typeof achieveReducer>;
+  music: ReturnType<typeof musicReducer>;
 }
 
 const reducers = combineReducers({
@@ -39,6 +41,7 @@ const reducers = combineReducers({
   audio: audioReducer,
   result: resultReducer,
   achieve: achieveReducer,
+  music: musicReducer,
 });
 
 const persistConfig = {

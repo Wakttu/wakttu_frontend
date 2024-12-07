@@ -284,3 +284,13 @@ export const bellRoundStart = (roomId: string) => {
 export const bellRoundEnd = (roomId: string) => {
   socket.emit('bell.roundEnd', roomId);
 };
+
+
+
+//
+export const musicStart = (roomId: string) => {
+  socket.emit('music.start', roomId);
+};
+export const musicRound = (roomId: string) => {
+  socket.emit('music.round', roomId);
+};

@@ -92,7 +92,9 @@ const UpdateRoom = ({
                 ? '끝말잇기'
                 : roomInfo.type === 1
                 ? '쿵쿵따'
-                : '왁타골든벨'}
+                : roomInfo.type === 2
+                ? '왁타골든벨'
+                : '음악 맞추기' }
             </Selected>
             <DropdownLine
               isopen={isDown[0]}
@@ -108,6 +110,9 @@ const UpdateRoom = ({
                 </DropdownItem>
                 <DropdownItem onClick={() => onSelect('type', 2)}>
                   왁타골든벨
+                </DropdownItem>
+                <DropdownItem onClick={() => onSelect('type', 3)}>
+                  음악맞추기
                 </DropdownItem>
               </>
             )}
