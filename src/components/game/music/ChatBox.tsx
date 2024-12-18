@@ -17,12 +17,10 @@ interface Props {
   log: LogProps[];
   message: string;
   onChange: ChangeEventHandler;
-  onMessage: () => void;
   onAnswer: () => void;
   handleEnter: (e: React.KeyboardEvent) => void;
   chatBoxRef: RefObject<HTMLDivElement>;
   inputRef: RefObject<HTMLInputElement>;
-  myTurn: boolean;
   game: Game;
   answer: Answer;
   pause: boolean;
@@ -33,12 +31,10 @@ const ChatBox = ({
   log,
   message,
   onChange,
-  onMessage,
   onAnswer,
   handleEnter,
   chatBoxRef,
   inputRef,
-  myTurn,
   game,
   answer,
   pause,
@@ -56,17 +52,6 @@ const ChatBox = ({
 
   return (
     <>
-      {myTurn ? (
-        <CAnswer
-          chat={message}
-          game={game}
-          timer={timer}
-          answer={answer}
-          pause={pause}
-        />
-      ) : (
-        ''
-      )}
       <CChat>
         <ChatLog ref={chatBoxRef}>
           {log.map((element, idx) => {
@@ -93,15 +78,10 @@ const ChatBox = ({
             }}
             autoComplete="off"
           />
-          {pause && myTurn ? (
-            <SendMessage onClick={onAnswer}>
-              <SendIcon src={R2_URL + '/assets/icons/send.svg'} alt="보내기 아이콘" />
-            </SendMessage>
-          ) : (
-            <SendMessage onClick={onMessage}>
-              <SendIcon src={R2_URL + '/assets/icons/send.svg'} alt="보내기 아이콘" />
-            </SendMessage>
-          )}
+
+          <SendMessage onClick={onAnswer}>
+            <SendIcon src={R2_URL + '/assets/icons/send.svg'} alt="보내기 아이콘" />
+          </SendMessage>
         </MessageBlock>
       </CChat>
     </>

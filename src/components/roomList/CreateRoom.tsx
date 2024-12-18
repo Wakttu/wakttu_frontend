@@ -90,10 +90,10 @@ const CreateRoom = ({
               {roomInfo.type === 0
                 ? '끝말잇기'
                 : roomInfo.type === 1
-                ? '쿵쿵따'
-                : roomInfo.type === 2
-                ? '왁타골든벨'
-                : '음악 맞추기' }
+                  ? '쿵쿵따'
+                  : roomInfo.type === 2
+                    ? '왁타골든벨'
+                    : '음악 맞추기'}
             </Selected>
             <DropdownLine
               isopen={isDown[0]}
@@ -137,7 +137,7 @@ const CreateRoom = ({
                 isopen={isDown[1]}
                 src={getR2URL('/assets/icons/down-line.svg')} alt="아래쪽 화살표 아이콘"
               />
-              {isDown[1] && (
+              {isDown[1] && roomInfo.type !== 3 && (
                 <>
                   <DropdownItem onClick={() => onSelect('time', 30000)}>
                     30초
@@ -150,6 +150,13 @@ const CreateRoom = ({
                   </DropdownItem>
                   <DropdownItem onClick={() => onSelect('time', 120000)}>
                     120초
+                  </DropdownItem>
+                </>
+              )}
+              {isDown[1] && roomInfo.type === 3 && (
+                <>
+                  <DropdownItem onClick={() => onSelect('time', 40000)}>
+                    40초
                   </DropdownItem>
                 </>
               )}
@@ -212,7 +219,7 @@ const CreateRoom = ({
           </CancleButton>
         </CButton>
       </CCreateRoom>
-    </Modal>
+    </Modal >
   );
 };
 

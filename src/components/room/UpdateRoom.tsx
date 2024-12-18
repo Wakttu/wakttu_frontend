@@ -138,7 +138,7 @@ const UpdateRoom = ({
                 isopen={isDown[1]}
                 src={getR2URL('/assets/icons/down-line.svg')} alt="아래쪽 화살표 아이콘"
               />
-              {isDown[1] && (
+              {isDown[1] && roomInfo.type !== 3 && (
                 <>
                   <DropdownItem onClick={() => onSelect('time', 30000)}>
                     30초
@@ -151,6 +151,13 @@ const UpdateRoom = ({
                   </DropdownItem>
                   <DropdownItem onClick={() => onSelect('time', 120000)}>
                     120초
+                  </DropdownItem>
+                </>
+              )}
+              {isDown[1] && roomInfo.type === 3 && (
+                <>
+                  <DropdownItem onClick={() => onSelect('time', 40000)}>
+                    40초
                   </DropdownItem>
                 </>
               )}

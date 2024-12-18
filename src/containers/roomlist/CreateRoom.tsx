@@ -94,6 +94,7 @@ const CreateRoom = () => {
           ...prev,
           [name]: value,
           round: value === 2 ? 10 : 6,
+          time: value === 3 ? 40000 : 60000,
           option: [],
         };
       });

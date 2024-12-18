@@ -8,6 +8,7 @@ import {
   setReady,
 } from '@/redux/game/gameSlice';
 import { clearHistory } from '@/redux/history/historySlice';
+import { clearMusic } from '@/redux/music/musicSlice';
 import { selectRoomInfo } from '@/redux/roomInfo/roomInfoSlice';
 import { clearTimer } from '@/redux/timer/timerSlice';
 import { selectUserInfo, selectUserName } from '@/redux/user/userSlice';
@@ -157,6 +158,7 @@ const Ready = () => {
       await dispatch(clearHistory());
       await dispatch(clearTimer());
       await dispatch(clearAnswer());
+      await dispatch(clearMusic());
       await dispatch(setGame(data));
       router.push('/game/music');
     });

@@ -68,7 +68,9 @@ const List = ({ roomList, onClick, filter, onToggle }: Props) => {
                           ? '끝말잇기'
                           : room.type === 1
                           ? '쿵쿵따'
-                          : '왁타 골든벨'}
+                          : room.type === 2
+                          ? '왁타 골든벨'
+                          : '음악 맞추기'}
                       </SemiText>
                       <MediumText $color={true}>라운드</MediumText>
                       <MediumText>{room.round}</MediumText>

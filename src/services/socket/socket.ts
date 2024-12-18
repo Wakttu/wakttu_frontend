@@ -294,3 +294,6 @@ export const musicStart = (roomId: string) => {
 export const musicRound = (roomId: string) => {
   socket.emit('music.round', roomId);
 };
+export const musicReady = (roomId: string) => {
+  socket.emit('music.ready', roomId);
+};

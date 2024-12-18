@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { COLORS } from '../theme';
+import { COLORS, FONT_SIZES } from '../theme';
 import { R2_URL } from '@/services/api';
 
 const DROM_SHADOW = '0px 1px 10px 0px rgba(0, 0, 0, 0.15)';
@@ -139,6 +139,22 @@ export const Target = styled.h2`
   }
 `;
 
+export const TimerOverlay = styled.div<{ $isVisible: boolean }>`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-size: 2rem;
+  font-family: 'Wanted Sans Variable', 'Wanted Sans', sans-serif;
+  font-weight: 600;
+  z-index: 10;
+  display: ${props => props.$isVisible ? 'none' : 'block'};
+`;
+
 export const Middle = styled.div`
   display: flex;
   flex-direction: column;
@@ -190,7 +206,7 @@ export const VideoScreen = styled.div<{ $isVisible: boolean }>`
 
   & > div:first-child {
     opacity: ${({ $isVisible }) => ($isVisible ? 1 : 0)};
-    transition: opacity 0.3s ease;
+    transition: opacity 0.15s ease;
   }
 `;
 
@@ -234,20 +250,7 @@ export const Round = styled.h3`
   font-weight: 600;
   line-height: normal;
 `;
-export const TimerIcon = styled.img`
-  width: 2.25rem;
-  height: 2.25rem;
-  flex-shrink: 0;
-`;
 
-export const CTimer = styled.div`
-  display: flex;
-  width: 24.625rem;
-  height: 2rem;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 0.3125rem;
-`;
 
 export const Remain = styled.h4`
   min-width: 5rem;
@@ -344,6 +347,51 @@ export const SRight = styled.div`
   flex-shrink: 0;
 `;
 
+
+export const CTimer = styled.div`
+  display: inline-flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+  gap: 0.3125rem;
+`;
+
+export const LeftTimer = styled.div`
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3125rem;
+`;
+export const RightTimer = styled.div`
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3125rem;
+`;
+
+export const TimerIcon = styled.img`
+  width: 1.5rem;
+  height: 1.5rem;
+`;
+
+export const TimerText = styled.span`
+  color: ${COLORS.text};
+  text-align: center;
+
+  font-family: 'Wanted Sans Variable', 'Wanted Sans', sans-serif;
+  font-weight: 500;
+  font-size: ${FONT_SIZES['body-2']};
+`;
+
+export const RemainText = styled.span`
+  color: #00801c;
+
+  text-align: right;
+
+  font-family: 'Wanted Sans Variable', 'Wanted Sans', sans-serif;
+  font-weight: 500;
+  font-size: ${FONT_SIZES['body-2']};
+`;
+
 export const Systemlog = styled.div`
   display: flex;
   align-items: center;
@@ -419,7 +467,7 @@ export const VolumeText = styled.span`
   text-align: right;
 `;
 
-export const VideoTime = styled.div<{ $isVisible:boolean }>`
+export const VideoTime = styled.div<{ $isVisible: boolean }>`
   position: absolute;
   bottom: 8px;
   right: 8px;

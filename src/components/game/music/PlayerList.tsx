@@ -42,6 +42,7 @@ const PlayList = ({ users, game, answer, bubble, team }: Props) => {
         const lastBubble = bubble.findLast(
           (item: Bubble) => item.user.id === user.userId
         );
+
         return (
           <CPlayer key={user.id} $success={user.success}>
             {myTeam ? <TeamTag team={myTeam.team}>{myTeam.name}</TeamTag> : ''}
