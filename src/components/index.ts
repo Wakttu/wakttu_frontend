@@ -68,6 +68,9 @@ export { default as SHeader } from './game/music/Header';
 export { default as SChatBox } from './game/music/ChatBox';
 export { default as SPlayerList } from './game/music/PlayerList';
 export { default as SMusic } from './game/music/Music';
+export { default as SChatInput } from './game/music/ChatInput';
+export { default as SChatLog } from './game/music/ChatLog';
+
 export { default as CHeader } from './game/cloud/Header';
 export { default as CChatInput } from './game/cloud/ChatInput';
 export { default as CChatLog } from './game/cloud/ChatLog';

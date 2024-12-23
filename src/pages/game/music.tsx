@@ -1,14 +1,8 @@
 // 필요한 컴포넌트 및 타입 임포트
 import Header from '@/containers/game/music/Header';
 import PlayerList from '@/containers/game/music/PlayerList';
-import Chat from '@/containers/game/music/Chat';
 import { Container } from '@/styles/music/Layout';
-import {
-  exit,
-  musicReady,
-  musicRound,
-  socket,
-} from '@/services/socket/socket';
+import { exit, musicReady, musicRound, socket } from '@/services/socket/socket';
 import { useEffect, useRef, useState, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectGame, setGame } from '@/redux/game/gameSlice';
@@ -17,17 +11,11 @@ import { selectRoomInfo, setRoomInfo } from '@/redux/roomInfo/roomInfoSlice';
 import { setMusic, selectMusic } from '@/redux/music/musicSlice';
 import ReactPlayer from 'react-player';
 import { useRouter } from 'next/router';
-import { clearGame } from '@/redux/game/gameSlice';
-import { clearRoomInfo } from '@/redux/roomInfo/roomInfoSlice';
 import Music from '@/components/game/music/Music';
 import {
   clearAnswer,
-  clearSuccess,
   selectAnswer,
-  selectPause,
   setAnswer,
-  setFail,
-  setPause,
 } from '@/redux/answer/answerSlice';
 import {
   clearTimer,
@@ -35,11 +23,18 @@ import {
   setTimer,
   tick,
 } from '@/redux/timer/timerSlice';
-import { client, updatePlayCount, updatePlayCountLocal, updateResult, updateResultLocal } from '@/services/api';
+import {
+  client,
+  updatePlayCount,
+  updatePlayCountLocal,
+  updateResult,
+  updateResultLocal,
+} from '@/services/api';
 import { clearResult, selectResult } from '@/redux/result/resultSlice';
 import { clearHistory } from '@/redux/history/historySlice';
 import { openModal, setDataModal } from '@/redux/modal/modalSlice';
 import { setAchieve } from '@/redux/achieve/achieveSlice';
+import ChatInput from '@/containers/game/music/ChatInput';
 
 // 게임 컴포넌트
 const Game = () => {
@@ -69,22 +64,19 @@ const Game = () => {
 
   // 소켓 이벤트 리스너 설정
   useEffect(() => {
-    // 소켓 연결 핸들러
-    const handleConnect = () => {
-      console.log('소켓 연결 성공');
-    };
-
-    // 게임 시작 핸들러
-    const handleStart = async (data: any) => {
-      console.log('start 요청 들어옴');
-    };
-
     // 라운드 변경 핸들러
     const handleRound = (data: any) => {
       if (data.music && data.round > 0) {
         const currentMusic = data.music[data.round];
         dispatch(setGame(data));
-        dispatch(setAnswer({ success: false, answer: '', pause: false, word: undefined }));
+        dispatch(
+          setAnswer({
+            success: false,
+            answer: '',
+            pause: false,
+            word: undefined,
+          })
+        );
         dispatch(setMusic(currentMusic));
         dispatch(setTimer({ roundTime: 4000, turnTime: 4000 }));
         playerRef.current?.seekTo(music?.videoStartSec || 0, 'seconds');
@@ -101,15 +93,17 @@ const Game = () => {
       }
       hasHandledPlayRef.current = true;
 
-      console.log(`play 요청 들어옴 : ${data}`)
+      console.log(`play 요청 들어옴 : ${data}`);
 
       // 정답 값 업데이트
       dispatch(setGame(data));
       dispatch(setMusic(data.music[data.round]));
-      dispatch(setAnswer({ success: false, answer: '', pause: false, word: undefined }));
+      dispatch(
+        setAnswer({ success: false, answer: '', pause: false, word: undefined })
+      );
 
       if (playerRef.current) {
-        dispatch(setTimer({ roundTime: 4000, turnTime: 4000 }));
+        dispatch(setTimer({ roundTime: 40000, turnTime: 40000 }));
         playerRef.current.seekTo(music?.videoStartSec || 0, 'seconds');
         setIsPlaying(true);
         if (game.host === user.id) socket.emit('music.ping', roomInfo.id);
@@ -118,17 +112,22 @@ const Game = () => {
 
     const handlePing = (data: any) => {
       dispatch(tick());
-      if (timer.countTime === 700 && music?.hint[0]) {
-        setSystemLog(prev => [...prev, music?.hint[0]])
+      if (timer.countTime === 7000 && music?.hint[0]) {
+        setSystemLog((prev) => [...prev, music?.hint[0]]);
       }
-      if (timer.countTime === 1300 && music?.hint[1]) {
-        setSystemLog(prev => [...prev, music?.hint[1]])
+      if (timer.countTime === 13000 && music?.hint[1]) {
+        setSystemLog((prev) => [...prev, music?.hint[1]]);
       }
 
-      if (timer.countTime === 2400) {
-        dispatch(setAnswer({ 
-          success: false, answer: '', pause: true, word: undefined 
-        }));
+      if (timer.countTime === 24000) {
+        dispatch(
+          setAnswer({
+            success: false,
+            answer: '',
+            pause: true,
+            word: undefined,
+          })
+        );
       }
     };
 
@@ -191,8 +190,6 @@ const Game = () => {
     };
 
     // 소켓 이벤트 리스너 등록
-    socket.on('connect', handleConnect);
-    socket.on('music.start', handleStart);
     socket.on('music.round', handleRound);
     socket.on('music.play', handlePlay);
     socket.on('music.end', handleEnd);
@@ -202,17 +199,15 @@ const Game = () => {
 
     // 클린업 함수
     return () => {
-      socket.off('connect', handleConnect);
-      socket.off('music.start', handleStart);
       socket.off('music.round', handleRound);
       socket.off('music.play', handlePlay);
       socket.off('music.end', handleEnd);
       socket.off('music.answer', handleAnswer);
       socket.off('music.ping', handlePing);
       socket.off('music.pong', handlePong);
-      
+
       // 남아있는 힌트 타이머 정리
-      hintTimeoutsRef.current.forEach(timeout => clearTimeout(timeout));
+      hintTimeoutsRef.current?.forEach((timeout) => clearTimeout(timeout));
     };
   }, [dispatch, music, timer]);
 
@@ -250,7 +245,10 @@ const Game = () => {
 
       return (event: React.ChangeEvent<HTMLInputElement>) => {
         const now = Date.now();
-        const newVolume = Math.min(100, Math.max(0, parseInt(event.target.value, 10))); // 볼륨 범위 제한
+        const newVolume = Math.min(
+          100,
+          Math.max(0, parseInt(event.target.value, 10))
+        ); // 볼륨 범위 제한
         setVolume(newVolume); // 로컬 상태 즉시 업데이트
 
         // 마지막 업데이트로부터 80ms가 지났는지 확인
@@ -315,7 +313,7 @@ const Game = () => {
         playerRef={playerRef}
       />
       <PlayerList />
-      <Chat />
+      <ChatInput />
     </Container>
   );
 };

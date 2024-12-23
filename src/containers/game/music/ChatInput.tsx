@@ -1,24 +1,21 @@
-import { SChatBox } from '@/components';
-import useInput from '@/hooks/useInput';
-import { getTime } from '@/modules/Date';
-import countScore from '@/modules/Score';
-import { clean } from '@/modules/Slang';
-import {
-  selectAnswer,
-  selectPause,
-  setAnswer,
-} from '@/redux/answer/answerSlice';
+import { SChatInput } from '@/components';
+import { useCallback, useState, useEffect, useRef } from 'react';
+import { sendChat, socket } from '@/services/socket/socket';
+import timeScore from '@/modules/timeScore';
+import { useDispatch } from 'react-redux';
+import { selectEffectVolume } from '@/redux/audio/audioSlice';
+import { selectHistory } from '@/redux/history/historySlice';
+import { selectTimer } from '@/redux/timer/timerSlice';
 import { selectGame } from '@/redux/game/gameSlice';
 import { selectRoomId } from '@/redux/roomInfo/roomInfoSlice';
-import { selectTimer } from '@/redux/timer/timerSlice';
-import { sendChat, socket } from '@/services/socket/socket';
-import { useEffect, useState, useRef, useCallback } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import userSlice, { selectUserId } from '@/redux/user/userSlice';
-import { selectHistory } from '@/redux/history/historySlice';
+import { selectUserId } from '@/redux/user/userSlice';
+import { useSelector } from 'react-redux';
+import { selectAnswer, setAnswer } from '@/redux/answer/answerSlice';
+import { selectPause } from '@/redux/answer/answerSlice';
 import useEffectSound from '@/hooks/useEffectSound';
-import { selectEffectVolume } from '@/redux/audio/audioSlice';
-import timeScore from '@/modules/timeScore';
+import useInput from '@/hooks/useInput';
+import { clean } from '@/modules/Slang';
+import { getTime } from '@/modules/Date';
 
 interface InputProps {
   chat: string;
@@ -30,14 +27,12 @@ export interface LogProps {
   date: string;
 }
 
-const Chat = () => {
-  const userId = useSelector(selectUserId);
+const ChatInput = () => {
   const roomId = useSelector(selectRoomId) as string;
   const game = useSelector(selectGame);
   const answer = useSelector(selectAnswer);
   const timer = useSelector(selectTimer);
   const pause = useSelector(selectPause);
-  const history = useSelector(selectHistory);
   const effectVolume = useSelector(selectEffectVolume);
   const dispatch = useDispatch();
 
@@ -50,7 +45,6 @@ const Chat = () => {
     chat: '',
   });
 
-  const chatBoxRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const playSound = useCallback(() => {
@@ -59,14 +53,6 @@ const Chat = () => {
       logSound.play();
     }
   }, [logSound]);
-
-  const isInHistory = useCallback(
-    (keyword: string) => {
-      const idx = history.findIndex((item) => item.id === keyword);
-      return idx === -1 ? true : false;
-    },
-    [history]
-  );
 
   const onSendAnswer = useCallback(() => {
     if (inputs.chat) {
@@ -119,6 +105,23 @@ const Chat = () => {
     timer.roundTime,
   ]);
 
+  const onSendMessage = useCallback(() => {
+    if (inputs.chat) {
+      const chat = clean(inputs.chat);
+      sendChat({
+        roomId,
+        chat: chat.includes(game.target)
+          ? '전투***가 정답을 가로챘습니다.'
+          : chat,
+        roundTime: null,
+        score: null,
+      });
+    }
+    setInputs({ chat: '' });
+    if (inputRef.current) inputRef.current.focus();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [game.target, inputs.chat, roomId]);
+
   const handleEnter = useCallback(
     (e: React.KeyboardEvent) => {
       if (e.nativeEvent.isComposing) return;
@@ -151,20 +154,16 @@ const Chat = () => {
   }, [log]);
 
   return (
-    <SChatBox
-      log={log}
+    <SChatInput
+      pause={pause}
       message={inputs.chat}
+      inputRef={inputRef}
       onChange={onInputChange}
+      onMessage={onSendMessage}
       onAnswer={onSendAnswer}
       handleEnter={handleEnter}
-      inputRef={inputRef}
-      chatBoxRef={chatBoxRef}
-      game={game}
-      answer={answer}
-      timer={timer}
-      pause={pause}
     />
   );
 };
 
-export default Chat;
+export default ChatInput;

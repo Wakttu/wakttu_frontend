@@ -35,10 +35,6 @@ const ChatBox = ({
   handleEnter,
   chatBoxRef,
   inputRef,
-  game,
-  answer,
-  pause,
-  timer,
 }: Props) => {
   const scrollToBottom = useCallback(() => {
     if (chatBoxRef.current) {
@@ -80,7 +76,10 @@ const ChatBox = ({
           />
 
           <SendMessage onClick={onAnswer}>
-            <SendIcon src={R2_URL + '/assets/icons/send.svg'} alt="보내기 아이콘" />
+            <SendIcon
+              src={R2_URL + '/assets/icons/send.svg'}
+              alt="보내기 아이콘"
+            />
           </SendMessage>
         </MessageBlock>
       </CChat>

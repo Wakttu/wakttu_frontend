@@ -22,20 +22,9 @@ import {
   VideoTime,
   LoadingOverlay,
   LoadingSpinner,
-  TimerText,
-  TimerIcon,
-  CTimer,
-  LeftTimer,
-  RightTimer,
-  TimerBar,
-  GaugeBar,
-  RemainText,
-  TimerOverlay
+  TimerOverlay,
 } from '@/styles/music/Main';
-import { R2_URL } from '@/services/api';
-import { selectGame } from '@/redux/game/gameSlice';
-import { selectTimer } from '@/redux/timer/timerSlice';
-import styled from 'styled-components';
+import ChatLog from '@/containers/game/music/ChatLog';
 
 // Props 타입 정의
 interface Props {
@@ -53,7 +42,19 @@ interface Props {
 }
 
 // Music 컴포넌트 정의
-const Music: React.FC<Props> = ({ music, timer, handleVolumeUpdate, handlePlayerReady, volume, handleVolumeChange, playing, systemLog, isVideoVisible, setIsVideoVisible, playerRef }) => {
+const Music: React.FC<Props> = ({
+  music,
+  timer,
+  handleVolumeUpdate,
+  handlePlayerReady,
+  volume,
+  handleVolumeChange,
+  playing,
+  systemLog,
+  isVideoVisible,
+  setIsVideoVisible,
+  playerRef,
+}) => {
   return (
     <CMain>
       <SLeft>
@@ -68,7 +69,9 @@ const Music: React.FC<Props> = ({ music, timer, handleVolumeUpdate, handlePlayer
         <VideoScreen $isVisible={isVideoVisible}>
           <YoutubeWrapper>
             <ReactPlayer
-              url={`https://www.youtube.com/watch?v=${music?.videoId || 'EMhKeVHboiA'}`}
+              url={`https://www.youtube.com/watch?v=${
+                music?.videoId || 'EMhKeVHboiA'
+              }`}
               width="560px"
               height="315px"
               controls={false}
@@ -81,29 +84,36 @@ const Music: React.FC<Props> = ({ music, timer, handleVolumeUpdate, handlePlayer
                     disablekb: 1, // 키보드 컨트롤 비활성화
                     modestbranding: 1, // YouTube 로고 최소화
                     rel: 0, // 관련 동영상 표시 안함
-                    start: music?.videoStartSec || 0 // 시작 시간 설정
+                    start: music?.videoStartSec || 0, // 시작 시간 설정
                   },
                 },
               }}
             />
           </YoutubeWrapper>
-          <VideoTime $isVisible={isVideoVisible}>
-          </VideoTime>
+          <VideoTime $isVisible={isVideoVisible}></VideoTime>
 
           <LoadingOverlay $isLoading={false}>
             <LoadingSpinner />
           </LoadingOverlay>
 
           <TimerOverlay $isVisible={isVideoVisible}>
-            {playerRef.current?.props.url === 'https://www.youtube.com/watch?v=EMhKeVHboiA' || !playerRef.current
-              ? <div>로딩 중</div>
-              : <div>남은시간 : {(timer.roundTime - timer.countTime) / 100.0}초</div>}
+            {playerRef.current?.props.url ===
+              'https://www.youtube.com/watch?v=EMhKeVHboiA' ||
+            !playerRef.current ? (
+              <div>로딩 중</div>
+            ) : (
+              <div>
+                남은시간 : {(timer.roundTime - timer.countTime) / 100.0}초
+              </div>
+            )}
           </TimerOverlay>
         </VideoScreen>
 
         <Song>
           <SongIcon />
-          <SongText $isVisible={isVideoVisible}>{music?.answer[0] || ''} - {music?.tag[0] || ''}</SongText>
+          <SongText $isVisible={isVideoVisible}>
+            {music?.answer[0] || ''} - {music?.tag[0] || ''}
+          </SongText>
           <VolumeControl>
             <VolumeText>볼륨</VolumeText>
             <VolumeSlider
@@ -118,6 +128,7 @@ const Music: React.FC<Props> = ({ music, timer, handleVolumeUpdate, handlePlayer
         </Song>
       </Middle>
       <SRight>
+        <ChatLog />
       </SRight>
     </CMain>
   );

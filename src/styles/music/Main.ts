@@ -152,7 +152,7 @@ export const TimerOverlay = styled.div<{ $isVisible: boolean }>`
   font-family: 'Wanted Sans Variable', 'Wanted Sans', sans-serif;
   font-weight: 600;
   z-index: 10;
-  display: ${props => props.$isVisible ? 'none' : 'block'};
+  display: ${(props) => (props.$isVisible ? 'none' : 'block')};
 `;
 
 export const Middle = styled.div`
@@ -164,7 +164,7 @@ export const Middle = styled.div`
   height: 380px;
   border-radius: 16px;
   border: 1px solid #000;
-  background: #FFF;
+  background: #fff;
 `;
 
 export const YoutubeWrapper = styled.div`
@@ -215,7 +215,7 @@ export const SongIcon = styled.div`
   height: 42px;
   flex-shrink: 0;
 
-  background: #D9D9D9;
+  background: #d9d9d9;
   border-radius: 43px;
 `;
 
@@ -230,13 +230,12 @@ export const SongText = styled.div<{ $isVisible: boolean }>`
   transition: opacity 0.3s ease;
 
   color: #000;
-  font-family: "Wanted Sans";
+  font-family: 'Wanted Sans';
   font-size: 24px;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
 `;
-
 
 export const Round = styled.h3`
   position: absolute;
@@ -250,7 +249,6 @@ export const Round = styled.h3`
   font-weight: 600;
   line-height: normal;
 `;
-
 
 export const Remain = styled.h4`
   min-width: 5rem;
@@ -347,78 +345,33 @@ export const SRight = styled.div`
   flex-shrink: 0;
 `;
 
-
-export const CTimer = styled.div`
-  display: inline-flex;
-  width: 100%;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 1rem;
-  gap: 0.3125rem;
-`;
-
-export const LeftTimer = styled.div`
-  display: inline-flex;
-  align-items: center;
-  gap: 0.3125rem;
-`;
-export const RightTimer = styled.div`
-  display: inline-flex;
-  align-items: center;
-  gap: 0.3125rem;
-`;
-
-export const TimerIcon = styled.img`
-  width: 1.5rem;
-  height: 1.5rem;
-`;
-
-export const TimerText = styled.span`
-  color: ${COLORS.text};
-  text-align: center;
-
-  font-family: 'Wanted Sans Variable', 'Wanted Sans', sans-serif;
-  font-weight: 500;
-  font-size: ${FONT_SIZES['body-2']};
-`;
-
-export const RemainText = styled.span`
-  color: #00801c;
-
-  text-align: right;
-
-  font-family: 'Wanted Sans Variable', 'Wanted Sans', sans-serif;
-  font-weight: 500;
-  font-size: ${FONT_SIZES['body-2']};
-`;
-
 export const Systemlog = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  justify-content: start;
+  justify-content: flex-start;
   width: 30rem;
   height: 25rem;
-  gap: 19px;
+  gap: 1.1875rem;
   flex-shrink: 0;
 `;
 
 export const SystemlogItem = styled.div`
   display: flex;
-  height: 3.75rem;
-  max-width: 32.5rem;
-  padding: 10.5px 0px 9.5px 0px;
+  max-width: 31.125rem;
+  padding: 0.625rem 4.125rem;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex-shrink: 0;
+  gap: 0.625rem;
   align-self: stretch;
-  border-radius: 16px;
-  background: #FFF;
 
-  color: #000;
+  border-radius: 1rem;
+  background: ${COLORS.bg};
 
-  /* H4 - 24px - SemiBold */
-  font-family: "Wanted Sans";
+  color: ${COLORS.text};
+
+  font-family: 'Wanted Sans Variable', 'Wanted Sans', sans-serif;
   font-size: 1.5rem;
   font-style: normal;
   font-weight: 600;
@@ -433,6 +386,12 @@ export const VolumeControl = styled.div`
   width: 200px;
 `;
 
+export const VolumeImg = styled.img`
+  width: 2.25rem;
+  height: 2.25rem;
+  flex-shrink: 0;
+`;
+
 export const VolumeSlider = styled.input`
   -webkit-appearance: none;
   width: 100%;
@@ -441,7 +400,7 @@ export const VolumeSlider = styled.input`
   background: ${COLORS['gray-4']};
   outline: none;
   opacity: 0.7;
-  transition: opacity .2s;
+  transition: opacity 0.2s;
 
   &:hover {
     opacity: 1;
@@ -451,7 +410,7 @@ export const VolumeSlider = styled.input`
     -webkit-appearance: none;
     width: 0.96438rem;
     height: 0.96438rem;
-    background: #5024D4;
+    background: #5024d4;
     border-radius: 1rem;
     cursor: pointer;
   }
@@ -469,13 +428,13 @@ export const VolumeText = styled.span`
 
 export const VideoTime = styled.div<{ $isVisible: boolean }>`
   position: absolute;
-  bottom: 8px;
-  right: 8px;
+  bottom: 0.5rem;
+  right: 0.5rem;
   color: white;
   background-color: rgba(0, 0, 0, 0.7);
-  padding: 4px 8px;
-  border-radius: 4px;
-  font-size: 14px;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
   font-family: 'Wanted Sans Variable', 'Wanted Sans', sans-serif;
   opacity: ${({ $isVisible }) => ($isVisible ? 0 : 1)};
   transition: opacity 0.3s ease;
@@ -497,9 +456,9 @@ export const LoadingOverlay = styled.div<{ $isLoading: boolean }>`
 `;
 
 export const LoadingSpinner = styled.div`
-  width: 48px;
-  height: 48px;
-  border: 4px solid #fff;
+  width: 3rem;
+  height: 3rem;
+  border: 0.25rem solid #fff;
   border-bottom-color: transparent;
   border-radius: 50%;
   animation: spin 1s linear infinite;
