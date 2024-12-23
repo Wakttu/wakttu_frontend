@@ -1,4 +1,5 @@
 import { RoomNumber } from '@/components';
+import { roomInfoSlice } from '@/redux/roomInfo/roomInfoSlice';
 import { getR2URL } from '@/services/api';
 import { Room } from '@/services/socket/socket';
 import {
@@ -30,6 +31,19 @@ interface Props {
   };
 }
 
+type RoomType = Record<number, string>;
+const roomType: RoomType = {
+  0: '끝말잇기',
+  1: '쿵쿵따',
+  2: '왁타골든벨',
+  3: '왁타레코드',
+  4: '구름',
+};
+
+const haveRoundTime = (type: number) => {
+  return type === 0 || type === 1;
+};
+
 const List = ({ roomList, onClick, filter, onToggle }: Props) => {
   const checkFilter = (room: Room) => {
     const { type, start, title } = room;
@@ -59,22 +73,17 @@ const List = ({ roomList, onClick, filter, onToggle }: Props) => {
                         <SemiText>{room.total}</SemiText>
                       </RoomCount>
                       {room.password && (
-                        <Lock src={getR2URL('/assets/icons/lock.svg')} alt="자물쇠 아이콘" />
+                        <Lock
+                          src={getR2URL('/assets/icons/lock.svg')}
+                          alt="자물쇠 아이콘"
+                        />
                       )}
                     </RoomNameCount>
                     <RoomGame>
-                      <SemiText>
-                        {room.type === 0
-                          ? '끝말잇기'
-                          : room.type === 1
-                          ? '쿵쿵따'
-                          : room.type === 2
-                          ? '왁타 골든벨'
-                          : '음악 맞추기'}
-                      </SemiText>
+                      <SemiText>{roomType[room.type as number]}</SemiText>
                       <MediumText $color={true}>라운드</MediumText>
                       <MediumText>{room.round}</MediumText>
-                      {room.type !== 2 && (
+                      {haveRoundTime(room.type as number) && (
                         <>
                           <MediumText $color={true}>시간</MediumText>
                           <MediumText>{room.time! / 1000}초</MediumText>

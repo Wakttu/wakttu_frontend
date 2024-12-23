@@ -14,6 +14,7 @@ import { clearTimer } from '@/redux/timer/timerSlice';
 import { selectUserInfo, selectUserName } from '@/redux/user/userSlice';
 import {
   bellStart,
+  cloudStart,
   kungStart,
   lastStart,
   musicStart,
@@ -102,6 +103,7 @@ const Ready = () => {
         1: kungStart,
         2: bellStart,
         3: musicStart,
+        4: cloudStart,
       };
 
       const startFunction =
@@ -162,6 +164,13 @@ const Ready = () => {
       await dispatch(setGame(data));
       router.push('/game/music');
     });
+    socket.on('cloud.start', async (data) => {
+      await dispatch(clearHistory());
+      await dispatch(clearTimer());
+      await dispatch(clearAnswer());
+      await dispatch(setGame(data));
+      router.push('/game/cloud');
+    });
 
     return () => {
       socket.off('ready');
@@ -170,8 +179,9 @@ const Ready = () => {
       socket.off('kung.start');
       socket.off('bell.start');
       socket.off('music.start');
+      socket.off('cloud.start');
     };
-  }, [dispatch, roomInfo.id, router]);
+  }, [dispatch, router]);
 
   return (
     <CReady

@@ -123,7 +123,7 @@ export const WinTeamName = styled.h3`
 export const WinTeamList = styled.div`
   display: flex;
   align-items: flex-start;
-  gap: 1.5rem;
+  gap: 0;
 `;
 
 export const CPlayer = styled.div`

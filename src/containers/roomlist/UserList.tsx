@@ -7,9 +7,11 @@ const UserList = () => {
 
   useEffect(() => {
     getUserList();
-    setInterval(() => {
+    const interval = setInterval(() => {
       getUserList();
     }, 5000);
+
+    return () => clearInterval(interval);
   }, []);
 
   useEffect(() => {

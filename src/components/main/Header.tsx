@@ -15,13 +15,16 @@ const Header = () => {
     <MainHeaderBlock>
       <Link href="/" title="메인페이지로 이동">
         <ScreenReaderOnly>왁뚜</ScreenReaderOnly>
-        <MainHeaderLogo src={getR2URL('/assets/icons/small-logo.svg')} alt="왁뚜 로고" />
+        <MainHeaderLogo
+          src={getR2URL('/assets/icons/small-logo.svg')}
+          alt="왁뚜 로고"
+        />
       </Link>
       <WrapContent>
         <MainTab menuName="게임 소개" href="/main/intro" />
         <MainTab menuName="공지" onClick={handleComingSoon} />
         <MainTab menuName="업데이트" onClick={handleComingSoon} />
-        <MainTab menuName="랭킹" onClick={handleComingSoon} />
+        <MainTab menuName="랭킹" href="/main/rank" />
         <MainTab menuName="크레딧" href="/main/credit" />
       </WrapContent>
     </MainHeaderBlock>

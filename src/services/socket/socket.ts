@@ -58,6 +58,18 @@ export interface Game {
   mission: string | undefined;
   team: { woo: string[]; gomem: string[]; isedol: string[]; academy: string[] };
   quiz?: { _id: string; choseong: string; hint: string[]; [x: string]: any }[];
+  cloud?: {
+    _id: string;
+    delay: string;
+    duration: string;
+    x: string;
+    y: string;
+    clear: boolean;
+    special: boolean;
+    meta: any;
+    type: number;
+    [x: string]: any;
+  }[];
   turnChanged: boolean;
 }
 
@@ -66,6 +78,12 @@ export type UpdateRoom = Partial<Room>;
 export interface Ban {
   roomId: string;
   keyword: string;
+}
+
+export interface Emoticon {
+  roomId: string;
+  userId: string;
+  emoticonId: string;
 }
 
 /* * * * * * *
@@ -269,6 +287,11 @@ export const kungTurnEnd = (roomId: string) => {
   socket.emit('kung.turnEnd', roomId);
 };
 
+/**
+ *
+ * Bell
+ */
+
 export const bellStart = (roomId: string) => {
   socket.emit('bell.start', roomId);
 };
@@ -285,8 +308,6 @@ export const bellRoundEnd = (roomId: string) => {
   socket.emit('bell.roundEnd', roomId);
 };
 
-
-
 //
 export const musicStart = (roomId: string) => {
   socket.emit('music.start', roomId);
@@ -296,4 +317,32 @@ export const musicRound = (roomId: string) => {
 };
 export const musicReady = (roomId: string) => {
   socket.emit('music.ready', roomId);
+};
+/**
+ *
+ * cloud game
+ */
+
+export const cloudStart = (roomId: string) => {
+  socket.emit('cloud.start', roomId);
+};
+
+export const cloudRound = (roomId: string) => {
+  socket.emit('cloud.round', roomId);
+};
+
+export const cloudRoundStart = (roomId: string) => {
+  socket.emit('cloud.roundStart', roomId);
+};
+
+export const cloudRoundEnd = (roomId: string) => {
+  socket.emit('cloud.roundEnd', roomId);
+};
+
+/**
+ *
+ * 이모티콘 socket
+ */
+export const sendEmoticon = (data: Emoticon) => {
+  socket.emit('emoticon', data);
 };

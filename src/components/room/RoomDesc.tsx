@@ -20,6 +20,15 @@ import { getR2URL } from '@/services/api';
 interface Props {
   roomInfo: Room;
 }
+type RoomType = Record<number, string>;
+
+const gameInfoPng: RoomType = {
+  0: getR2URL('/assets/game-info.png'),
+  1: getR2URL('/assets/game-info-2.png'),
+  2: getR2URL('/assets/game-info-3.png'),
+  3: getR2URL('/assets/game-info-4.png'),
+  4: getR2URL('/assets/game-info-5.png'),
+};
 
 const RoomDesc = ({ roomInfo }: Props) => {
   return (
@@ -29,21 +38,10 @@ const RoomDesc = ({ roomInfo }: Props) => {
         <TitleText>방제에요</TitleText>
       </WrapRoomTitle>
       <WrapGameInfo>
-        {roomInfo.type === 0 ? (
-          <GameInfo src={getR2URL('/assets/game-info.png')} alt="끝말잇기 배경 이미지" />
-        ) : (
-          ''
-        )}
-        {roomInfo.type === 1 ? (
-          <GameInfo src={getR2URL('/assets/game-info-2.png')} alt="추억의 쿵쿵따 배경 이미지" />
-        ) : (
-          ''
-        )}
-        {roomInfo.type === 2 ? (
-          <GameInfo src={getR2URL('/assets/game-info-3.png')} alt="왁타! 골든벨 배경 이미지" />
-        ) : (
-          ''
-        )}
+        {typeof roomInfo.type === 'number' ? (
+          <GameInfo src={gameInfoPng[roomInfo.type]} alt="배경 이미지" />
+        ) : null}
+
         <RoomInfo>
           <WrapInfo>
             <Info $variant="title">플레이어</Info>
@@ -55,7 +53,14 @@ const RoomDesc = ({ roomInfo }: Props) => {
               {roomInfo.users.length}/{roomInfo.total}명
             </Info>
             <Info>{roomInfo.round}</Info>
-            <Info>{roomInfo.type === 2 ? '30' : roomInfo.time! / 1000}초</Info>
+            <Info>
+              {roomInfo.type === 2
+                ? '30'
+                : roomInfo.type === 4
+                ? '60'
+                : roomInfo.time! / 1000}
+              초
+            </Info>
           </WrapInfo>
         </RoomInfo>
       </WrapGameInfo>

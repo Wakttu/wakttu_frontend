@@ -11,7 +11,7 @@ export const Overlay = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000;
+  z-index: 1003;
 `;
 
 export const Container = styled.div`
@@ -50,6 +50,8 @@ export const ConfirmButton = styled.button`
   justify-content: center;
   align-items: center;
 
+  cursor: pointer;
+
   border-radius: 0.5rem;
   border: none;
   background: ${COLORS.primary};
@@ -76,6 +78,8 @@ export const CancleButton = styled.button`
   padding: 0.625rem 2rem;
   justify-content: center;
   align-items: center;
+
+  cursor: pointer;
 
   border-radius: 0.5rem;
   border: 1px rgba(0, 0, 0, 0.1);

@@ -11,7 +11,7 @@ const ContentContainer = styled.div<{ path?: string }>`
 
   gap: 1.4375rem;
   ${({ path }) => {
-    if (path === '/')
+    if (path === '/' || path?.includes('rank'))
       return `height: 100vh;
 background: url('${R2_URL}/assets/main.png') no-repeat center center; 
 background-size: cover;
@@ -40,6 +40,10 @@ background-size: cover;
     background-repeat: repeat;
     padding-bottom:0;
     `;
+    else if (path?.includes('/cloud'))
+      return `height: 100vh;
+    background: linear-gradient(180deg, #95ABFF 0%, #C1CEFF 100%);
+    padding-bottom:0;`;
   }}
 `;
 

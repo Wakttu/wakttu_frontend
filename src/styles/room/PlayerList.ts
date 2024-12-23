@@ -32,7 +32,7 @@ const CPlayer = styled.div`
   width: 23.8%;
 `;
 
-const PlayerInfo = styled.div`
+const PlayerInfo = styled.div<{ host?: boolean }>`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -48,6 +48,7 @@ const PlayerInfo = styled.div`
   border-top: 1px solid ${COLORS['gray-4']};
   border-right: 1px solid ${COLORS['gray-4']};
   border-left: 1px solid ${COLORS['gray-4']};
+  border-color: ${({ host }) => (host ? COLORS.primary : COLORS['gray-4'])};
   background: ${COLORS['gray-5']};
 `;
 

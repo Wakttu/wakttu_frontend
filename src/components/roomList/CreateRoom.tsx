@@ -35,6 +35,19 @@ interface Props {
   onCreate: () => void;
 }
 
+type RoomType = Record<number, string>;
+const roomType: RoomType = {
+  0: '끝말잇기',
+  1: '쿵쿵따',
+  2: '왁타골든벨',
+  3: '왁타레코드',
+  4: '구름',
+};
+
+const haveRoundTime = (type: number) => {
+  return type === 0 || type === 1;
+};
+
 const CreateRoom = ({
   modalRef,
   isDown,
@@ -49,7 +62,10 @@ const CreateRoom = ({
     <Modal>
       <CCreateRoom ref={modalRef}>
         <LabelWithIcon>
-          <CreateIcon src={getR2URL('/assets/icons/plus-green.svg')} alt="방 만들기 아이콘" />
+          <CreateIcon
+            src={getR2URL('/assets/icons/plus-green.svg')}
+            alt="방 만들기 아이콘"
+          />
           <CreateLabel>방 만들기</CreateLabel>
         </LabelWithIcon>
         <CCreate>
@@ -86,18 +102,11 @@ const CreateRoom = ({
         <CCreate>
           <CLabel>게임 유형</CLabel>
           <Dropdown onClick={() => onDropdown(0)}>
-            <Selected>
-              {roomInfo.type === 0
-                ? '끝말잇기'
-                : roomInfo.type === 1
-                  ? '쿵쿵따'
-                  : roomInfo.type === 2
-                    ? '왁타골든벨'
-                    : '음악 맞추기'}
-            </Selected>
+            <Selected>{roomType[roomInfo.type]}</Selected>
             <DropdownLine
               isopen={isDown[0]}
-              src={getR2URL('/assets/icons/down-line.svg')} alt="아래쪽 화살표 아이콘"
+              src={getR2URL('/assets/icons/down-line.svg')}
+              alt="아래쪽 화살표 아이콘"
             />
             {isDown[0] && (
               <>
@@ -112,6 +121,9 @@ const CreateRoom = ({
                 </DropdownItem>
                 <DropdownItem onClick={() => onSelect('type', 3)}>
                   음악맞추기
+                </DropdownItem>
+                <DropdownItem onClick={() => onSelect('type', 4)}>
+                  구름
                 </DropdownItem>
               </>
             )}
@@ -128,16 +140,17 @@ const CreateRoom = ({
             max={roomInfo.type === 2 ? '30' : '8'}
           />
         </CCreate>
-        {roomInfo.type !== 2 ? (
+        {haveRoundTime(roomInfo.type) ? (
           <CCreate>
             <CLabel>라운드시간</CLabel>
             <Dropdown onClick={() => onDropdown(1)}>
               <Selected>{roomInfo.time! / 1000}초</Selected>
               <DropdownLine
                 isopen={isDown[1]}
-                src={getR2URL('/assets/icons/down-line.svg')} alt="아래쪽 화살표 아이콘"
+                src={getR2URL('/assets/icons/down-line.svg')}
+                alt="아래쪽 화살표 아이콘"
               />
-              {isDown[1] && roomInfo.type !== 3 && (
+              {isDown[1] && (
                 <>
                   <DropdownItem onClick={() => onSelect('time', 30000)}>
                     30초
@@ -153,26 +166,25 @@ const CreateRoom = ({
                   </DropdownItem>
                 </>
               )}
-              {isDown[1] && roomInfo.type === 3 && (
-                <>
-                  <DropdownItem onClick={() => onSelect('time', 40000)}>
-                    40초
-                  </DropdownItem>
-                </>
-              )}
             </Dropdown>
           </CCreate>
         ) : null}
 
         <CCreate>
           <CLabel>특수규칙</CLabel>
-          {roomInfo.type !== 2 ? (
+          {haveRoundTime(roomInfo.type) ? (
             <CheckBox onClick={() => onSelect('option', '팀전')}>
               <CCheck>
                 {roomInfo.option!.indexOf('팀전') === -1 ? (
-                  <CheckIcon src={getR2URL('/assets/icons/check-off.svg')} alt="체크 안됨" />
+                  <CheckIcon
+                    src={getR2URL('/assets/icons/check-off.svg')}
+                    alt="체크 안됨"
+                  />
                 ) : (
-                  <CheckIcon src={getR2URL('/assets/icons/check-on.svg')} alt="체크 됨" />
+                  <CheckIcon
+                    src={getR2URL('/assets/icons/check-on.svg')}
+                    alt="체크 됨"
+                  />
                 )}
                 <Selected tooltip="팀전이 가능해 집니다. 총 4팀까지 나눌 수 있습니다.">
                   팀전
@@ -180,14 +192,20 @@ const CreateRoom = ({
               </CCheck>
             </CheckBox>
           ) : null}
-          {roomInfo.type !== 2 ? (
+          {roomInfo.type !== 2 && roomInfo.type !== 4 ? (
             <>
               <CheckBox onClick={() => onSelect('option', '매너')}>
                 <CCheck>
                   {roomInfo.option!.indexOf('매너') === -1 ? (
-                    <CheckIcon src={getR2URL('/assets/icons/check-off.svg')} alt="체크 안됨" />
+                    <CheckIcon
+                      src={getR2URL('/assets/icons/check-off.svg')}
+                      alt="체크 안됨"
+                    />
                   ) : (
-                    <CheckIcon src={getR2URL('/assets/icons/check-on.svg')} alt="체크 됨" />
+                    <CheckIcon
+                      src={getR2URL('/assets/icons/check-on.svg')}
+                      alt="체크 됨"
+                    />
                   )}
                   <Selected tooltip="한방 단어를 사용 할 수 없게 됩니다.">
                     매너
@@ -197,9 +215,15 @@ const CreateRoom = ({
               <CheckBox onClick={() => onSelect('option', '외수')}>
                 <CCheck>
                   {roomInfo.option!.indexOf('외수') === -1 ? (
-                    <CheckIcon src={getR2URL('/assets/icons/check-off.svg')} alt="체크 안됨" />
+                    <CheckIcon
+                      src={getR2URL('/assets/icons/check-off.svg')}
+                      alt="체크 안됨"
+                    />
                   ) : (
-                    <CheckIcon src={getR2URL('/assets/icons/check-on.svg')} alt="체크 됨" />
+                    <CheckIcon
+                      src={getR2URL('/assets/icons/check-on.svg')}
+                      alt="체크 됨"
+                    />
                   )}
                   <Selected tooltip="끄투의 어인정 단어를 사용할 수 있게 됩니다.">
                     외수
@@ -219,7 +243,7 @@ const CreateRoom = ({
           </CancleButton>
         </CButton>
       </CCreateRoom>
-    </Modal >
+    </Modal>
   );
 };
 

@@ -52,6 +52,8 @@ const ConfirmButton = styled.button`
   justify-content: center;
   align-items: center;
 
+  cursor: pointer;
+
   border-radius: 0.5rem;
   border: none;
   background: ${COLORS.primary};
@@ -78,6 +80,8 @@ const CancleButton = styled.button`
   padding: 0.625rem 2rem;
   justify-content: center;
   align-items: center;
+
+  cursor: pointer;
 
   border-radius: 0.5rem;
   border: 1px rgba(0, 0, 0, 0.1);

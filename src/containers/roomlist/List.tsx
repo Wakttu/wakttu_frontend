@@ -24,7 +24,12 @@ const List = ({ setToggle }: any) => {
 
   useEffect(() => {
     getRoomList();
-    setInterval(() => getRoomList(), 5000);
+
+    const interval = setInterval(() => {
+      getRoomList();
+    }, 5000);
+
+    return () => clearInterval(interval); // 컴포넌트 언마운트 시 인터벌 제거
   }, []);
 
   useEffect(() => {
@@ -35,7 +40,7 @@ const List = ({ setToggle }: any) => {
   }, [filter.time]);
 
   useEffect(() => {
-    socket.on('roomList', (data) => {
+    const handleRoomList = (data: any) => {
       const copy = [...data]
         .sort((a, b) =>
           filter.time === 'desc' ? a.idx! - b.idx! : b.idx! - a.idx!
@@ -43,10 +48,11 @@ const List = ({ setToggle }: any) => {
         .filter((ele) => ele.users.length !== 0);
 
       setRoomList(copy);
-    });
+    };
+    socket.on('roomList', handleRoomList);
 
     return () => {
-      socket.off('roomList');
+      socket.off('roomList', handleRoomList);
     };
   }, [filter.time]);
 

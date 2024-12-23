@@ -94,13 +94,13 @@ const Chat = () => {
     }
     setInputs({ chat: '' });
     if (inputRef.current) inputRef.current.focus();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     dispatch,
     game.target,
     inputs.chat,
     myTurn,
     roomId,
-    setInputs,
     timer.countTime,
     timer.roundTime,
   ]);
@@ -119,7 +119,8 @@ const Chat = () => {
     }
     setInputs({ chat: '' });
     if (inputRef.current) inputRef.current.focus();
-  }, [game.target, inputs.chat, roomId, setInputs]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [game.target, inputs.chat, roomId]);
 
   const handleEnter = useCallback(
     (e: React.KeyboardEvent) => {

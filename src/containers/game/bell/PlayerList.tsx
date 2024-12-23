@@ -14,22 +14,38 @@ export interface Bubble {
   chat: string;
 }
 
+export interface Emo {
+  userId: string;
+  roomId: string;
+  emoticonId: string;
+}
+
 const PlayerList = () => {
   const users = useSelector(selectReadyUser);
   const game = useSelector(selectGame);
   const answer = useSelector(selectAnswer);
   const team = useSelector(selectTeam);
   const [bubble, setBubble] = useState<Bubble[]>([]);
+  const [receivedEmoticon, setReceivedEmoticon] = useState<Emo[]>([]);
 
   useEffect(() => {
     socket.on('chat', (data) => {
+      console.log(data);
       setBubble([...bubble, data]);
     });
-
     return () => {
       socket.off('chat');
     };
   }, [bubble]);
+
+  useEffect(() => {
+    socket.on('emoticon', (data) => {
+      setReceivedEmoticon([...receivedEmoticon, data]);
+    });
+    return () => {
+      socket.off('emoticon');
+    };
+  }, [receivedEmoticon]);
 
   return (
     <BPlayerList
@@ -38,6 +54,7 @@ const PlayerList = () => {
       game={game}
       bubble={bubble}
       team={team}
+      emoticon={receivedEmoticon}
     />
   );
 };

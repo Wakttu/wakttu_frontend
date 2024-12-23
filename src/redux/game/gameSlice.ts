@@ -25,6 +25,7 @@ const initialState: Game = {
   ban: [],
   team: { woo: [], gomem: [], academy: [], isedol: [] },
   quiz: undefined,
+  cloud: undefined,
   turnChanged: false,
 };
 

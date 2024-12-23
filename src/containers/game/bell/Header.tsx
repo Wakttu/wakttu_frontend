@@ -1,13 +1,12 @@
 import { BHeader } from '@/components';
 import { setAchieve } from '@/redux/achieve/achieveSlice';
-import { selectVolume, setVolume as setAudio } from '@/redux/audio/audioSlice';
 import { clearGame } from '@/redux/game/gameSlice';
 import { clearRoomInfo, selectRoomInfo } from '@/redux/roomInfo/roomInfoSlice';
 import { selectUserInfo } from '@/redux/user/userSlice';
 import { updateStat, updateStatLocal } from '@/services/api';
 import { exit } from '@/services/socket/socket';
 import { useRouter } from 'next/router';
-import { ChangeEvent, useCallback, useEffect, useState } from 'react';
+import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 const Header = () => {

@@ -1,28 +1,26 @@
-import Achieve from '@/components/common/Achieve';
+import WeatherSlide from '@/components/game/cloud/Weather';
+import { useState } from 'react';
 const Test = () => {
+  const [weather, setWeather] = useState<string>();
+  const [isOpen, setOpen] = useState<boolean>(false);
+
+  const handleWeather = (weather: string) => {
+    setWeather(weather);
+    setOpen(true);
+    setTimeout(() => setOpen(false), 5000);
+  };
+
   return (
-    <Achieve
-      achieves={[
-        {
-          id: 'RANI',
-          desc: '래니',
-          name: '라니바보아니다',
-          img: '',
-          regDate: 0,
-          statId: '',
-          targetStatVal: 0,
-        },
-        {
-          id: 'POKDO',
-          desc: '래니',
-          name: '라니바보아니다',
-          img: '',
-          regDate: 0,
-          statId: '',
-          targetStatVal: 0,
-        },
-      ]}
-    />
+    <>
+      <button onClick={() => handleWeather('cloud')}>날씨 구름</button>
+      <button onClick={() => handleWeather('wind')}>날씨 구름</button>
+      <button onClick={() => handleWeather('fog')}>날씨 구름</button>
+      <button onClick={() => handleWeather('segu')}>날씨 구름</button>
+
+      <button onClick={() => setOpen(true)}>open</button>
+
+      {isOpen && weather && <WeatherSlide weather={weather} />}
+    </>
   );
 };
 

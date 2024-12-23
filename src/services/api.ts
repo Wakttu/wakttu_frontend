@@ -15,6 +15,8 @@ export const R2_URL = process.env.NEXT_PUBLIC_R2_URL;
 export const getR2URL = (src: string) => R2_URL + src;
 export const getAchieveURL = (id: string) =>
   R2_URL + '/assets/achieves/' + id + '.png';
+export const getEmoticonURL = (id: string) =>
+  R2_URL + '/assets/emoticon/' + id + '.svg';
 
 /**
  * Waktaverse Games API
@@ -67,6 +69,7 @@ export const updatePlayCount = async (type: number = 0) => {
   let id = 'LAST_COUNT';
   if (type === 1) id = 'KUNG_COUNT';
   else if (type === 2) id = 'BELL_COUNT';
+  else if (type === 4) id = 'CLOUD_COUNT';
   return await updateStat(id);
 };
 
@@ -80,6 +83,7 @@ export const updatePlayCountLocal = async (type: number = 0) => {
   let id = 'LAST_COUNT';
   if (type === 1) id = 'KUNG_COUNT';
   else if (type === 2) id = 'BELL_COUNT';
+  else if (type === 4) id = 'CLOUD_COUNT';
   return await updateStatLocal(id);
 };
 

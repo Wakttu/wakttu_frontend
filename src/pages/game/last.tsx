@@ -11,6 +11,7 @@ import {
   lastRound,
   lastTurnEnd,
   lastTurnStart,
+  sendEmoticon,
   socket,
 } from '@/services/socket/socket';
 import {
@@ -35,6 +36,7 @@ import {
   tick,
 } from '@/redux/timer/timerSlice';
 import {
+  selectEmoticon,
   selectUserInfo,
   selectUserName,
   setUserInfo,
@@ -73,6 +75,7 @@ const Game = () => {
   const timer = useSelector(selectTimer);
   const pause = useSelector(selectPause);
   const result = useSelector(selectResult);
+  const emoticonId = useSelector(selectEmoticon);
 
   const { bgmVolume, effectVolume, voiceVolume } = useSelector(selectVolume);
 
@@ -115,7 +118,42 @@ const Game = () => {
 
   const waktaSound = useWaktaSound(voiceVolume);
 
+  const emoticonRef = useRef(0);
+
   /** Function Part*/
+
+  const handleKeyUp = useCallback(
+    (e: KeyboardEvent) => {
+      const allowedKeys = ['1', '2', '3']; // 허용 키
+      const currentTime = Date.now();
+
+      if (
+        allowedKeys.includes(e.key) &&
+        currentTime - emoticonRef.current > 2000
+      ) {
+        const allowkey = ['1', '2', '3'];
+        if (!allowkey.includes(e.key)) return;
+        const emoticon = emoticonId[e.key];
+        if (emoticon && user.id && roomInfo.id) {
+          const emoticonData = {
+            roomId: roomInfo.id,
+            userId: user.id,
+            emoticonId: emoticon,
+          };
+          sendEmoticon(emoticonData);
+          emoticonRef.current = currentTime;
+        }
+      }
+    },
+    [emoticonId, roomInfo.id, user.id]
+  );
+
+  useEffect(() => {
+    window.addEventListener('keyup', handleKeyUp);
+    return () => {
+      window.removeEventListener('keyup', handleKeyUp);
+    };
+  }, [handleKeyUp]);
 
   // 실패횟수 잠수 특정 함수
   const onFailUser = useCallback(
@@ -219,7 +257,6 @@ const Game = () => {
             setTimer({ roundTime: data.roundTime, turnTime: data.turnTime })
           )
         );
-        setTimeout(() => dispatch(setPause(true)));
         if (game.host === user.id) lastTurnStart(roomInfo.id as string);
       }, 4000);
     });
@@ -244,6 +281,7 @@ const Game = () => {
   useEffect(() => {
     socket.on('last.turnStart', () => {
       if (game.host === user.id) socket.emit('ping', roomInfo.id);
+      dispatch(setPause(true));
       onBgm();
     });
 
@@ -313,9 +351,7 @@ const Game = () => {
               setTurn({ roundTime: game.roundTime, turnTime: game.turnTime })
             )
           );
-          setTimeout(() => {
-            dispatch(setPause(true));
-          });
+
           if (user.id === game.host) lastTurnStart(roomInfo.id as string);
         }, 2200);
       } else {

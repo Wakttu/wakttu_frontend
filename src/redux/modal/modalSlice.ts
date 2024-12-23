@@ -21,6 +21,7 @@ export const modalSlice = createSlice({
     },
     closeModal: (state) => {
       state.open = false;
+      state.modalType = '';
       state.data = undefined;
     },
     setDataModal: (state, action: PayloadAction<any>) => {

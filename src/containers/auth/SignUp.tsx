@@ -137,7 +137,6 @@ const SignUp = ({ onToggle }: Props) => {
       await client
         .post('auth/login', { email: userInfo.id, password: userInfo.password })
         .then(async (response) => {
-          console.log(response);
           if (response.status === 201) {
             await dispatch(setUserInfo(response.data));
             socket.connect();

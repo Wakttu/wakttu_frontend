@@ -43,7 +43,7 @@ const Player = ({
     <CPlayer>
       {user.name && (
         <>
-          <PlayerInfo>
+          <PlayerInfo host={host === user.id}>
             <Character character={character} />
             <CBadge>
               <PlayerIcon src={icon} alt="플레이어 등급" />

@@ -72,7 +72,8 @@ const Chat = () => {
       }
     }
     if (inputRef.current) inputRef.current.focus();
-  }, [dispatch, host, inputs.chat, roomId, setInputs, user.id, user.provider]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dispatch, host, inputs.chat, roomId, user.id, user.provider]);
 
   useEffect(() => {
     socket.on('alarm', (data) => {

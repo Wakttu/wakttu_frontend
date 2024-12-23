@@ -2,7 +2,6 @@ import { CreateRoom as CCreateRoom } from '@/components';
 import { cleanTitle } from '@/modules/Slang';
 import { closeModal, selectModal } from '@/redux/modal/modalSlice';
 import { createRoom } from '@/services/socket/socket';
-import { prepareAutoBatched } from '@reduxjs/toolkit';
 import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 

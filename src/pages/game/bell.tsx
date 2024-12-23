@@ -23,7 +23,11 @@ import {
   setTimer,
   tick,
 } from '@/redux/timer/timerSlice';
-import { selectUserInfo, setUserInfo } from '@/redux/user/userSlice';
+import {
+  selectEmoticon,
+  selectUserInfo,
+  setUserInfo,
+} from '@/redux/user/userSlice';
 import {
   client,
   updatePlayCount,
@@ -36,11 +40,12 @@ import {
   bellRound,
   bellRoundEnd,
   bellRoundStart,
+  sendEmoticon,
   socket,
 } from '@/services/socket/socket';
 import { Container } from '@/styles/bell/Layout';
 import { useRouter } from 'next/router';
-import { useCallback, useEffect } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 const Bell = () => {
@@ -50,6 +55,10 @@ const Bell = () => {
   const dispatch = useDispatch();
   const router = useRouter();
   const result = useSelector(selectResult);
+  const emoticonId = useSelector(selectEmoticon);
+
+  // sound 세팅
+
   const bgmVolume = useSelector(selectBgmVolume);
   const effectVolume = useSelector(selectEffectVolume);
   const sound = useSound(
@@ -78,6 +87,43 @@ const Bell = () => {
     '/assets/sound-effects/lossy/bell_correct.webm',
     effectVolume
   );
+
+  const emoticonRef = useRef(0);
+
+  // Function part
+
+  const handleKeyUp = useCallback(
+    (e: KeyboardEvent) => {
+      const allowedKeys = ['1', '2', '3']; // 허용 키
+      const currentTime = Date.now();
+
+      if (
+        allowedKeys.includes(e.key) &&
+        currentTime - emoticonRef.current > 2000
+      ) {
+        const allowkey = ['1', '2', '3'];
+        if (!allowkey.includes(e.key)) return;
+        const emoticon = emoticonId[e.key];
+        if (emoticon && user.id && roomInfo.id) {
+          const emoticonData = {
+            roomId: roomInfo.id,
+            userId: user.id,
+            emoticonId: emoticon,
+          };
+          sendEmoticon(emoticonData);
+          emoticonRef.current = currentTime;
+        }
+      }
+    },
+    [emoticonId, roomInfo.id, user.id]
+  );
+
+  useEffect(() => {
+    window.addEventListener('keyup', handleKeyUp);
+    return () => {
+      window.removeEventListener('keyup', handleKeyUp);
+    };
+  }, [handleKeyUp]);
 
   const onBgm = useCallback(() => {
     if (sound) {

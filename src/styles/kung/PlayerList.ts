@@ -15,6 +15,7 @@ const moveUpAndFadeOut = keyframes`
 `;
 
 export const CPlayerList = styled.div`
+  position: relative;
   display: flex;
   width: 100%;
   padding: 1.25rem 3rem;
@@ -22,6 +23,7 @@ export const CPlayerList = styled.div`
   align-items: center;
   gap: 1.25rem;
 
+  z-index: 1001;
   background: linear-gradient(0deg, #b6ecc5 0%, #b6ecc5 100%);
 `;
 
@@ -59,7 +61,6 @@ export const CPlayer = styled.div<{
     }
   }}
 `;
-
 
 export const PlusScore = styled.div<{ plus: boolean }>`
   position: absolute;

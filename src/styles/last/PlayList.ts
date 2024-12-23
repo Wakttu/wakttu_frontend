@@ -15,12 +15,15 @@ const moveUpAndFadeOut = keyframes`
 `;
 
 export const CPlayerList = styled.div`
+  position: relative;
   display: flex;
   width: 100%;
   padding: 1.25rem 3rem;
   justify-content: center;
   align-items: center;
   gap: 1.25rem;
+
+  z-index: 1001;
 
   background: linear-gradient(180deg, #c0b0ff 0%, #92aaff 100%);
 `;

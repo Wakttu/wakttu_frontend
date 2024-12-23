@@ -8,9 +8,10 @@ import {
   kungRound,
   kungTurnEnd,
   kungTurnStart,
+  sendEmoticon,
   socket,
 } from '@/services/socket/socket';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { clearHistory, setHistory } from '@/redux/history/historySlice';
 import { clearGame, selectGame, setGame } from '@/redux/game/gameSlice';
@@ -30,6 +31,7 @@ import {
   setPause,
 } from '@/redux/answer/answerSlice';
 import {
+  selectEmoticon,
   selectUserInfo,
   selectUserName,
   setUserInfo,
@@ -70,6 +72,8 @@ const Game = () => {
   const timer = useSelector(selectTimer);
   const router = useRouter();
   const pause = useSelector(selectPause);
+  const emoticonId = useSelector(selectEmoticon);
+
   const { bgmVolume, effectVolume, voiceVolume } = useSelector(selectVolume);
 
   const [failUser, setFailuesr] = useState<{ name: string; count: number }>({
@@ -107,9 +111,44 @@ const Game = () => {
   );
   const waktaSound = useWaktaSound(voiceVolume);
 
+  const emoticonRef = useRef(0);
+
   /**
    * Function Part
    */
+
+  const handleKeyUp = useCallback(
+    (e: KeyboardEvent) => {
+      const allowedKeys = ['1', '2', '3']; // 허용 키
+      const currentTime = Date.now();
+
+      if (
+        allowedKeys.includes(e.key) &&
+        currentTime - emoticonRef.current > 2000
+      ) {
+        const allowkey = ['1', '2', '3'];
+        if (!allowkey.includes(e.key)) return;
+        const emoticon = emoticonId[e.key];
+        if (emoticon && user.id && roomInfo.id) {
+          const emoticonData = {
+            roomId: roomInfo.id,
+            userId: user.id,
+            emoticonId: emoticon,
+          };
+          sendEmoticon(emoticonData);
+          emoticonRef.current = currentTime;
+        }
+      }
+    },
+    [emoticonId, roomInfo.id, user.id]
+  );
+
+  useEffect(() => {
+    window.addEventListener('keyup', handleKeyUp);
+    return () => {
+      window.removeEventListener('keyup', handleKeyUp);
+    };
+  }, [handleKeyUp]);
 
   const playAnswer = useCallback(
     ({
@@ -222,7 +261,6 @@ const Game = () => {
             setTimer({ roundTime: data.roundTime, turnTime: data.turnTime })
           )
         );
-        setTimeout(() => dispatch(setPause(true)));
         if (game.host === user.id) kungTurnStart(roomInfo.id as string);
       }, 4000);
     });
@@ -250,6 +288,7 @@ const Game = () => {
   useEffect(() => {
     socket.on('kung.turnStart', () => {
       if (game.host === user.id) socket.emit('ping', roomInfo.id);
+      dispatch(setPause(true));
       onBgm();
     });
 
@@ -319,9 +358,6 @@ const Game = () => {
               setTurn({ roundTime: game.roundTime, turnTime: game.turnTime })
             )
           );
-          setTimeout(() => {
-            dispatch(setPause(true));
-          });
           if (user.id === game.host) kungTurnStart(roomInfo.id as string);
         }, 2200);
       } else {

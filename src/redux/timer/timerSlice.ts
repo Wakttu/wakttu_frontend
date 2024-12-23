@@ -32,6 +32,9 @@ export const timerSlice = createSlice({
     tick: (state) => {
       state.countTime = state.countTime + 100;
     },
+    cloudTick: (state) => {
+      state.countTime = state.countTime + 1000;
+    },
     setTimerId: (state, action: PayloadAction<NodeJS.Timeout>) => {
       state.timerId = action.payload;
     },
@@ -53,6 +56,7 @@ export const {
   setTimer,
   clearTimer,
   tick,
+  cloudTick,
   setTimerId,
   setTurn,
   clearCountTime,
