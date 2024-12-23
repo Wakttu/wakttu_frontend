@@ -3,7 +3,11 @@ import useInput from '@/hooks/useInput';
 import { getTime } from '@/modules/Date';
 import countScore from '@/modules/Score';
 import { clean } from '@/modules/Slang';
-import { selectAnswer, selectPause, setAnswer } from '@/redux/answer/answerSlice';
+import {
+  selectAnswer,
+  selectPause,
+  setAnswer,
+} from '@/redux/answer/answerSlice';
 import { selectGame } from '@/redux/game/gameSlice';
 import { selectRoomId } from '@/redux/roomInfo/roomInfoSlice';
 import { selectTimer } from '@/redux/timer/timerSlice';
@@ -37,7 +41,6 @@ const Chat = () => {
   const effectVolume = useSelector(selectEffectVolume);
   const dispatch = useDispatch();
 
-
   const logSound = useEffectSound(
     '/assets/sound-effects/lossy/ui_click.webm',
     effectVolume
@@ -67,16 +70,24 @@ const Chat = () => {
 
   const onSendAnswer = useCallback(() => {
     if (inputs.chat) {
-      console.log('정답 전송 시도')
-      console.log(answer)
-      console.log(answer.success)
+      console.log('정답 전송 시도');
+      console.log(answer);
+      console.log(answer.success);
       // 정답 전송
-      if (Array.isArray(game.target) && game.target.includes(inputs.chat) && answer.success === false && answer.pause === false) {
-        socket.emit('music.answer', { roomId: roomId, score: timeScore({
-          timeLimit: timer.roundTime,
-          remainingTime: timer.roundTime - timer.countTime,
-        }) });
-      
+      if (
+        Array.isArray(game.target) &&
+        game.target.includes(inputs.chat) &&
+        answer.success === false &&
+        answer.pause === false
+      ) {
+        socket.emit('music.answer', {
+          roomId: roomId,
+          score: timeScore({
+            timeLimit: timer.roundTime,
+            remainingTime: timer.roundTime - timer.countTime,
+          }),
+        });
+
         dispatch(
           setAnswer({
             success: true,
@@ -98,15 +109,14 @@ const Chat = () => {
     setInputs({ chat: '' });
     if (inputRef.current) inputRef.current.focus();
   }, [
-    game.chain,
+    answer,
+    dispatch,
     game.target,
     inputs.chat,
-    isInHistory,
     roomId,
     setInputs,
     timer.countTime,
     timer.roundTime,
-    timer.turnTime,
   ]);
 
   const handleEnter = useCallback(
@@ -116,7 +126,7 @@ const Chat = () => {
         onSendAnswer();
       }
     },
-    [onSendAnswer, pause]
+    [onSendAnswer]
   );
 
   useEffect(() => {
