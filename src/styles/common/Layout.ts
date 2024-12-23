@@ -35,9 +35,7 @@ background-size: cover;
     padding-bottom:0;`;
     else if (path?.includes('/music'))
       return `height: 100vh;
-    background: var(--test, linear-gradient(180deg, #303436 0%, #6600A2 100%));
-    background-size: 50%;
-    background-repeat: repeat;
+    background: linear-gradient(180deg, #484270 0%, #7500CE 99.99%);
     padding-bottom:0;
     `;
     else if (path?.includes('/cloud'))

@@ -22,7 +22,7 @@ export const CPlayerList = styled.div`
   align-items: center;
   gap: 1.25rem;
 
-  background: var(--test, linear-gradient(180deg, #303436 0%, #6600A2 100%));
+  background: transparent;
 `;
 
 export const CPlayer = styled.div<{
@@ -47,7 +47,8 @@ export const CPlayer = styled.div<{
 
   ${({ $success }) => {
     if ($success)
-      return `border: 4px solid #028C27; background: linear-gradient(180deg, #D9FFD3 0%, #87FF77 100%); transform : translate(0 , -0.8rem);`;
+      return `border: 1px solid #0900FF;
+background: linear-gradient(180deg, #6762E2 0%, #4D48CB 100%);`;
     else return `background: linear-gradient(180deg, #fff 0%, #f2f2f2 100%);`;
   }}
 `;
