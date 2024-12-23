@@ -25,6 +25,8 @@ export const Log = styled.div`
   max-width: 31.25rem;
   flex-shrink: 0;
   align-self: stretch;
+
+  background: ${COLORS.bg};
 `;
 
 export const PlayerName = styled.h5<{ $color?: string }>`

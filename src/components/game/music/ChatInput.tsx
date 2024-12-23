@@ -13,14 +13,12 @@ interface Props {
   message: string;
   inputRef: RefObject<HTMLInputElement>;
   onChange: ChangeEventHandler;
-  onMessage: () => void;
   onAnswer: () => void;
   handleEnter: (e: React.KeyboardEvent) => void;
 }
 
 const ChatInput = ({
   onChange,
-  onMessage,
   onAnswer,
   handleEnter,
   message,
@@ -42,7 +40,7 @@ const ChatInput = ({
           }}
           autoComplete="off"
         />
-        <SendMessage onClick={pause ? onAnswer : onMessage}>
+        <SendMessage onClick={onAnswer}>
           <SendIcon src={getR2URL('/assets/icons/send.svg')} />
         </SendMessage>
       </MessageBlock>
