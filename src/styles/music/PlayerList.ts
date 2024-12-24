@@ -47,9 +47,9 @@ export const CPlayer = styled.div<{
 
   ${({ $success }) => {
     if ($success)
-      return `border: 4px solid #7631FF;
-              background: linear-gradient(180deg, #A861F4 0%, #675DF8 100%);
-              `;
+      return `border: 4px solid #7631FF; 
+              background: linear-gradient(180deg, #A861F4 0%, #675DF8 100%); 
+              transform : translate(0 , -0.8rem);`;
     else return `background: linear-gradient(180deg, #fff 0%, #f2f2f2 100%);`;
   }}
 `;

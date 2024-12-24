@@ -22,10 +22,15 @@ export const ChatBox = styled.div`
 `;
 export const Log = styled.div`
   display: flex;
+  min-width: fit-content;
   max-width: 31.25rem;
   flex-shrink: 0;
   align-self: stretch;
 
+  gap: 0.5rem;
+
+  margin: 0 1rem;
+  border-radius: 1rem;
   background: ${COLORS.bg};
 `;
 
@@ -41,7 +46,6 @@ export const PlayerName = styled.h5<{ $color?: string }>`
 `;
 
 export const PlayerContent = styled.h5`
-  flex: 1 0 0;
   color: ${COLORS.text};
 
   font-family: 'Wanted Sans Variable', 'Wanted Sans', sans-serif;

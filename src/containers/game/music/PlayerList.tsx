@@ -22,12 +22,16 @@ const PlayerList = () => {
   const [bubble, setBubble] = useState<Bubble[]>([]);
 
   useEffect(() => {
-    socket.on('chat', (data) => {
+    const handleBubble = (data: any) => {
       setBubble([...bubble, data]);
+    };
+
+    socket.on('chat', (data) => {
+      handleBubble(data);
     });
 
     return () => {
-      socket.off('chat');
+      socket.off('chat', handleBubble);
     };
   }, [bubble]);
 

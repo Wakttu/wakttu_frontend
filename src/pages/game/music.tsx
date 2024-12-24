@@ -2,7 +2,7 @@
 import Header from '@/containers/game/music/Header';
 import PlayerList from '@/containers/game/music/PlayerList';
 import { Container } from '@/styles/music/Layout';
-import { exit, musicReady, musicRound, socket } from '@/services/socket/socket';
+import { musicReady, musicRound, socket } from '@/services/socket/socket';
 import { useEffect, useRef, useState, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectGame, setGame } from '@/redux/game/gameSlice';
@@ -50,16 +50,14 @@ const Game = () => {
 
   // Refs, State 관리
   const playerRef = useRef<ReactPlayer | null>(null); // 음악 플레이어 ref
-  const [gameData, setGameData] = useState(null); // 게임 데이터
   const [volume, setVolume] = useState(10); // 볼륨 상태
-  const [prevVolume, setPrevVolume] = useState(volume);
   const hasHandledPlayRef = useRef(false); // play 이벤트 처리 여부 추적
   const hasCalledMusicReady = useRef(false); // musicReady 호출 여부 추적
-  const hintTimeoutsRef = useRef<NodeJS.Timeout[]>([]); // 힌트 타이머 참조 배열
 
   const router = useRouter();
   const [isPlaying, setIsPlaying] = useState(false); // 재생 상태
-  const [systemLog, setSystemLog] = useState<string[]>([]); // 빈 문자열 배열로 초기화
+  const [singer, setSinger] = useState<string[]>([]); // 빈 문자열 배열로 초기화
+  const [hint, setHint] = useState<string>('');
   const [isVideoVisible, setIsVideoVisible] = useState(false); // 추가된 상태
 
   // 소켓 이벤트 리스너 설정
@@ -112,14 +110,14 @@ const Game = () => {
 
     const handlePing = (data: any) => {
       dispatch(tick());
-      if (timer.countTime === 7000 && music?.hint[0]) {
-        setSystemLog((prev) => [...prev, music?.hint[0]]);
+      if (timer.countTime === 7000 && music?.singer) {
+        setSinger((prev) => [...prev, ...music.singer]);
       }
-      if (timer.countTime === 13000 && music?.hint[1]) {
-        setSystemLog((prev) => [...prev, music?.hint[1]]);
+      if (timer.countTime === 13000 && music?.hint) {
+        setHint(music.hint);
       }
 
-      if (timer.countTime === 24000) {
+      if (timer.countTime === 40000) {
         dispatch(
           setAnswer({
             success: false,
@@ -139,7 +137,8 @@ const Game = () => {
       }, 4000);
 
       setTimeout(async () => {
-        setSystemLog([]);
+        setSinger([]);
+        setHint('');
         if (game.host === user.id) await musicRound(roomInfo.id!);
       }, 4100);
     };
@@ -205,9 +204,6 @@ const Game = () => {
       socket.off('music.answer', handleAnswer);
       socket.off('music.ping', handlePing);
       socket.off('music.pong', handlePong);
-
-      // 남아있는 힌트 타이머 정리
-      hintTimeoutsRef.current?.forEach((timeout) => clearTimeout(timeout));
     };
   }, [dispatch, music, timer]);
 
@@ -226,15 +222,6 @@ const Game = () => {
       setTimeout(async () => {
         await musicReady(roomInfo.id as string);
       }, 1800);
-    }
-  };
-
-  // 볼륨 변경 핸들러
-  const handleVolumeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newVolume = parseInt(event.target.value || volume.toString(), 10);
-    setVolume(newVolume);
-    if (playerRef.current) {
-      playerRef.current.getInternalPlayer()?.setVolume(newVolume / 100);
     }
   };
 
@@ -300,16 +287,16 @@ const Game = () => {
     <Container>
       <Header />
       <Music
+        round={game.round}
         music={music}
         timer={timer}
         handlePlayerReady={handlePlayerReady}
         handleVolumeUpdate={handleVolumeUpdate}
         volume={volume}
-        handleVolumeChange={handleVolumeChange}
         playing={isPlaying}
-        systemLog={systemLog}
+        singer={singer}
+        hint={hint}
         isVideoVisible={isVideoVisible}
-        setIsVideoVisible={setIsVideoVisible}
         playerRef={playerRef}
       />
       <PlayerList />
