@@ -40,7 +40,7 @@ const roomType: RoomType = {
   0: '끝말잇기',
   1: '쿵쿵따',
   2: '왁타골든벨',
-  3: '왁타레코드',
+  3: '왁뚜레코드',
   4: '구름',
 };
 
@@ -120,7 +120,7 @@ const CreateRoom = ({
                   왁타골든벨
                 </DropdownItem>
                 <DropdownItem onClick={() => onSelect('type', 3)}>
-                  음악맞추기
+                  왁뚜레코드
                 </DropdownItem>
                 <DropdownItem onClick={() => onSelect('type', 4)}>
                   구름
