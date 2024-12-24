@@ -20,6 +20,7 @@ import {
   VolumeImg,
   TimerImg,
   Tag,
+  CTimer,
 } from '@/styles/music/Main';
 import ChatLog from '@/containers/game/music/ChatLog';
 import { getR2URL } from '@/services/api';
@@ -76,8 +77,8 @@ const Music: React.FC<Props> = ({
               url={`https://www.youtube.com/watch?v=${
                 music?.videoId || 'EMhKeVHboiA'
               }`}
-              width="35rem"
-              height="19.6875rem"
+              width="40rem"
+              height="22.5rem"
               controls={false}
               playing={playing}
               volume={volume / 100}
@@ -106,10 +107,10 @@ const Music: React.FC<Props> = ({
             !playerRef.current ? (
               <div>로딩 중</div>
             ) : (
-              <div>
+              <CTimer>
                 <TimerImg src={getR2URL('/assets/game/timer-white.svg')} />
                 {(timer.roundTime - timer.countTime) / 1000}
-              </div>
+              </CTimer>
             )}
           </TimerOverlay>
         </VideoScreen>

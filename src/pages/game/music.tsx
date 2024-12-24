@@ -21,7 +21,7 @@ import {
   clearTimer,
   selectTimer,
   setTimer,
-  tick,
+  musicTick,
 } from '@/redux/timer/timerSlice';
 import {
   client,
@@ -109,7 +109,7 @@ const Game = () => {
     };
 
     const handlePing = (data: any) => {
-      dispatch(tick());
+      dispatch(musicTick());
       if (timer.countTime === 7000 && music?.singer) {
         setSinger((prev) => [...prev, ...music.singer]);
       }

@@ -42,6 +42,13 @@ export const TimerOverlay = styled.div<{ $isVisible: boolean }>`
   display: ${(props) => (props.$isVisible ? 'none' : 'block')};
 `;
 
+export const CTimer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+`;
+
 export const TimerImg = styled.img`
   width: 4rem;
   height: 4rem;
@@ -60,33 +67,13 @@ export const Middle = styled.div`
 `;
 
 export const YoutubeWrapper = styled.div`
-  width: 35rem;
-  height: 19.6875rem;
-`;
-
-export const Info = styled.div`
-  display: flex;
-  height: 2.9375rem;
-  padding: 1.5rem 1rem;
-  justify-content: center;
-  align-items: center;
-
-  border-radius: 1rem;
-  background: ${COLORS.text};
-  box-shadow: ${DROM_SHADOW};
-`;
-
-export const Song = styled.div`
-  display: flex;
-  justify-content: left;
-  align-items: center;
-  gap: 0.625rem;
-  border-radius: 1rem;
+  width: 40rem;
+  height: 22.5rem;
 `;
 
 export const VideoScreen = styled.div<{ $isVisible: boolean }>`
-  width: 35rem;
-  height: 19.6875rem;
+  width: 45rem;
+  height: 30rem;
   position: relative;
   background-color: #000;
   pointer-events: ${({ $isVisible }) => ($isVisible ? 'auto' : 'none')};
@@ -95,6 +82,14 @@ export const VideoScreen = styled.div<{ $isVisible: boolean }>`
     opacity: ${({ $isVisible }) => ($isVisible ? 1 : 0)};
     transition: opacity 0.15s ease;
   }
+`;
+
+export const Song = styled.div`
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  gap: 0.625rem;
+  border-radius: 1rem;
 `;
 
 export const SongIcon = styled.img`
@@ -107,7 +102,6 @@ export const SongIcon = styled.img`
 
 export const SongText = styled.div<{ $isVisible: boolean }>`
   display: flex;
-  max-width: 25rem;
   flex-direction: column;
   justify-content: center;
   flex-shrink: 0;
@@ -136,7 +130,7 @@ export const Systemlog = styled.div`
   align-items: center;
   flex-direction: column;
   justify-content: flex-start;
-  width: 30rem;
+  width: 31.125rem;
   height: 25rem;
   gap: 1.1875rem;
   flex-shrink: 0;
@@ -148,6 +142,7 @@ export const SystemlogItem = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 0.625rem 1rem;
   gap: 0.625rem;
   align-self: stretch;
 
