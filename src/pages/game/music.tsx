@@ -51,12 +51,14 @@ const Game = () => {
   // Refs, State 관리
   const playerRef = useRef<ReactPlayer | null>(null); // 음악 플레이어 ref
   const [volume, setVolume] = useState(10); // 볼륨 상태
+  const hasHandledPlayRef = useRef(false); // play 이벤트 처리 여부 추적
 
   const router = useRouter();
   const [isPlaying, setIsPlaying] = useState(false); // 재생 상태
   const [singer, setSinger] = useState<string[]>([]); // 빈 문자열 배열로 초기화
   const [hint, setHint] = useState<string>('');
   const [isVideoVisible, setIsVideoVisible] = useState(false); // 추가된 상태
+  const [isMusicReady, setIsMusicReady] = useState(false); // 음악 준비 상태 추가
 
   // 소켓 이벤트 리스너 설정
   useEffect(() => {
@@ -76,26 +78,21 @@ const Game = () => {
         dispatch(setMusic(currentMusic));
         dispatch(setTimer({ roundTime: 40000, turnTime: 40000 }));
         playerRef.current?.seekTo(music?.start_tune || 0, 'seconds');
-        setIsPlaying(true);
-        console.log(currentMusic);
       }
     };
 
     // 음악 재생 핸들러
     const handlePlay = async (data: any) => {
       // 정답 값 업데이트
-      console.log(data);
-      dispatch(setGame(data));
-      dispatch(setMusic(data.music[data.round]));
       dispatch(
         setAnswer({ success: false, answer: '', pause: false, word: undefined })
       );
 
       if (playerRef.current) {
-        dispatch(setTimer({ roundTime: 40000, turnTime: 40000 }));
-        playerRef.current.seekTo(music?.start_time || 0, 'seconds');
-        setIsPlaying(true);
-        if (game.host === user.id) socket.emit('music.ping', roomInfo.id);
+        setTimeout(() => {
+          setIsPlaying(true);
+          if (game.host === user.id) socket.emit('music.ping', roomInfo.id);
+        }, 5000);
       }
     };
 
@@ -125,6 +122,8 @@ const Game = () => {
 
       setTimeout(() => {
         setIsVideoVisible(false);
+        setIsMusicReady(false);
+        setIsPlaying(false);
       }, 4000);
 
       setTimeout(async () => {
@@ -206,7 +205,11 @@ const Game = () => {
   // 플레이어 준비 완료 핸들러
   const handlePlayerReady = (player: ReactPlayer) => {
     playerRef.current = player;
-    if (roomInfo.id) {
+    if (game.round === 0) {
+      musicRound(roomInfo.id as string);
+    } else if (roomInfo.id && !isMusicReady) {
+      // 음악 준비 상태 체크
+      setIsMusicReady(true); // 준비 완료 상태로 변경
       setTimeout(async () => {
         await musicReady(roomInfo.id as string);
       }, 1800);

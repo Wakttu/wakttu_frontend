@@ -105,12 +105,16 @@ export const SongText = styled.h4<{ $isVisible: boolean }>`
   opacity: ${({ $isVisible }) => ($isVisible ? 1 : 0)};
   transition: opacity 0.3s ease;
 
-  color: ${COLORS.bg};
-  font-family: 'Wanted Sans';
+  color: ${COLORS.text};
+  font-family: 'Wanted Sans Variable', 'Wanted Sans', sans-serif;
 
   font-style: normal;
   font-weight: 600;
   line-height: normal;
+
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 `;
 
 export const SRight = styled.div`

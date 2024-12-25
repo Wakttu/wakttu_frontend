@@ -34,13 +34,11 @@ const ChatInput = () => {
 
   const onSendAnswer = useCallback(() => {
     if (inputs.chat) {
-      console.log('정답 전송 시도');
-      console.log(answer);
-      console.log(answer.success);
+      const chat = inputs.chat.toLowerCase().replace(/ /g, '');
       // 정답 전송
       if (
         Array.isArray(game.target) &&
-        game.target.includes(inputs.chat) &&
+        game.target.includes(chat) &&
         answer.success === false &&
         answer.pause === false
       ) {

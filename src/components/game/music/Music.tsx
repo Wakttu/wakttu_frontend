@@ -122,7 +122,7 @@ const Music: React.FC<Props> = ({
         <Song>
           <SongIcon
             src={
-              music?.img
+              music?.img && isVideoVisible
                 ? getR2URL(music.img)
                 : getR2URL('/assets/channel/wakttu.svg')
             }

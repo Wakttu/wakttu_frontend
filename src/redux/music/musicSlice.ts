@@ -1,3 +1,4 @@
+import { getR2URL } from '@/services/api';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface MusicState {
@@ -5,7 +6,16 @@ interface MusicState {
 }
 
 const initialState: MusicState = {
-  music: null,
+  music: {
+    videoId: 'fgSXAKsq - Vo',
+    title: '이세계아이돌 (ISEGYE IDOL) - 리와인드 (RE:WIND) Official MV',
+    start_time: 2,
+    singer: ['아이네', '징버거', '릴파', '주르르', '고세구', '비챤'],
+    hint: '다음 곡부터 문제가 시작됩니다!',
+    answer: ['리와인드', 'rewind', 're:wind'],
+    channel: ['왁타버스'],
+    img: getR2URL('/assets/channel/waktaverse.svg'),
+  },
 };
 
 const musicSlice = createSlice({
@@ -17,7 +27,7 @@ const musicSlice = createSlice({
       state.music = action.payload; // immer에 의해 불변성 유지
     },
     clearMusic: (state) => {
-      state.music = null; // immer에 의해 불변성 유지
+      state.music = initialState; // immer에 의해 불변성 유지
     },
   },
 });
