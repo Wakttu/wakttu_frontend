@@ -58,15 +58,19 @@ const Music: React.FC<Props> = ({
     <CMain>
       <SLeft>
         <Systemlog>
-          <SystemlogItem>Round |{round ? round : 0}</SystemlogItem>
+          <SystemlogItem>Round {round ? round : 0}</SystemlogItem>
+          {singer.length > 0 && (
+            <SystemlogItem>
+              {singer.map((item) => {
+                return (
+                  <Tag key={item} tag={item}>
+                    {item}
+                  </Tag>
+                );
+              })}
+            </SystemlogItem>
+          )}
 
-          {singer.map((item) => {
-            return (
-              <Tag key={item} tag={item}>
-                {item}
-              </Tag>
-            );
-          })}
           {hint !== '' && <SystemlogItem>{hint}</SystemlogItem>}
         </Systemlog>
       </SLeft>
@@ -125,7 +129,7 @@ const Music: React.FC<Props> = ({
           />
           <SongText $isVisible={isVideoVisible}>{music?.title}</SongText>
           <VolumeControl>
-            <VolumeImg src={'/assets/game/music-volume.svg'} />
+            <VolumeImg src={getR2URL('/assets/game/music-volume.svg')} />
             <VolumeSlider
               type="range"
               min="0"

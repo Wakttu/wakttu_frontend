@@ -1,8 +1,5 @@
 import styled, { css } from 'styled-components';
 import { COLORS, FONT_SIZES } from '../theme';
-import { R2_URL } from '@/services/api';
-
-const DROM_SHADOW = '0px 1px 10px 0px rgba(0, 0, 0, 0.15)';
 
 export const CMain = styled.div`
   position: relative;
@@ -59,7 +56,8 @@ export const Middle = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 40rem;
+  width: 45rem;
+  padding: 1rem 3rem;
   height: 100%;
   border-radius: 1rem;
   border: 1px solid #000;
@@ -72,8 +70,8 @@ export const YoutubeWrapper = styled.div`
 `;
 
 export const VideoScreen = styled.div<{ $isVisible: boolean }>`
-  width: 45rem;
-  height: 30rem;
+  width: 40rem;
+  height: 22.5rem;
   position: relative;
   background-color: #000;
   pointer-events: ${({ $isVisible }) => ($isVisible ? 'auto' : 'none')};
@@ -100,17 +98,16 @@ export const SongIcon = styled.img`
   border-radius: 2.6875rem;
 `;
 
-export const SongText = styled.div<{ $isVisible: boolean }>`
+export const SongText = styled.h4<{ $isVisible: boolean }>`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  flex-shrink: 0;
   opacity: ${({ $isVisible }) => ($isVisible ? 1 : 0)};
   transition: opacity 0.3s ease;
 
-  color: #000;
+  color: ${COLORS.bg};
   font-family: 'Wanted Sans';
-  font-size: 2rem;
+
   font-style: normal;
   font-weight: 600;
   line-height: normal;

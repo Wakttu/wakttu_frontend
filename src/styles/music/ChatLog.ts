@@ -29,7 +29,7 @@ export const Log = styled.div`
 
   gap: 0.5rem;
 
-  margin: 0 1rem;
+  padding: 1rem;
   border-radius: 1rem;
   background: ${COLORS.bg};
 `;

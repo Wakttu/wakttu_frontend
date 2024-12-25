@@ -24,7 +24,6 @@ const ChatLog = () => {
   useEffect(() => {
     const handleChatLog = (data: LogProps) => {
       const _data = { ...data, chat: clean(data.chat) };
-      console.log(_data);
       setLog((prev) => [...prev, _data]);
     };
 

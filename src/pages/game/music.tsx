@@ -51,8 +51,6 @@ const Game = () => {
   // Refs, State 관리
   const playerRef = useRef<ReactPlayer | null>(null); // 음악 플레이어 ref
   const [volume, setVolume] = useState(10); // 볼륨 상태
-  const hasHandledPlayRef = useRef(false); // play 이벤트 처리 여부 추적
-  const hasCalledMusicReady = useRef(false); // musicReady 호출 여부 추적
 
   const router = useRouter();
   const [isPlaying, setIsPlaying] = useState(false); // 재생 상태
@@ -65,7 +63,7 @@ const Game = () => {
     // 라운드 변경 핸들러
     const handleRound = (data: any) => {
       if (data.music && data.round > 0) {
-        const currentMusic = data.music[data.round];
+        const currentMusic = data.music[data.round - 1];
         dispatch(setGame(data));
         dispatch(
           setAnswer({
@@ -76,24 +74,17 @@ const Game = () => {
           })
         );
         dispatch(setMusic(currentMusic));
-        dispatch(setTimer({ roundTime: 4000, turnTime: 4000 }));
-        playerRef.current?.seekTo(music?.videoStartSec || 0, 'seconds');
+        dispatch(setTimer({ roundTime: 40000, turnTime: 40000 }));
+        playerRef.current?.seekTo(music?.start_tune || 0, 'seconds');
         setIsPlaying(true);
-
-        socket.emit('music.ping', roomInfo.id);
+        console.log(currentMusic);
       }
     };
 
     // 음악 재생 핸들러
     const handlePlay = async (data: any) => {
-      if (hasHandledPlayRef.current) {
-        return;
-      }
-      hasHandledPlayRef.current = true;
-
-      console.log(`play 요청 들어옴 : ${data}`);
-
       // 정답 값 업데이트
+      console.log(data);
       dispatch(setGame(data));
       dispatch(setMusic(data.music[data.round]));
       dispatch(
@@ -102,7 +93,7 @@ const Game = () => {
 
       if (playerRef.current) {
         dispatch(setTimer({ roundTime: 40000, turnTime: 40000 }));
-        playerRef.current.seekTo(music?.videoStartSec || 0, 'seconds');
+        playerRef.current.seekTo(music?.start_time || 0, 'seconds');
         setIsPlaying(true);
         if (game.host === user.id) socket.emit('music.ping', roomInfo.id);
       }
@@ -144,12 +135,10 @@ const Game = () => {
     };
 
     const handleAnswer = (data: any) => {
-      console.log(data);
       dispatch(setGame(data));
     };
 
     const handleEnd = async (data: any) => {
-      console.log('게임이 종료되었습니다.');
       try {
         const { game, roomInfo } = data;
         const response = await client.get(`/user/${user.id}`);
@@ -217,8 +206,7 @@ const Game = () => {
   // 플레이어 준비 완료 핸들러
   const handlePlayerReady = (player: ReactPlayer) => {
     playerRef.current = player;
-    if (roomInfo.id && !hasCalledMusicReady.current) {
-      hasCalledMusicReady.current = true;
+    if (roomInfo.id) {
       setTimeout(async () => {
         await musicReady(roomInfo.id as string);
       }, 1800);
