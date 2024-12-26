@@ -59,7 +59,7 @@ import {
   selectResult,
   setResult,
 } from '@/redux/result/resultSlice';
-import { openModal, setDataModal } from '@/redux/modal/modalSlice';
+import { closeModal, openModal, setDataModal } from '@/redux/modal/modalSlice';
 import { setAchieve } from '@/redux/achieve/achieveSlice';
 
 const Game = () => {
@@ -443,6 +443,7 @@ const Game = () => {
         await dispatch(setAchieve(achieve));
       } catch (error) {
         console.error('결과 처리 중 오류 발생:', error);
+        dispatch(closeModal());
       }
     });
 

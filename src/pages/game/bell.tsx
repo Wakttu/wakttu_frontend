@@ -14,7 +14,7 @@ import {
 import { selectBgmVolume, selectEffectVolume } from '@/redux/audio/audioSlice';
 import { selectGame, setGame } from '@/redux/game/gameSlice';
 import { clearHistory } from '@/redux/history/historySlice';
-import { openModal, setDataModal } from '@/redux/modal/modalSlice';
+import { closeModal, openModal, setDataModal } from '@/redux/modal/modalSlice';
 import { clearResult, selectResult } from '@/redux/result/resultSlice';
 import { selectRoomInfo, setRoomInfo } from '@/redux/roomInfo/roomInfoSlice';
 import {
@@ -263,6 +263,7 @@ const Bell = () => {
         await dispatch(setAchieve(achieve));
       } catch (error) {
         console.error('Failed to update achievements:', error);
+        dispatch(closeModal());
         // 에러 상태 처리
       }
     });

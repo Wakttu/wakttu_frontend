@@ -47,8 +47,8 @@ export const CTimer = styled.div`
 `;
 
 export const TimerImg = styled.img`
-  width: 4rem;
-  height: 4rem;
+  width: 3.5rem;
+  height: 3.5rem;
 `;
 
 export const Middle = styled.div`
@@ -84,6 +84,7 @@ export const VideoScreen = styled.div<{ $isVisible: boolean }>`
 
 export const Song = styled.div`
   display: flex;
+  width: 100%;
   justify-content: left;
   align-items: center;
   gap: 0.625rem;
@@ -115,6 +116,7 @@ export const SongText = styled.h4<{ $isVisible: boolean }>`
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  width: 100%;
 `;
 
 export const SRight = styled.div`
@@ -157,6 +159,19 @@ export const SystemlogItem = styled.div`
   font-style: normal;
   font-weight: 600;
   line-height: normal;
+
+  animation: slideIn 0.5s ease-out;
+
+  @keyframes slideIn {
+    from {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
 `;
 
 export const Tag = styled.div<{ tag: string }>`

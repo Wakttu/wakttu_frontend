@@ -1,5 +1,15 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { COLORS } from '../theme';
+
+// 애니메이션 정의
+const slideIn = keyframes`
+  from {
+    transform: translateY(0.625rem); // 아래에서 시작
+  }
+  to {
+    transform: translateY(0); // 원래 위치로 이동
+  }
+`;
 
 export const ChatBox = styled.div`
   display: flex;
@@ -32,6 +42,9 @@ export const Log = styled.div`
   padding: 1rem;
   border-radius: 1rem;
   background: ${COLORS.bg};
+
+  // 애니메이션 효과 추가
+  animation: ${slideIn} 0.3s ease-in-out forwards; // 애니메이션 적용
 `;
 
 export const PlayerName = styled.h5<{ $color?: string }>`

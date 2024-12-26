@@ -32,7 +32,7 @@ import {
 } from '@/services/api';
 import { clearResult, selectResult } from '@/redux/result/resultSlice';
 import { clearHistory } from '@/redux/history/historySlice';
-import { openModal, setDataModal } from '@/redux/modal/modalSlice';
+import { closeModal, openModal, setDataModal } from '@/redux/modal/modalSlice';
 import { setAchieve } from '@/redux/achieve/achieveSlice';
 import ChatInput from '@/containers/game/music/ChatInput';
 
@@ -88,6 +88,9 @@ const Game = () => {
         setAnswer({ success: false, answer: '', pause: false, word: undefined })
       );
 
+      const newMusic = data.music[data.round - 1];
+      if (music !== newMusic) dispatch(setMusic(newMusic));
+
       if (playerRef.current) {
         setTimeout(() => {
           setIsPlaying(true);
@@ -137,12 +140,8 @@ const Game = () => {
       dispatch(setGame(data));
     };
 
-    const handleEnd = async (data: any) => {
+    const handleResult = async (data: any) => {
       try {
-        const { game, roomInfo } = data;
-        const response = await client.get(`/user/${user.id}`);
-        if (response) await dispatch(setUserInfo(response.data));
-
         dispatch(clearResult());
         dispatch(clearAnswer());
         dispatch(clearTimer());
@@ -163,22 +162,34 @@ const Game = () => {
         if (ach_1) achieve = [...achieve, ...ach_1];
         if (ach_2) achieve = [...achieve, ...ach_2];
         await dispatch(setAchieve(achieve));
+      } catch (error) {
+        console.error('Failed to update achievements:', error);
+        dispatch(closeModal());
+        // 에러 상태 처리
+      }
+    };
+
+    const handleEnd = async (data: any) => {
+      try {
+        const { game, roomInfo } = data;
+        const response = await client.get(`/user/${user.id}`);
+        if (response) await dispatch(setUserInfo(response.data));
 
         await router.push('/room');
         await dispatch(setRoomInfo(roomInfo));
         await dispatch(setGame(game));
         await dispatch(clearTimer());
-        await dispatch(clearAnswer());
-        await dispatch(clearResult());
-        await dispatch(clearHistory());
       } catch (error) {
-        console.error('Failed to update achievements:', error);
+        console.error('게임 종료 처리 중 오류 발생:', error);
+        // 오류 발생 시 기본 페이지로 리다이렉트
+        router.push('/');
       }
     };
 
     // 소켓 이벤트 리스너 등록
     socket.on('music.round', handleRound);
     socket.on('music.play', handlePlay);
+    socket.on('music.result', handleResult);
     socket.on('music.end', handleEnd);
     socket.on('music.answer', handleAnswer);
     socket.on('music.ping', handlePing);
@@ -188,6 +199,7 @@ const Game = () => {
     return () => {
       socket.off('music.round', handleRound);
       socket.off('music.play', handlePlay);
+      socket.off('music.result', handleResult);
       socket.off('music.end', handleEnd);
       socket.off('music.answer', handleAnswer);
       socket.off('music.ping', handlePing);

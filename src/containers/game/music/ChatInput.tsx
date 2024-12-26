@@ -35,6 +35,13 @@ const ChatInput = () => {
   const onSendAnswer = useCallback(() => {
     if (inputs.chat) {
       const chat = inputs.chat.toLowerCase().replace(/ /g, '');
+
+      if (chat === '!p') {
+        socket.emit('music.command', { roomId, chat });
+        setInputs({ chat: '' });
+        if (inputRef.current) inputRef.current.focus();
+        return;
+      }
       // 정답 전송
       if (
         Array.isArray(game.target) &&

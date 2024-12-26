@@ -61,7 +61,7 @@ import {
   selectResult,
   setResult,
 } from '@/redux/result/resultSlice';
-import { openModal, setDataModal } from '@/redux/modal/modalSlice';
+import { closeModal, openModal, setDataModal } from '@/redux/modal/modalSlice';
 import { setAchieve } from '@/redux/achieve/achieveSlice';
 
 const Game = () => {
@@ -403,26 +403,43 @@ const Game = () => {
   /* result, end logic*/
   useEffect(() => {
     socket.on('last.result', async (data) => {
-      dispatch(clearResult());
-      dispatch(clearAnswer());
-      dispatch(clearTimer());
-      dispatch(clearHistory());
+      try {
+        dispatch(clearResult());
+        dispatch(clearAnswer());
+        dispatch(clearTimer());
+        dispatch(clearHistory());
 
-      dispatch(setDataModal(data));
-      dispatch(openModal('RESULT'));
+        dispatch(setDataModal(data));
+        dispatch(openModal('RESULT'));
 
-      let achieve: any[] = [];
-      const ach_1 =
-        user.provider === 'waktaverse.games'
-          ? await updatePlayCount(game.type)
-          : await updatePlayCountLocal(game.type);
-      const ach_2 =
-        user.provider === 'waktaverse.games'
-          ? await updateResult(result)
-          : await updateResultLocal(result);
-      if (ach_1) achieve = [...achieve, ...ach_1];
-      if (ach_2) achieve = [...achieve, ...ach_2];
-      await dispatch(setAchieve(achieve));
+        let achieve: any[] = [];
+
+        // API 호출 부분 try-catch로 감싸기
+        try {
+          const ach_1 =
+            user.provider === 'waktaverse.games'
+              ? await updatePlayCount(game.type)
+              : await updatePlayCountLocal(game.type);
+          if (ach_1) achieve = [...achieve, ...ach_1];
+        } catch (error) {
+          console.error('업적 업데이트 실패 (플레이 카운트):', error);
+        }
+
+        try {
+          const ach_2 =
+            user.provider === 'waktaverse.games'
+              ? await updateResult(result)
+              : await updateResultLocal(result);
+          if (ach_2) achieve = [...achieve, ...ach_2];
+        } catch (error) {
+          console.error('업적 업데이트 실패 (결과):', error);
+        }
+
+        await dispatch(setAchieve(achieve));
+      } catch (error) {
+        console.error('결과 처리 중 오류 발생:', error);
+        dispatch(closeModal());
+      }
     });
 
     socket.on('last.end', async (data) => {
