@@ -50,7 +50,10 @@ const CreateRoom = () => {
       let onlyNumber = parseInt(value, 10);
 
       const limits: { [key: string]: { min: number; max: number } } = {
-        round: room.type === 2 ? { min: 1, max: 30 } : { min: 3, max: 8 },
+        round:
+          room.type === 0 || room.type === 1
+            ? { min: 3, max: 8 }
+            : { min: 1, max: 30 },
         total: { min: 2, max: 8 },
       };
 
@@ -92,8 +95,8 @@ const CreateRoom = () => {
         return {
           ...prev,
           [name]: value,
-          round: value === 2 ? 10 : 6,
-          time: value === 3 ? 40000 : 60000,
+          round: value > 1 ? 10 : 6,
+          time: value > 1 ? 40000 : 60000,
           option: [],
         };
       });

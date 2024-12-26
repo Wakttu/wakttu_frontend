@@ -13,14 +13,12 @@ import {
   Systemlog,
   SystemlogItem,
   VideoScreen,
-  VideoTime,
-  LoadingOverlay,
-  LoadingSpinner,
   TimerOverlay,
   VolumeImg,
   TimerImg,
   Tag,
   CTimer,
+  GameImg,
 } from '@/styles/music/Main';
 import ChatLog from '@/containers/game/music/ChatLog';
 import { getR2URL } from '@/services/api';
@@ -99,22 +97,28 @@ const Music: React.FC<Props> = ({
               }}
             />
           </YoutubeWrapper>
-          <VideoTime $isVisible={isVideoVisible}></VideoTime>
-
-          <LoadingOverlay $isLoading={false}>
-            <LoadingSpinner />
-          </LoadingOverlay>
 
           <TimerOverlay $isVisible={isVideoVisible}>
-            {playerRef.current?.props.url ===
-              'https://www.youtube.com/watch?v=EMhKeVHboiA' ||
-            !playerRef.current ? (
-              <div>로딩 중</div>
+            {playerRef.current ? (
+              playerRef.current.props.url ===
+              'https://www.youtube.com/watch?v=EMhKeVHboiA' ? (
+                <div>로딩 중</div>
+              ) : (
+                <CTimer>
+                  {playing ? (
+                    <>
+                      <TimerImg
+                        src={getR2URL('/assets/game/timer-white.svg')}
+                      />
+                      {(timer.roundTime - timer.countTime) / 1000}
+                    </>
+                  ) : (
+                    <GameImg src={getR2URL('/assets/channel/wakttu.svg')} />
+                  )}
+                </CTimer>
+              )
             ) : (
-              <CTimer>
-                <TimerImg src={getR2URL('/assets/game/timer-white.svg')} />
-                {(timer.roundTime - timer.countTime) / 1000}
-              </CTimer>
+              <div>로딩 중</div>
             )}
           </TimerOverlay>
         </VideoScreen>

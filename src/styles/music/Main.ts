@@ -18,6 +18,11 @@ export const SLeft = styled.div`
   width: 30rem;
 `;
 
+export const GameImg = styled.img`
+  width: 4rem;
+  height: 4rem;
+`;
+
 export const TimerOverlay = styled.div<{ $isVisible: boolean }>`
   display: flex;
   justify-content: center;
@@ -252,52 +257,5 @@ export const VolumeSlider = styled.input`
     background: #5024d4;
     border-radius: 1rem;
     cursor: pointer;
-  }
-`;
-
-export const VideoTime = styled.div<{ $isVisible: boolean }>`
-  position: absolute;
-  bottom: 0.5rem;
-  right: 0.5rem;
-  color: white;
-  background-color: rgba(0, 0, 0, 0.7);
-  padding: 0.25rem 0.5rem;
-  border-radius: 0.25rem;
-  font-size: 0.875rem;
-  font-family: 'Wanted Sans Variable', 'Wanted Sans', sans-serif;
-  opacity: ${({ $isVisible }) => ($isVisible ? 0 : 1)};
-  transition: opacity 0.3s ease;
-`;
-
-export const LoadingOverlay = styled.div<{ $isLoading: boolean }>`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  opacity: ${({ $isLoading }) => ($isLoading ? 1 : 0)};
-  visibility: ${({ $isLoading }) => ($isLoading ? 'visible' : 'hidden')};
-  transition: opacity 0.3s ease, visibility 0.3s ease;
-`;
-
-export const LoadingSpinner = styled.div`
-  width: 3rem;
-  height: 3rem;
-  border: 0.25rem solid #fff;
-  border-bottom-color: transparent;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-
-  @keyframes spin {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
   }
 `;

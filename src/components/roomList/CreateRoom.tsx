@@ -48,6 +48,18 @@ const haveRoundTime = (type: number) => {
   return type === 0 || type === 1;
 };
 
+const haveRoundCount = (type: number) => {
+  const roundCount: Record<number, { min: string; max: string }> = {
+    0: { min: '3', max: '8' },
+    1: { min: '3', max: '8' },
+    2: { min: '10', max: '20' },
+    3: { min: '10', max: '20' },
+    4: { min: '10', max: '50' },
+  };
+
+  return roundCount[type];
+};
+
 const CreateRoom = ({
   modalRef,
   isDown,
@@ -136,8 +148,8 @@ const CreateRoom = ({
             type="number"
             value={roomInfo.round}
             onChange={onRoomInfo}
-            min={roomInfo.type === 2 ? '10' : '3'}
-            max={roomInfo.type === 2 ? '30' : '8'}
+            min={haveRoundCount(roomInfo.type).min}
+            max={haveRoundCount(roomInfo.type).max}
           />
         </CCreate>
         {haveRoundTime(roomInfo.type) ? (
@@ -192,7 +204,7 @@ const CreateRoom = ({
               </CCheck>
             </CheckBox>
           ) : null}
-          {roomInfo.type !== 2 && roomInfo.type !== 4 ? (
+          {haveRoundTime(roomInfo.type as number) ? (
             <>
               <CheckBox onClick={() => onSelect('option', '매너')}>
                 <CCheck>
