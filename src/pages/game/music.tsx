@@ -254,19 +254,6 @@ const Game = () => {
     []
   );
 
-  // 연결 끊김 처리
-  useEffect(() => {
-    const handleDisconnect = () => {
-      router.replace('/');
-    };
-
-    socket.on('disconnect', handleDisconnect);
-
-    return () => {
-      socket.off('disconnect', handleDisconnect);
-    };
-  }, [router]);
-
   // 게임 나가기 처리
   useEffect(() => {
     socket.on('exit', (data) => {
@@ -286,6 +273,18 @@ const Game = () => {
     };
   }, [dispatch, router]);
 
+  useEffect(() => {
+    const handleReconnect = (data: any) => {
+      setRoomInfo(data.roomInfo);
+      setGame(data.game);
+    };
+
+    socket.on('reconnect', handleReconnect);
+
+    return () => {
+      socket.off('reconnect', handleReconnect);
+    };
+  });
   return (
     <Container>
       <Header />

@@ -22,7 +22,7 @@ const weathers = [
   { weather: 'cloud', name: '구름', src: getR2URL('/assets/game/cloud.svg') },
   { weather: 'fog', name: '안개', src: getR2URL('/assets/game/fog.svg') },
   { weather: 'wind', name: '강풍', src: getR2URL('/assets/game/wind.svg') },
-  { weather: 'segu', name: '세구', src: getR2URL('/assets/game/cloud.svg') },
+  { weather: 'segu', name: '세구', src: getR2URL('/assets/game/segu.svg') },
 ];
 
 const titles = (weather: string) => {

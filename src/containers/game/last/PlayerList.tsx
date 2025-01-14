@@ -28,11 +28,12 @@ const PlayerList = () => {
   const [receivedEmoticon, setReceivedEmoticon] = useState<Emo[]>([]);
 
   useEffect(() => {
-    socket.on('chat', (data) => {
+    const handleBubble = (data: any) => {
       setBubble([...bubble, data]);
-    });
+    };
+    socket.on('chat', handleBubble);
     return () => {
-      socket.off('chat');
+      socket.off('chat', handleBubble);
     };
   }, [bubble]);
 

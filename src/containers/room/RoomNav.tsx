@@ -43,15 +43,19 @@ const RoomNav = () => {
       dispatch(setGame(game));
     });
 
-    socket.on('kick helper', async (data) => {
-      await onExit();
+    socket.on('kick helper', async () => {
+      await router.push('roomlist');
+      dispatch(clearRoomInfo());
+      dispatch(clearGame());
+
+      setTimeout(() => socket.emit('kick helper', roomId), 200);
     });
 
     return () => {
       socket.off('exit');
       socket.off('kick helper');
     };
-  }, [dispatch, onExit]);
+  }, [dispatch, router]);
 
   return (
     <CRoomNav

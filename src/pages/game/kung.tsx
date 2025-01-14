@@ -201,22 +201,6 @@ const Game = () => {
     exit(roomInfo.id as string);
   }, [dispatch, roomInfo.id, router]);
 
-  /**
-   * Opening
-   */
-
-  useEffect(() => {
-    const handleDisconnect = () => {
-      router.replace('/');
-    };
-
-    socket.on('disconnect', handleDisconnect);
-
-    return () => {
-      socket.off('disconnect', handleDisconnect);
-    };
-  }, [router]);
-
   useEffect(() => {
     const opening = setTimeout(() => {
       if (game.host === user.id) {
@@ -244,7 +228,7 @@ const Game = () => {
     socket.on('kung.round', (data) => {
       dispatch(setGame(data));
 
-      if (failUser.count === 3) {
+      if (failUser.count === 2) {
         if (name === failUser.name) {
           setTimeout(() => exitGame());
           setFailuesr({ name: '', count: 0 });
@@ -490,6 +474,19 @@ const Game = () => {
       socket.off('exit');
     };
   }, [dispatch, router]);
+
+  useEffect(() => {
+    const handleReconnect = (data: any) => {
+      setRoomInfo(data.roomInfo);
+      setGame(data.game);
+    };
+
+    socket.on('reconnect', handleReconnect);
+
+    return () => {
+      socket.off('reconnect', handleReconnect);
+    };
+  });
 
   return (
     <Container>

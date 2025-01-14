@@ -105,50 +105,32 @@ const MainFormContainer = () => {
           return;
         }
 
-        let isServerFull = false;
-        // 소켓 연결을 Promise로 래핑
         await new Promise<void>((resolve, reject) => {
           socket.connect();
 
-          /*
-          const timer = setTimeout(() => {
-            reject(
-              new Error(
-                '서버 연결이 만료되었습니다. 네트워크 상태를 확인해 보세요'
-              )
-            );
-          }, 5000);
-          */
+          socket.once('connect_error', (error) => {
+            console.log('Connect error occurred:', error);
+            console.log('Socket status before disconnect:', socket.connected);
+            socket.disconnect();
+            console.log('Socket status after disconnect:', socket.connected);
+            reject(error);
+          });
 
-          socket.on('connected', () => {
+          socket.once('connected', () => {
             setIsConnected(true);
             resolve();
           });
-
-          socket.on('full', () => {
-            reject(
-              new Error(
-                '서버 최대 수용 인원을 초과했습니다. 잠시 후에 다시 접속해주세요 !'
-              )
-            );
-          });
-
-          socket.on('connect_error', (error) => {
-            reject(error);
-          });
         });
 
-        // 소켓 연결이 성공적으로 완료된 후에 페이지 이동
         await router.push('/roomlist');
-      } catch (error) {
-        console.error('Socket connection failed:', error);
-        alert(error);
+      } catch (error: any) {
+        alert(error.message);
         socket.disconnect();
         setIsConnected(false);
       }
 
-      // 이벤트 리스너들은 연결 성공 후에 등록 (중복 방지)
       socket.off('disconnect').on('disconnect', () => {
+        console.log('Disconnect event fired');
         setIsConnected(false);
       });
     },

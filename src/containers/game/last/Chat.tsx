@@ -143,15 +143,17 @@ const Chat = () => {
   }, []);
 
   useEffect(() => {
-    socket.on('chat', (data) => {
+    const handleChat = (data: any) => {
       data.date = getTime();
       setLog((prev) => [...prev, data]);
       playSound();
-    });
-    return () => {
-      socket.off('chat');
     };
-  }, [log]);
+
+    socket.on('chat', handleChat);
+    return () => {
+      socket.off('chat', handleChat);
+    };
+  }, [log, playSound]);
 
   // 서버로부터 답변을 받을 때의 처리
   useEffect(() => {
@@ -164,7 +166,8 @@ const Chat = () => {
       const isIn = isInHistory(data);
 
       const remainingTime = timer.turnTime - timer.countTime;
-      const delay = remainingTime >= 5000 ? 2000 : 500;
+      const delay = remainingTime >= 5000 ? 2000 : Math.min(remainingTime, 500);
+      if (remainingTime - delay < 200) return;
       const timeoutId = setTimeout(() => {
         sendBotAnswer({
           roomId,
