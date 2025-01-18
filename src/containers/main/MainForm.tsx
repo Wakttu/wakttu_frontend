@@ -116,6 +116,15 @@ const MainFormContainer = () => {
             reject(error);
           });
 
+          socket.once('connection_error', (error) => {
+            console.log('Connect error occurred:', error);
+            console.log('Socket status before disconnect:', socket.connected);
+            socket.disconnect();
+            console.log('Socket status after disconnect:', socket.connected);
+            router.reload();
+            reject(error);
+          });
+
           socket.once('connected', () => {
             setIsConnected(true);
             resolve();

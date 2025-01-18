@@ -69,7 +69,7 @@ const PlayList = ({ users, game, answer, bubble, team, emoticon }: Props) => {
             {myTeam ? <TeamTag team={myTeam.team}>{myTeam.name}</TeamTag> : ''}
             {lastBubble ? (
               <BubbleBox
-                key={user.id + lastBubbleIdxRef}
+                key={user.id + lastBubbleIdxRef.current}
                 chat={lastBubble.chat}
               />
             ) : (
