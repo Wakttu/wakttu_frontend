@@ -1,5 +1,5 @@
 import type { AppProps } from 'next/app';
-import { useEffect, useState } from 'react';
+import { createElement, useEffect, useState } from 'react';
 
 import Head from 'next/head';
 import { useRouter } from 'next/router';
@@ -7,6 +7,11 @@ import { GoogleTagManager } from '@next/third-parties/google';
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+
+import { setup } from 'goober';
+import { prefix } from 'goober/prefixer';
+
+import { shouldForwardProp } from 'goober/should-forward-prop';
 
 import { GlobalStyle, GlobalStyleForPdf } from '@/styles/GlobalStyle';
 import { Container } from '@/components';
@@ -17,6 +22,16 @@ import store from '@/redux/store';
 
 import { fontSizeManager } from '@/modules/BaseFontSize';
 import { isMobileDevice } from '@/modules/Mobile';
+
+setup(
+  createElement,
+  prefix,
+  undefined,
+  shouldForwardProp((prop) => {
+    // Do NOT forward props that start with `$` symbol
+    return prop['0'] !== '$';
+  })
+);
 
 const App = ({ Component, pageProps }: AppProps) => {
   const { pathname: path } = useRouter();

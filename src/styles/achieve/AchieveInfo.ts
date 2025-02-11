@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import { styled, css } from 'goober';
 import { COLORS } from '../theme';
 
 type InfoVariant = 'title' | 'content';
@@ -57,7 +57,7 @@ const characterColors = {
   },
 };
 
-export const TitleSection = styled.div`
+export const TitleSection = styled('div')`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -72,7 +72,7 @@ export const TitleSection = styled.div`
   box-sizing: border-box;
 `;
 
-export const Tag = styled.div<{ $character?: CharacterVariant }>`
+export const Tag = styled('div')<{ $character?: CharacterVariant }>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -88,7 +88,7 @@ export const Tag = styled.div<{ $character?: CharacterVariant }>`
     $character ? characterColors[$character] : characterColors.woowakgood};
 `;
 
-export const Title = styled.h5`
+export const Title = styled('h5')`
   color: ${COLORS.text};
 
   font-family: 'Wanted Sans Variable', 'Wanted Sans', sans-serif;
@@ -97,7 +97,7 @@ export const Title = styled.h5`
   line-height: normal;
 `;
 
-export const InfoSection = styled.div`
+export const InfoSection = styled('div')`
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -108,7 +108,7 @@ export const InfoSection = styled.div`
   overflow: hidden;
 `;
 
-export const InfoTop = styled.div`
+export const InfoTop = styled('div')`
   display: flex;
   height: 21rem;
   padding: 2.5rem;
@@ -119,7 +119,7 @@ export const InfoTop = styled.div`
   border-radius: 1rem;
 `;
 
-export const Badge = styled.img<{ got: boolean }>`
+export const Badge = styled('img')<{ got: boolean }>`
   width: 16rem;
   height: 16rem;
   flex-shrink: 0;
@@ -143,14 +143,14 @@ export const Badge = styled.img<{ got: boolean }>`
     pointer-events: none;
   }
 `;
-export const Hidden = styled.div`
+export const Hidden = styled('div')`
   width: 16rem;
   height: 16rem;
   border-radius: 22.5rem;
   background-color: black;
 `;
 
-export const InfoBottom = styled.div`
+export const InfoBottom = styled('div')`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -160,7 +160,7 @@ export const InfoBottom = styled.div`
   gap: 0.5rem;
 `;
 
-export const Wrap = styled.ul`
+export const Wrap = styled('ul')`
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
@@ -168,7 +168,7 @@ export const Wrap = styled.ul`
   gap: 1rem;
 `;
 
-export const Info = styled.li<{ $variant?: InfoVariant }>`
+export const Info = styled('li')<{ $variant?: InfoVariant }>`
   display: flex;
   justify-content: start;
   align-items: flex-start;

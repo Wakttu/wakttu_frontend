@@ -1,16 +1,16 @@
-import styled, { css } from 'styled-components';
+import { styled, css } from 'goober';
 import { COLORS } from '../theme';
 import { scrollbarStyles } from '../book/Scrollbar';
 import { CosmeticStyles, CosmeticVariant } from '../book/CosmeticType';
 
-const RightWrapper = styled.div`
+const RightWrapper = styled('div')`
   display: flex;
   flex-direction: column;
   width: 100%;
   gap: 1rem;
 `;
 
-const ListBox = styled.div`
+const ListBox = styled('div')`
   display: flex;
   flex-direction: column;
 
@@ -22,7 +22,7 @@ const ListBox = styled.div`
   border: 2px solid ${COLORS['gray-4']};
 `;
 
-const TagBox = styled.div`
+const TagBox = styled('div')`
   display: flex;
 
   padding: 0.5rem;
@@ -32,7 +32,7 @@ const TagBox = styled.div`
   border: 1px solid ${COLORS['gray-4']};
 `;
 
-const Tag = styled.div<{ $isClicked: boolean }>`
+const Tag = styled('div')<{ $isClicked: boolean }>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -48,7 +48,7 @@ const Tag = styled.div<{ $isClicked: boolean }>`
   color: ${({ $isClicked }) => ($isClicked ? 'white' : COLORS['text'])};
 `;
 
-const ListItems = styled.div`
+const ListItems = styled('div')`
   display: flex;
   align-content: flex-start;
   flex-wrap: wrap;
@@ -62,7 +62,7 @@ const ListItems = styled.div`
   ${scrollbarStyles};
 `;
 
-const ListItem = styled.div<{ $isClickedItem: boolean }>`
+const ListItem = styled('div')<{ $isClickedItem: boolean }>`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -86,7 +86,7 @@ const ListItem = styled.div<{ $isClickedItem: boolean }>`
   }
 `;
 
-const ImageBox = styled.div`
+const ImageBox = styled('div')`
   position: relative;
   display: flex;
   justify-content: center;
@@ -97,7 +97,7 @@ const ImageBox = styled.div`
   padding: 0.9375rem 0;
 `;
 
-const ItemImage = styled.img<{ item: string; id?: string }>`
+const ItemImage = styled('img')<{ item: string; id?: string }>`
   position: absolute;
   width: ${({ item }) => {
     switch (item) {
@@ -121,7 +121,7 @@ const ItemImage = styled.img<{ item: string; id?: string }>`
     item === 'hand' ? (id === 'H-5' ? 'bottom:0.2rem;' : 'left: 1rem;') : ''};
 `;
 
-const ItemInfo = styled.div`
+const ItemInfo = styled('div')`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -130,7 +130,7 @@ const ItemInfo = styled.div`
   gap: 0.5rem;
 `;
 
-const ItemTag = styled.span<{ $itemType?: CosmeticVariant }>`
+const ItemTag = styled('span')<{ $itemType?: CosmeticVariant }>`
   display: flex;
   align-items: center;
   padding: 0.25rem 0.625rem;
@@ -148,7 +148,7 @@ const ItemTag = styled.span<{ $itemType?: CosmeticVariant }>`
   font-weight: 600;
 `;
 
-const ItemName = styled.span`
+const ItemName = styled('span')`
   max-width: 7rem;
   word-wrap: break-word;
   font-size: 1.125rem;

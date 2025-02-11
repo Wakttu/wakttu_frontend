@@ -1,7 +1,7 @@
-import styled, { keyframes, css } from 'styled-components';
+import { styled, css, keyframes } from 'goober';
 import { COLORS } from '../theme';
 
-export const InfoContainer = styled.div`
+export const InfoContainer = styled('div')`
   display: flex;
   height: 35rem;
   padding: 1.5rem 1rem;
@@ -14,7 +14,7 @@ export const InfoContainer = styled.div`
   border-radius: 1rem;
 `;
 
-export const Box = styled.div`
+export const Box = styled('div')`
   width: 12rem;
   height: 12rem;
   display: flex;
@@ -26,7 +26,7 @@ export const Box = styled.div`
   border-radius: 1rem;
 `;
 
-export const Text = styled.h3`
+export const Text = styled('h3')`
   color: ${COLORS.text};
   text-align: center;
 
@@ -36,7 +36,7 @@ export const Text = styled.h3`
   line-height: normal;
 `;
 
-export const Weather = styled.img`
+export const Weather = styled('img')`
   width: 9.375rem;
 `;
 
@@ -46,7 +46,7 @@ export const blinkAnimation = keyframes`
   100% { opacity: 1; }
 `;
 
-export const AnimatedText = styled.h3<{ isCritical: boolean }>`
+export const AnimatedText = styled('h3')<{ isCritical: boolean }>`
   ${({ isCritical }) =>
     isCritical
       ? css`

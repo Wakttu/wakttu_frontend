@@ -1,7 +1,7 @@
-import styled from 'styled-components';
+import { styled } from 'goober';
 import { COLORS, FONT_SIZES } from '../theme';
 
-export const Container = styled.div`
+export const Container = styled('div')`
   width: 100%;
   height: 100%;
   position: fixed;
@@ -15,7 +15,7 @@ export const Container = styled.div`
   z-index: 100;
 `;
 
-export const CModal = styled.div`
+export const CModal = styled('div')`
   display: flex;
   width: 56.25rem;
   padding: 3rem;
@@ -29,25 +29,25 @@ export const CModal = styled.div`
   background: ${COLORS.bg};
 `;
 
-export const CTitle = styled.div`
+export const CTitle = styled('div')`
   display: flex;
   align-items: center;
   gap: 0.375rem;
 `;
 
-export const Trophy = styled.img`
+export const Trophy = styled('img')`
   width: 2rem;
   height: 2rem;
 `;
 
-export const ResultTitle = styled.h3`
+export const ResultTitle = styled('h3')`
   color: ${COLORS.text};
 
   font-family: 'Wanted Sans Variable', 'Wanted Sans', sans-serif;
   font-weight: 600;
 `;
 
-export const CBody = styled.div`
+export const CBody = styled('div')`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -55,7 +55,7 @@ export const CBody = styled.div`
   align-self: stretch;
 `;
 
-export const CResult = styled.div`
+export const CResult = styled('div')`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -63,21 +63,21 @@ export const CResult = styled.div`
   align-self: stretch;
 `;
 
-export const RankList = styled.div`
+export const RankList = styled('div')`
   display: flex;
   align-items: flex-end;
   justify-content: center;
   gap: 1.5rem;
 `;
 
-export const CPlayer = styled.div`
+export const CPlayer = styled('div')`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
 `;
 
-export const Card = styled.div<{ rank: number }>`
+export const Card = styled('div')<{ rank: number }>`
   display: flex;
   width: 13.625rem;
   height: ${({ rank }) => {
@@ -100,23 +100,23 @@ export const Card = styled.div<{ rank: number }>`
   background: ${COLORS['gray-5']};
 `;
 
-export const Character = styled.img`
+export const Character = styled('img')`
   width: 7rem;
   height: 7.0625rem;
 `;
 
-export const NameTag = styled.div`
+export const NameTag = styled('div')`
   display: flex;
   align-items: center;
   gap: 0.375rem;
 `;
 
-export const Grade = styled.img`
+export const Grade = styled('img')`
   width: 1.125rem;
   height: 1.125rem;
 `;
 
-export const Name = styled.h6`
+export const Name = styled('h6')`
   color: ${COLORS.text};
   text-align: center;
 
@@ -126,7 +126,7 @@ export const Name = styled.h6`
   line-height: normal;
 `;
 
-export const Score = styled.h4<{ rank: number }>`
+export const Score = styled('h4')<{ rank: number }>`
   width: 100%;
   color: ${({ rank }) => {
     if (rank === 1) {
@@ -146,7 +146,7 @@ export const Score = styled.h4<{ rank: number }>`
   line-height: normal;
 `;
 
-export const Rank = styled.div<{ rank: number }>`
+export const Rank = styled('div')<{ rank: number }>`
   display: flex;
   height: 2.125rem;
   justify-content: center;
@@ -175,7 +175,7 @@ export const Rank = styled.div<{ rank: number }>`
   line-height: normal;
 `;
 
-export const RestList = styled.div`
+export const RestList = styled('div')`
   display: flex;
   width: 43.75rem;
   padding: 1rem 2rem;
@@ -190,13 +190,13 @@ export const RestList = styled.div`
   background: ${COLORS['gray-5']};
 `;
 
-export const RestItem = styled.div`
+export const RestItem = styled('div')`
   display: flex;
   align-items: center;
   gap: 0.8125rem;
 `;
 
-export const RestText = styled.h6`
+export const RestText = styled('h6')`
   color: ${COLORS['gray-2']};
 
   font-family: 'Wanted Sans Variable', 'Wanted Sans', sans-serif;
@@ -205,7 +205,7 @@ export const RestText = styled.h6`
   line-height: normal;
 `;
 
-export const CFooter = styled.div`
+export const CFooter = styled('div')`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -213,7 +213,7 @@ export const CFooter = styled.div`
   align-self: stretch;
 `;
 
-export const CLevel = styled.div`
+export const CLevel = styled('div')`
   display: flex;
   width: 43.75rem;
 
@@ -222,7 +222,7 @@ export const CLevel = styled.div`
   gap: 0.625rem;
 `;
 
-export const CLevelIcon = styled.div`
+export const CLevelIcon = styled('div')`
   display: flex;
 
   justify-content: space-between;
@@ -230,13 +230,13 @@ export const CLevelIcon = styled.div`
   align-self: stretch;
 `;
 
-export const NowLevel = styled.div`
+export const NowLevel = styled('div')`
   display: flex;
   align-items: center;
   gap: 0.625rem;
 `;
 
-export const Exp = styled.span`
+export const Exp = styled('span')`
   color: ${COLORS.primary};
 
   font-family: 'Wanted Sans Variable', 'Wanted Sans', sans-serif;
@@ -246,7 +246,7 @@ export const Exp = styled.span`
   line-height: normal;
 `;
 
-export const ExpBar = styled.div`
+export const ExpBar = styled('div')`
   width: 43.75rem;
   height: 0.625rem;
   flex-shrink: 0;
@@ -255,7 +255,7 @@ export const ExpBar = styled.div`
   background: ${COLORS['gray-4']};
 `;
 
-export const Gauge = styled.div<{ exp: number }>`
+export const Gauge = styled('div')<{ exp: number }>`
   width: ${({ exp }) => exp + '%'};
   height: 100%;
 
@@ -263,14 +263,14 @@ export const Gauge = styled.div<{ exp: number }>`
   background: ${COLORS.primary};
 `;
 
-export const Stat = styled.div`
+export const Stat = styled('div')`
   display: flex;
   align-items: center;
   gap: 0.75rem;
   align-self: stretch;
 `;
 
-export const Item = styled.div<{ $color?: boolean }>`
+export const Item = styled('div')<{ $color?: boolean }>`
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -278,7 +278,7 @@ export const Item = styled.div<{ $color?: boolean }>`
   color: ${({ $color }) => ($color ? COLORS['gray-2'] : COLORS.text)};
 `;
 
-export const StatText = styled.h6<{ $color: boolean }>`
+export const StatText = styled('h6')<{ $color: boolean }>`
   color: ${({ $color }) => ($color ? COLORS['gray-2'] : COLORS.text)};
 
   font-family: 'Wanted Sans Variable', 'Wanted Sans', sans-serif;
@@ -287,7 +287,7 @@ export const StatText = styled.h6<{ $color: boolean }>`
   line-height: normal;
 `;
 
-export const Confirm = styled.button`
+export const Confirm = styled('button')`
   display: flex;
   width: 25rem;
   padding: 1rem 5.875rem;

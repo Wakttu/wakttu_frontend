@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components';
+import { styled, keyframes } from 'goober';
 
 const motion = keyframes`
 0% {
@@ -18,7 +18,7 @@ const motion = keyframes`
 }
 `;
 
-export const Container = styled.div`
+export const Container = styled('div')`
   position: fixed;
   left: 0;
   right: 0;
@@ -37,11 +37,11 @@ export const Container = styled.div`
   z-index: 1500;
 `;
 
-export const Logo = styled.img`
+export const Logo = styled('img')`
   width: 32rem;
   height: 32rem;
 
   animation: ${motion} 1s linear infinite;
 `;
 
-export const Title = styled.h2``;
+export const Title = styled('h2')``;

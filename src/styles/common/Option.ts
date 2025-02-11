@@ -1,7 +1,7 @@
-import styled from 'styled-components';
+import { styled } from 'goober';
 import { COLORS, FONT_SIZES } from '../theme';
 
-const Modal = styled.div`
+const Modal = styled('div')`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -16,7 +16,7 @@ const Modal = styled.div`
   background: rgb(0, 0, 0, 0.1);
 `;
 
-const COption = styled.div`
+const COption = styled('div')`
   display: inline-flex;
   padding: 1.75rem;
   flex-direction: column;
@@ -30,12 +30,12 @@ const COption = styled.div`
   background: ${COLORS.bg};
 `;
 
-const Setting = styled.img`
+const Setting = styled('img')`
   width: 1.75rem;
   height: 1.75rem;
 `;
 
-const TitleText = styled.h4`
+const TitleText = styled('h4')`
   color: ${COLORS.text};
 
   font-family: 'Wanted Sans Variable', 'Wanted Sans', sans-serif;
@@ -44,13 +44,13 @@ const TitleText = styled.h4`
   line-height: normal;
 `;
 
-const Title = styled.div`
+const Title = styled('div')`
   display: flex;
   align-items: center;
   gap: 0.375rem;
 `;
 
-const CVolume = styled.div`
+const CVolume = styled('div')`
   display: flex;
   width: 100%;
   justify-content: space-between;
@@ -58,7 +58,7 @@ const CVolume = styled.div`
   gap: 1.5rem;
 `;
 
-const VoulmeText = styled.h6`
+const VoulmeText = styled('h6')`
   color: ${COLORS.text};
 
   font-family: 'Wanted Sans Variable', 'Wanted Sans', sans-serif;
@@ -67,14 +67,14 @@ const VoulmeText = styled.h6`
   line-height: normal;
 `;
 
-const CButton = styled.div`
+const CButton = styled('div')`
   display: flex;
   align-items: flex-start;
   gap: 0.75rem;
   align-self: stretch;
 `;
 
-const SetButton = styled.button`
+const SetButton = styled('button')`
   display: flex;
   padding: 1rem 2.625rem;
   justify-content: center;
@@ -101,7 +101,7 @@ const SetButton = styled.button`
   }
 `;
 
-const Cancle = styled.button`
+const Cancle = styled('button')`
   display: flex;
 
   padding: 1rem 2.625rem;
@@ -124,7 +124,7 @@ const Cancle = styled.button`
   line-height: normal;
 `;
 
-const VolumeContainer = styled.div<{ range: number }>`
+const VolumeContainer = styled('div')<{ range: number }>`
   position: relative;
   width: 17.6875rem;
   height: 0.375rem;
@@ -137,7 +137,7 @@ const VolumeContainer = styled.div<{ range: number }>`
   border-radius: 0.25rem;
 `;
 
-const VInput = styled.input`
+const VInput = styled('input')`
   position: absolute;
   top: 0;
   left: 0;

@@ -1,7 +1,7 @@
-import styled from 'styled-components';
+import { styled } from 'goober';
 import { COLORS, FONT_SIZES } from '../theme';
 
-const CUserList = styled.article`
+const CUserList = styled('article')`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -17,7 +17,7 @@ const CUserList = styled.article`
   background: ${COLORS.bg};
 `;
 
-const ListTitle = styled.div`
+const ListTitle = styled('div')`
   display: flex;
   padding: 1rem 0.625rem;
   justify-content: center;
@@ -30,12 +30,12 @@ const ListTitle = styled.div`
   background: ${COLORS.bg};
 `;
 
-const Title = styled.h5`
+const Title = styled('h5')`
   color: ${COLORS.text};
   font-family: 'Wanted Sans Variable', 'Wanted Sans', sans-serif;
 `;
 
-const Count = styled.div`
+const Count = styled('div')`
   display: flex;
   padding: 0.25rem 0.625rem;
   justify-content: center;
@@ -51,7 +51,7 @@ const Count = styled.div`
   background: ${COLORS['gray-4']};
 `;
 
-const List = styled.div`
+const List = styled('div')`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -81,18 +81,18 @@ const List = styled.div`
   }
 `;
 
-const CPlayer = styled.div`
+const CPlayer = styled('div')`
   display: flex;
   align-items: center;
   gap: 0.375rem;
 `;
 
-const Icon = styled.img`
+const Icon = styled('img')`
   width: 1.125rem;
   height: 1.125rem;
 `;
 
-const Name = styled.h5<{ $color: string }>`
+const Name = styled('h5')<{ $color: string }>`
   color: ${({ $color }) => {
     return $color;
   }};

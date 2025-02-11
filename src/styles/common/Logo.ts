@@ -1,6 +1,6 @@
-import styled from 'styled-components';
+import { styled } from 'goober';
 
-const LogoLG = styled.img`
+const LogoLG = styled('img')`
   width: 24rem;
   height: 24rem;
   cursor: pointer;

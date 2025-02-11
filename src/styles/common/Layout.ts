@@ -1,8 +1,8 @@
 import { getR2URL } from '@/services/api';
 import { R2_URL } from '@/services/api';
-import styled from 'styled-components';
+import { styled } from 'goober';
 
-const ContentContainer = styled.div<{ path?: string }>`
+const ContentContainer = styled('div')<{ path?: string }>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -45,7 +45,7 @@ background-size: cover;
   }}
 `;
 
-const Container = styled.div`
+const Container = styled('div')`
   display: flex;
   flex-direction: column;
 

@@ -1,7 +1,7 @@
 import { COLORS } from '@/styles/theme';
-import styled from 'styled-components';
+import { styled } from 'goober';
 
-const CReady = styled.article`
+const CReady = styled('article')`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -15,14 +15,14 @@ const CReady = styled.article`
   border: 2px solid ${COLORS['gray-4']};
   background: ${COLORS.bg};
 `;
-const CTeam = styled.div`
+const CTeam = styled('div')`
   display: flex;
   align-items: flex-start;
   gap: 0.625rem;
   align-self: stretch;
 `;
 
-const TeamButton = styled.h4<{ team: string }>`
+const TeamButton = styled('h4')<{ team: string }>`
   display: flex;
   padding: 1rem;
   justify-content: center;
@@ -57,7 +57,7 @@ const TeamButton = styled.h4<{ team: string }>`
 
   cursor: pointer;
 `;
-const ReadyButton = styled.h4`
+const ReadyButton = styled('h4')`
   display: flex;
   width: 100%;
   padding: 1rem;

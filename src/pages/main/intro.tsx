@@ -4,9 +4,9 @@ import { MainHeader } from '@/components';
 import { getR2URL } from '@/services/api';
 import { Container } from '@/styles/common/Layout';
 
-import styled from 'styled-components';
+import { styled } from 'goober';
 
-const ScrollContainer = styled.div`
+const ScrollContainer = styled('div')`
   height: 100vh;
   overflow-y: scroll;
   -ms-overflow-style: none;
@@ -17,7 +17,7 @@ const ScrollContainer = styled.div`
   }
 `;
 
-const StyledImage = styled.img`
+const StyledImage = styled('img')`
   width: 100%;
   height: auto;
   display: block;
@@ -29,7 +29,7 @@ const Intro = () => {
       <Head>
         <title>게임 소개 | 왁뚜 - 우리 모두 품어놀자!</title>
       </Head>
-      
+
       <Container>
         <MainHeader />
         <ScrollContainer>

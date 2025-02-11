@@ -1,7 +1,7 @@
-import styled from 'styled-components';
+import { styled } from 'goober';
 import { COLORS, FONT_SIZES } from '../theme';
 
-const ModalContainer = styled.div`
+const ModalContainer = styled('div')`
   width: 100%;
   height: 100%;
   position: fixed;
@@ -13,7 +13,7 @@ const ModalContainer = styled.div`
   background: rgba(0, 0, 0, 0.8);
 `;
 
-const Modal = styled.div`
+const Modal = styled('div')`
   display: flex;
   padding: 3rem 2.5rem;
   justify-content: center;
@@ -24,27 +24,27 @@ const Modal = styled.div`
   background: ${COLORS.bg};
 `;
 
-const FormContainer = styled.div`
+const FormContainer = styled('div')`
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 2rem;
 `;
 
-const FormName = styled.h3`
+const FormName = styled('h3')`
   color: ${COLORS.text};
   font-family: 'Wanted Sans Variable', 'Wanted Sans', sans-serif;
   font-weight: 600;
 `;
 
-const FormSection = styled.form`
+const FormSection = styled('form')`
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1.125rem;
 `;
 
-const InputContainer = styled.div`
+const InputContainer = styled('div')`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -59,7 +59,7 @@ const InputContainer = styled.div`
   }
 `;
 
-const InputSection = styled.div`
+const InputSection = styled('div')`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -68,7 +68,7 @@ const InputSection = styled.div`
   position: relative;
 `;
 
-const FormLabel = styled.span`
+const FormLabel = styled('span')`
   color: ${COLORS.text};
   font-family: 'Wanted Sans Variable', 'Wanted Sans', sans-serif;
   font-weight: 500;
@@ -82,7 +82,7 @@ const FormLabel = styled.span`
   }
 `;
 
-const FormItem = styled.div`
+const FormItem = styled('div')`
   display: flex;
   align-items: center;
   box-sizing: border-box;
@@ -132,21 +132,21 @@ const FormItem = styled.div`
   }
 `;
 
-const WrapButton = styled.div`
+const WrapButton = styled('div')`
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 2rem;
 `;
 
-const SubmitContainer = styled.div`
+const SubmitContainer = styled('div')`
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1.5rem;
 `;
 
-const SubmitButton = styled.button`
+const SubmitButton = styled('button')`
   display: flex;
   width: 16.875rem;
   padding: 0.75rem;
@@ -172,7 +172,7 @@ const SubmitButton = styled.button`
   }
 `;
 
-const SnsContainer = styled.div`
+const SnsContainer = styled('div')`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -183,13 +183,13 @@ const SnsText = styled(FormLabel)`
   color: ${COLORS['gray-2']};
 `;
 
-const SnsIcon = styled.img`
+const SnsIcon = styled('img')`
   width: 2.625rem;
   height: 2.625rem;
   cursor: pointer;
 `;
 
-const FormFooter = styled.div`
+const FormFooter = styled('div')`
   display: flex;
   justify-content: center;
   align-items: flex-start;

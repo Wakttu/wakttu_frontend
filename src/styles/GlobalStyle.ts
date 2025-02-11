@@ -1,7 +1,7 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyles } from 'goober/global';
 import { COLORS } from './theme';
 
-export const GlobalStyleForPdf = createGlobalStyle`
+export const GlobalStyleForPdf = createGlobalStyles`
   #__next,
   body,
   html {
@@ -10,7 +10,7 @@ export const GlobalStyleForPdf = createGlobalStyle`
   }
 `;
 
-export const GlobalStyle = createGlobalStyle`
+export const GlobalStyle = createGlobalStyles`
   * {
     box-sizing: border-box;
   }

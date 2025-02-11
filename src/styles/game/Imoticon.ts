@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components';
+import { styled, keyframes } from 'goober';
 
 const growShrink = keyframes`
   0% {
@@ -15,7 +15,7 @@ const growShrink = keyframes`
   }
 `;
 
-export const ImoticonImage = styled.img`
+export const ImoticonImage = styled('img')`
   position: absolute;
   top: -3.8rem;
   right: -1.5rem;

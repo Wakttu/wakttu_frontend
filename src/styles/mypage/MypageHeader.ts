@@ -1,13 +1,13 @@
-import styled from 'styled-components';
+import { styled } from 'goober';
 import { COLORS } from '../theme';
 
-const Header = styled.div`
+const Header = styled('div')`
   display: flex;
   justify-content: space-between;
   margin-top: 1.3125rem;
 `;
 
-const Buttons = styled.div`
+const Buttons = styled('div')`
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -16,7 +16,7 @@ const Buttons = styled.div`
   gap: 0.75rem;
 `;
 
-const SaveButton = styled.div`
+const SaveButton = styled('div')`
   display: flex;
   align-items: center;
 
@@ -30,7 +30,7 @@ const SaveButton = styled.div`
   cursor: pointer;
 `;
 
-const ResetButton = styled.div`
+const ResetButton = styled('div')`
   display: flex;
   align-items: center;
 
@@ -44,7 +44,7 @@ const ResetButton = styled.div`
   cursor: pointer;
 `;
 
-const ButtonIcon = styled.img`
+const ButtonIcon = styled('img')`
   width: 1.5rem;
   height: 1.5rem;
   fill: white;

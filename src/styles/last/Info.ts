@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components';
+import { styled, keyframes } from 'goober';
 import { COLORS, FONT_SIZES } from '../theme';
 
 const DROM_SHADOW = '0px 1px 10px 0px rgba(0, 0, 0, 0.15)';
@@ -12,7 +12,7 @@ const TimerAnimation = keyframes`
   }
 `;
 
-export const Wrapper = styled.div`
+export const Wrapper = styled('div')`
   position: absolute;
   top: 7.56rem;
   display: flex;
@@ -20,7 +20,7 @@ export const Wrapper = styled.div`
   gap: 1.37rem;
 `;
 
-export const CInfo = styled.div`
+export const CInfo = styled('div')`
   display: inline-flex;
   flex-direction: column;
   justify-content: center;
@@ -36,13 +36,13 @@ export const CInfo = styled.div`
   box-shadow: ${DROM_SHADOW};
 `;
 
-export const CRound = styled.div`
+export const CRound = styled('div')`
   display: flex;
   align-items: center;
   gap: 1.25rem;
 `;
 
-export const RoundText = styled.h4<{ $type?: boolean }>`
+export const RoundText = styled('h4')<{ $type?: boolean }>`
   color: ${({ $type }) => {
     if ($type === undefined) return COLORS.bg;
     if ($type === false) return 'rgba(255, 255, 255, 0.5)';
@@ -57,7 +57,7 @@ export const RoundText = styled.h4<{ $type?: boolean }>`
   }}
 `;
 
-export const NumberText = styled.h4`
+export const NumberText = styled('h4')`
   color: ${COLORS.pupple};
 
   text-align: center;
@@ -65,7 +65,7 @@ export const NumberText = styled.h4`
   font-weight: 600;
 `;
 
-export const CTarget = styled.div`
+export const CTarget = styled('div')`
   display: flex;
   padding: 0.625rem 1.5rem;
   justify-content: center;
@@ -73,7 +73,7 @@ export const CTarget = styled.div`
   gap: 0.625rem;
 `;
 
-export const TargetRound = styled.div`
+export const TargetRound = styled('div')`
   display: flex;
   width: 2.5rem;
   height: 2.5rem;
@@ -88,14 +88,14 @@ export const TargetRound = styled.div`
   box-shadow: ${DROM_SHADOW};
 `;
 
-export const CTargetList = styled.div`
+export const CTargetList = styled('div')`
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 0.625rem;
 `;
 
-export const CTime = styled.div`
+export const CTime = styled('div')`
   display: flex;
   padding: 0.625rem 1.5rem;
   flex-direction: column;
@@ -107,35 +107,35 @@ export const CTime = styled.div`
   background: ${COLORS.bg};
 `;
 
-export const CTimer = styled.div`
+export const CTimer = styled('div')`
   display: flex;
   flex-direction: column;
   width: 38.25rem;
   height: 3.3125rem;
 `;
 
-export const TimerItem = styled.div`
+export const TimerItem = styled('div')`
   display: flex;
   justify-content: space-between;
 `;
 
-export const LeftTimer = styled.div`
+export const LeftTimer = styled('div')`
   display: inline-flex;
   align-items: center;
   gap: 0.3125rem;
 `;
-export const RightTimer = styled.div`
+export const RightTimer = styled('div')`
   display: inline-flex;
   align-items: center;
   gap: 0.3125rem;
 `;
 
-export const TimerIcon = styled.img`
+export const TimerIcon = styled('img')`
   width: 1.5rem;
   height: 1.5rem;
 `;
 
-export const TimerText = styled.span`
+export const TimerText = styled('span')`
   color: #747474;
   text-align: center;
 
@@ -144,7 +144,7 @@ export const TimerText = styled.span`
   font-size: ${FONT_SIZES['body-2']};
 `;
 
-export const RemainText = styled.span`
+export const RemainText = styled('span')`
   color: ${COLORS.pupple};
   text-align: right;
 
@@ -153,7 +153,7 @@ export const RemainText = styled.span`
   font-size: ${FONT_SIZES['body-2']};
 `;
 
-export const TimerBar = styled.div`
+export const TimerBar = styled('div')`
   display: flex;
   width: 26.125rem;
   height: 0.625rem;
@@ -170,7 +170,7 @@ export const BTimerBar = styled(TimerBar)`
   background: #605774;
 `;
 
-export const GaugeBar = styled.div<{ gauge: number; pause: boolean }>`
+export const GaugeBar = styled('div')<{ gauge: number; pause: boolean }>`
   width: 100%;
   height: 100%;
   border-radius: 6.25rem;
@@ -184,7 +184,7 @@ export const GaugeBar = styled.div<{ gauge: number; pause: boolean }>`
   animation-fill-mode: forwards;
 `;
 
-export const CChain = styled.div<{ $flag?: boolean }>`
+export const CChain = styled('div')<{ $flag?: boolean }>`
   ${({ $flag }) => {
     return $flag ? 'visibility: hidden;' : '';
   }}
@@ -203,14 +203,14 @@ export const CChain = styled.div<{ $flag?: boolean }>`
   box-shadow: ${DROM_SHADOW};
 `;
 
-export const CText = styled.div`
+export const CText = styled('div')`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 `;
 
-export const ChainText = styled.h5`
+export const ChainText = styled('h5')`
   color: ${COLORS.pupple};
   text-align: center;
 
@@ -218,7 +218,7 @@ export const ChainText = styled.h5`
   font-weight: 600;
 `;
 
-export const BChainText = styled.h2`
+export const BChainText = styled('h2')`
   color: ${COLORS.text};
   text-align: center;
 

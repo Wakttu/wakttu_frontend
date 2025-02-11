@@ -1,11 +1,8 @@
-import styled, { css } from 'styled-components';
+import { styled, css } from 'goober';
 import { COLORS } from '@/styles/theme';
-import {
-  relevantInfo,
-  RelevantPerson,
-} from '@/components/dictionary/Word';
+import { relevantInfo, RelevantPerson } from '@/components/dictionary/Word';
 
-const ListWrapper = styled.div`
+const ListWrapper = styled('div')`
   display: flex;
   width: 120rem;
   height: 55rem;
@@ -23,7 +20,7 @@ const ListWrapper = styled.div`
   }
 `;
 
-const Wrapper = styled.div`
+const Wrapper = styled('div')`
   display: flex;
   width: 64.5rem;
   padding: 2.125rem;
@@ -38,38 +35,38 @@ const Wrapper = styled.div`
   box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.15);
 `;
 
-const TopWrapper = styled.div`
+const TopWrapper = styled('div')`
   display: flex;
   justify-content: space-between;
   align-items: center;
   align-self: stretch;
 `;
 
-const TopLeftWrapper = styled.div`
+const TopLeftWrapper = styled('div')`
   display: flex;
   align-items: center;
   gap: 0.75rem;
 `;
 
-const Title = styled.h3`
+const Title = styled('h3')`
   color: #000;
   text-align: center;
 `;
 
-const LinkButton = styled.button`
+const LinkButton = styled('button')`
   background: none;
   border: none;
   cursor: pointer;
 `;
 
-const LinkIcon = styled.img`
+const LinkIcon = styled('img')`
   width: 2rem;
   height: 2rem;
   transform: rotate(-90deg);
 `;
 
 /** Relevant */
-const RelevantWrapper = styled.div`
+const RelevantWrapper = styled('div')`
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -84,7 +81,7 @@ const RelevantBackgroundColor = css<{ $RelevantPerson: RelevantPerson }>`
   }}
 `;
 
-const RelevantBdage = styled.div<{ $RelevantPerson: RelevantPerson }>`
+const RelevantBdage = styled('div')<{ $RelevantPerson: RelevantPerson }>`
   display: flex;
   padding: 0.375rem 0.75rem;
   align-items: center;
@@ -94,7 +91,7 @@ const RelevantBdage = styled.div<{ $RelevantPerson: RelevantPerson }>`
   ${RelevantBackgroundColor};
 `;
 
-const RelevantText = styled.span`
+const RelevantText = styled('span')`
   color: rgba(255, 255, 255, 0.9);
   text-align: center;
 
@@ -106,11 +103,11 @@ const RelevantText = styled.span`
   line-height: normal;
 `;
 
-const Description = styled.h6`
+const Description = styled('h6')`
   color: var(--Text, #282828);
 `;
 
-const TagWrapper = styled.div`
+const TagWrapper = styled('div')`
   display: flex;
   padding: 0.5rem 1rem;
   justify-content: center;
@@ -121,7 +118,7 @@ const TagWrapper = styled.div`
   background: var(--Gray-4, #eaeaea);
 `;
 
-const TagContent = styled.span`
+const TagContent = styled('span')`
   color: var(--Gray-2, #666);
   text-align: center;
 `;

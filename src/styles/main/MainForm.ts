@@ -1,7 +1,7 @@
-import styled from 'styled-components';
+import { styled } from 'goober';
 import { COLORS, FONT_SIZES } from '../theme';
 
-const WrapForm = styled.div`
+const WrapForm = styled('div')`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -9,12 +9,12 @@ const WrapForm = styled.div`
   gap: 2.625rem;
 `;
 
-const MainLogo = styled.img`
+const MainLogo = styled('img')`
   width: 20.5rem;
   height: 13.0625rem;
 `;
 
-const CLogin = styled.div`
+const CLogin = styled('div')`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -22,7 +22,7 @@ const CLogin = styled.div`
   align-self: stretch;
 `;
 
-const GusetLogin = styled.div`
+const GusetLogin = styled('div')`
   display: flex;
   padding: 1.125rem 0.75rem;
   justify-content: center;
@@ -42,7 +42,7 @@ const GusetLogin = styled.div`
   }
 `;
 
-const GuestText = styled.h6`
+const GuestText = styled('h6')`
   color: ${COLORS['gray-2']};
 
   font-family: 'Wanted Sans Variable', 'Wanted Sans', sans-serif;
@@ -51,7 +51,7 @@ const GuestText = styled.h6`
   line-height: normal;
 `;
 
-const WakGamesLogin = styled.div`
+const WakGamesLogin = styled('div')`
   display: flex;
   padding: 1.125rem 0.75rem;
   justify-content: center;
@@ -71,7 +71,7 @@ const WakGamesLogin = styled.div`
   }
 `;
 
-const WakgamesText = styled.h6`
+const WakgamesText = styled('h6')`
   color: ${COLORS.bg};
 
   font-family: 'Wanted Sans Variable', 'Wanted Sans', sans-serif;
@@ -80,7 +80,7 @@ const WakgamesText = styled.h6`
   line-height: normal;
 `;
 
-const SignUp = styled.div`
+const SignUp = styled('div')`
   display: flex;
   width: 100%;
   justify-content: center;
@@ -88,7 +88,7 @@ const SignUp = styled.div`
   gap: 0.375rem;
 `;
 
-const LeftText = styled.span`
+const LeftText = styled('span')`
   display: inline-block;
   height: 1.125rem;
   color: ${COLORS['gray-2']};
@@ -100,14 +100,14 @@ const LeftText = styled.span`
   line-height: normal;
 `;
 
-const CRight = styled.div`
+const CRight = styled('div')`
   display: flex;
 
   align-items: center;
   cursor: pointer;
 `;
 
-const RightText = styled.span`
+const RightText = styled('span')`
   color: ${COLORS.primary};
 
   font-family: 'Wanted Sans Variable', 'Wanted Sans', sans-serif;
@@ -117,12 +117,12 @@ const RightText = styled.span`
   line-height: normal;
 `;
 
-const RightArrow = styled.img`
+const RightArrow = styled('img')`
   width: 1.125rem;
   height: 1.125rem;
 `;
 
-const GameStart = styled.div`
+const GameStart = styled('div')`
   display: flex;
   width: 17.5rem;
   padding: 1.125rem 0.75rem;
@@ -148,7 +148,7 @@ const GameStart = styled.div`
   }
 `;
 
-const CStart = styled.div`
+const CStart = styled('div')`
   display: flex;
   width: 17.5rem;
   flex-direction: column;
@@ -156,13 +156,13 @@ const CStart = styled.div`
   gap: 0.875rem;
 `;
 
-const CTop = styled.div`
+const CTop = styled('div')`
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
 `;
 
-const CPLayer = styled.div`
+const CPLayer = styled('div')`
   position: relative;
   display: flex;
   width: 17.5rem;
@@ -175,7 +175,7 @@ const CPLayer = styled.div`
   box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.05);
 `;
 
-const Info = styled.div`
+const Info = styled('div')`
   position: absolute;
   right: 0.6rem;
   display: flex;
@@ -185,21 +185,21 @@ const Info = styled.div`
   gap: 0.5rem;
 `;
 
-const NameNRank = styled.div`
+const NameNRank = styled('div')`
   display: flex;
   justify-content: flex-start;
   align-items: center;
   gap: 0.2rem;
 `;
 
-const PlayerName = styled.span`
+const PlayerName = styled('span')`
   color: ${COLORS.text};
   font-family: 'Wanted Sans Variable', 'Wanted Sans', sans-serif;
   font-weight: 600;
   font-size: 1rem;
 `;
 
-const Rank = styled.img`
+const Rank = styled('img')`
   width: 1.125rem;
   height: 1.125rem;
 `;
@@ -209,7 +209,7 @@ const Wakgames = styled(Rank)`
   height: 1rem;
 `;
 
-const LevelBar = styled.div`
+const LevelBar = styled('div')`
   width: 8.25rem;
   height: 0.5rem;
 
@@ -217,7 +217,7 @@ const LevelBar = styled.div`
   background: ${COLORS['gray-4']};
 `;
 
-const GaugeBar = styled.div<{ $exp: number }>`
+const GaugeBar = styled('div')<{ $exp: number }>`
   width: ${({ $exp }) => {
     return $exp + '%';
   }};
@@ -226,14 +226,14 @@ const GaugeBar = styled.div<{ $exp: number }>`
   background: ${COLORS.primary};
 `;
 
-const Stat = styled.div`
+const Stat = styled('div')`
   display: flex;
   align-items: center;
   gap: 0.5rem;
   align-self: stretch;
 `;
 
-const GrayText = styled.span`
+const GrayText = styled('span')`
   color: ${COLORS['gray-2']};
 
   font-family: 'Wanted Sans Variable', 'Wanted Sans', sans-serif;
@@ -243,7 +243,7 @@ const GrayText = styled.span`
   line-height: normal;
 `;
 
-const BlackText = styled.span`
+const BlackText = styled('span')`
   color: ${COLORS.text};
 
   font-family: 'Wanted Sans Variable', 'Wanted Sans', sans-serif;

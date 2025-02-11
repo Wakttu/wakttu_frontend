@@ -1,7 +1,7 @@
-import styled from 'styled-components';
+import { styled } from 'goober';
 import { COLORS, FONT_SIZES } from '../theme';
 
-export const Overlay = styled.div`
+export const Overlay = styled('div')`
   position: fixed;
   top: 0;
   left: 0;
@@ -14,7 +14,7 @@ export const Overlay = styled.div`
   z-index: 1003;
 `;
 
-export const Container = styled.div`
+export const Container = styled('div')`
   display: flex;
   width: 22.5rem;
   padding: 1.75rem;
@@ -28,7 +28,7 @@ export const Container = styled.div`
   background: ${COLORS.bg};
 `;
 
-export const Text = styled.h6`
+export const Text = styled('h6')`
   color: ${COLORS['gray-2']};
   text-align: center;
 
@@ -36,12 +36,12 @@ export const Text = styled.h6`
   font-weight: 500;
 `;
 
-export const CButton = styled.div`
+export const CButton = styled('div')`
   display: flex;
 
   gap: 0.75rem;
 `;
-export const ConfirmButton = styled.button`
+export const ConfirmButton = styled('button')`
   display: flex;
 
   flex: 1 0 0;
@@ -61,7 +61,7 @@ export const ConfirmButton = styled.button`
   }
 `;
 
-export const ConfrimText = styled.span`
+export const ConfrimText = styled('span')`
   color: ${COLORS.bg};
   text-align: center;
 
@@ -70,7 +70,7 @@ export const ConfrimText = styled.span`
   font-size: ${FONT_SIZES['subtitle-1']};
 `;
 
-export const CancleButton = styled.button`
+export const CancleButton = styled('button')`
   display: flex;
 
   flex: 1 0 0;
@@ -86,7 +86,7 @@ export const CancleButton = styled.button`
   background: ${COLORS['gray-4']};
 `;
 
-export const CancleText = styled.span`
+export const CancleText = styled('span')`
   color: ${COLORS['gray-2']};
   text-align: center;
 

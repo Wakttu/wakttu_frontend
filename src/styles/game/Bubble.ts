@@ -1,8 +1,8 @@
-import styled from 'styled-components';
+import { styled } from 'goober';
 import { COLORS } from '../theme';
 import { FONT_SIZES } from '../theme';
 
-export const Bubble = styled.div`
+export const Bubble = styled('div')`
   position: absolute;
   background: ${COLORS.bg};
   border-radius: 0.4rem;

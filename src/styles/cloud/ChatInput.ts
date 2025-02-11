@@ -1,7 +1,7 @@
-import styled from 'styled-components';
+import { styled } from 'goober';
 import { COLORS, FONT_SIZES } from '../theme';
 
-export const InputContainer = styled.div`
+export const InputContainer = styled('div')`
   display: flex;
   width: 100%;
   height: 6.4375rem;
@@ -13,7 +13,7 @@ export const InputContainer = styled.div`
   background-color: ${COLORS.bg};
 `;
 
-export const MessageBlock = styled.div`
+export const MessageBlock = styled('div')`
   display: flex;
   width: 100%;
   padding: 0.5rem 1rem;
@@ -26,7 +26,7 @@ export const MessageBlock = styled.div`
   background: ${COLORS['gray-5']};
 `;
 
-export const MessageInput = styled.input`
+export const MessageInput = styled('input')`
   display: -webkit-box;
   width: 100%;
   -webkit-box-orient: vertical;
@@ -48,7 +48,7 @@ export const MessageInput = styled.input`
   }
 `;
 
-export const SendMessage = styled.button`
+export const SendMessage = styled('button')`
   display: flex;
   padding: 0.5rem 1rem;
   justify-content: center;
@@ -61,7 +61,7 @@ export const SendMessage = styled.button`
   cursor: pointer;
 `;
 
-export const SendIcon = styled.img`
+export const SendIcon = styled('img')`
   fill: ${COLORS.bg};
   width: 1.1004rem;
   height: 1.1004rem;

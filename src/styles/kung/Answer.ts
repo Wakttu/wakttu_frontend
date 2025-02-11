@@ -1,4 +1,4 @@
-import { keyframes, styled } from 'styled-components';
+import { keyframes, styled } from 'goober';
 import { COLORS, FONT_SIZES } from '../theme';
 
 const DROM_SHADOW = '0px 1px 10px 0px rgba(0, 0, 0, 0.15)';
@@ -12,7 +12,7 @@ const TimerAnimation = keyframes`
   }
 `;
 
-export const Container = styled.div<{ pause: boolean }>`
+export const Container = styled('div')<{ pause: boolean }>`
   position: fixed;
   top: 0;
   display: flex;
@@ -31,7 +31,7 @@ export const Container = styled.div<{ pause: boolean }>`
   opacity: ${({ pause }) => (pause ? 1 : 0)};
 `;
 
-export const Modal = styled.div`
+export const Modal = styled('div')`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -47,7 +47,7 @@ export const Modal = styled.div`
   box-shadow: ${DROM_SHADOW};
 `;
 
-export const ModalTitle = styled.div`
+export const ModalTitle = styled('div')`
   display: inline-flex;
   width: 100%;
   padding: 0.9375rem 0 0.625rem 0;
@@ -58,7 +58,7 @@ export const ModalTitle = styled.div`
   background: #00801c;
 `;
 
-export const TitleText = styled.h4`
+export const TitleText = styled('h4')`
   color: ${COLORS.bg};
   text-align: center;
 
@@ -66,7 +66,7 @@ export const TitleText = styled.h4`
   font-weight: 600;
 `;
 
-export const TargetText = styled.h2`
+export const TargetText = styled('h2')`
   margin-top: 1.19rem;
   color: ${COLORS.text};
   text-align: center;
@@ -75,7 +75,7 @@ export const TargetText = styled.h2`
   font-weight: 700;
 `;
 
-export const CTimer = styled.div`
+export const CTimer = styled('div')`
   display: inline-flex;
   width: 100%;
   justify-content: space-between;
@@ -84,23 +84,23 @@ export const CTimer = styled.div`
   gap: 0.3125rem;
 `;
 
-export const LeftTimer = styled.div`
+export const LeftTimer = styled('div')`
   display: inline-flex;
   align-items: center;
   gap: 0.3125rem;
 `;
-export const RightTimer = styled.div`
+export const RightTimer = styled('div')`
   display: inline-flex;
   align-items: center;
   gap: 0.3125rem;
 `;
 
-export const TimerIcon = styled.img`
+export const TimerIcon = styled('img')`
   width: 1.5rem;
   height: 1.5rem;
 `;
 
-export const TimerText = styled.span`
+export const TimerText = styled('span')`
   color: ${COLORS.text};
   text-align: center;
 
@@ -109,7 +109,7 @@ export const TimerText = styled.span`
   font-size: ${FONT_SIZES['body-2']};
 `;
 
-export const RemainText = styled.span`
+export const RemainText = styled('span')`
   color: #00801c;
 
   text-align: right;
@@ -119,7 +119,7 @@ export const RemainText = styled.span`
   font-size: ${FONT_SIZES['body-2']};
 `;
 
-export const TimerBar = styled.div`
+export const TimerBar = styled('div')`
   display: flex;
   width: 26.125rem;
   height: 0.625rem;
@@ -136,7 +136,7 @@ export const BTimerBar = styled(TimerBar)`
   background: #605774;
 `;
 
-export const GaugeBar = styled.div<{ gauge: number; pause: boolean }>`
+export const GaugeBar = styled('div')<{ gauge: number; pause: boolean }>`
   width: 100%;
   height: 100%;
   border-radius: 6.25rem;
@@ -150,7 +150,7 @@ export const GaugeBar = styled.div<{ gauge: number; pause: boolean }>`
   animation-fill-mode: forwards;
 `;
 
-export const CAnswer = styled.div`
+export const CAnswer = styled('div')`
   display: flex;
   width: 36.25rem;
   height: 4.0625rem;
@@ -164,7 +164,7 @@ export const CAnswer = styled.div`
   background: ${COLORS.bg};
 `;
 
-export const AnswerText = styled.h3`
+export const AnswerText = styled('h3')`
   color: #727272;
   text-align: center;
 

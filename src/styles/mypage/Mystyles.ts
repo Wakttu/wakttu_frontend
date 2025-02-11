@@ -1,31 +1,31 @@
-import styled from 'styled-components';
+import { styled } from 'goober';
 import { COLORS } from '../theme';
 
-const Wrapper = styled.div`
+const Wrapper = styled('div')`
   display: flex;
   gap: 1rem;
 `;
 
-const LeftWrapper = styled.div`
+const LeftWrapper = styled('div')`
   display: flex;
   flex-direction: column;
   gap: 1rem;
 `;
 
-const Content = styled.div`
+const Content = styled('div')`
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
 `;
 
-const Character = styled.div`
+const Character = styled('div')`
   display: flex;
 
   width: 57.3125rem;
   gap: 0.625rem;
 `;
 
-const MyCharacterBox = styled.div`
+const MyCharacterBox = styled('div')`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -40,24 +40,24 @@ const MyCharacterBox = styled.div`
   border: 2px solid ${COLORS['gray-4']};
 `;
 
-const User = styled.div`
+const User = styled('div')`
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 0.625rem;
 `;
 
-const UserIcon = styled.img`
+const UserIcon = styled('img')`
   width: 1.5625rem;
   height: 1.4375rem;
 `;
 
-const UserName = styled.span`
+const UserName = styled('span')`
   font-size: 1.5rem;
   font-weight: 600;
 `;
 
-const WearingItems = styled.div`
+const WearingItems = styled('div')`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -75,7 +75,7 @@ const WearingItems = styled.div`
   border: 2px solid ${COLORS['gray-4']};
 `;
 
-const WearingItem = styled.div`
+const WearingItem = styled('div')`
   position: relative;
   display: flex;
   flex-direction: column;
@@ -91,7 +91,7 @@ const WearingItem = styled.div`
   overflow: hidden;
 `;
 
-const WearingImage = styled.img<{ item: string }>`
+const WearingImage = styled('img')<{ item: string }>`
   width: ${({ item }) => {
     switch (item) {
       case 'hand':
@@ -112,7 +112,7 @@ const WearingImage = styled.img<{ item: string }>`
   ${({ src }) => (src ? 'opacity : 1' : 'opacity : 0')};
 `;
 
-const WearingTag = styled.div<{ $backgroundColor: string; $color: string }>`
+const WearingTag = styled('div')<{ $backgroundColor: string; $color: string }>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -127,20 +127,20 @@ const WearingTag = styled.div<{ $backgroundColor: string; $color: string }>`
   font-weight: 600;
 `;
 
-const Emoticon = styled.div`
+const Emoticon = styled('div')`
   display: flex;
   flex-direction: column;
   gap: 0.625rem;
 `;
 
-const EmoticonBox = styled.div`
+const EmoticonBox = styled('div')`
   height: 16.375rem;
 
   border-radius: 1rem;
   border: 2px solid ${COLORS['gray-4']};
 `;
 
-const ContentFooter = styled.div`
+const ContentFooter = styled('div')`
   display: flex;
   justify-content: center;
   margin-top: 1.5rem;

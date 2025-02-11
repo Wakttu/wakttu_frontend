@@ -1,10 +1,10 @@
-import styled, { css } from 'styled-components';
+import { styled, css } from 'goober';
 import { COLORS } from '@/styles/theme';
 import { BackgroundImage, CosmeticType, CosmeticVariant } from './CosmeticType';
 
 export type InfoVariant = 'title' | 'content';
 
-const TitleSection = styled.div`
+const TitleSection = styled('div')`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -19,7 +19,7 @@ const TitleSection = styled.div`
   box-sizing: border-box;
 `;
 
-const Tag = styled.div<{ $itemType?: CosmeticVariant }>`
+const Tag = styled('div')<{ $itemType?: CosmeticVariant }>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -34,14 +34,14 @@ const Tag = styled.div<{ $itemType?: CosmeticVariant }>`
   ${CosmeticType}
 `;
 
-const Title = styled.div`
+const Title = styled('div')`
   font-family: 'Wanted Sans Variable', 'Wanted Sans', sans-serif;
   font-size: 1.25rem;
   font-weight: 600;
   color: ${COLORS.text};
 `;
 
-const InfoSection = styled.div`
+const InfoSection = styled('div')`
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -51,7 +51,7 @@ const InfoSection = styled.div`
   overflow: hidden;
 `;
 
-const InfoTop = styled.div<{ $itemType?: CosmeticVariant }>`
+const InfoTop = styled('div')<{ $itemType?: CosmeticVariant }>`
   position: relative;
   display: flex;
   justify-content: center;
@@ -62,7 +62,7 @@ const InfoTop = styled.div<{ $itemType?: CosmeticVariant }>`
   ${BackgroundImage};
 `;
 
-const CosmeticImage = styled.img<{ item: string; id?: string }>`
+const CosmeticImage = styled('img')<{ item: string; id?: string }>`
   position: absolute;
   z-index: 2;
 
@@ -98,7 +98,7 @@ const CosmeticImage = styled.img<{ item: string; id?: string }>`
   }}
 `;
 
-const InfoBottom = styled.div`
+const InfoBottom = styled('div')`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -108,7 +108,7 @@ const InfoBottom = styled.div`
   gap: 0.5rem;
 `;
 
-const Wrap = styled.ul`
+const Wrap = styled('ul')`
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
@@ -116,7 +116,7 @@ const Wrap = styled.ul`
   gap: 1rem;
 `;
 
-const Info = styled.li<{ $variant?: InfoVariant }>`
+const Info = styled('li')<{ $variant?: InfoVariant }>`
   display: flex;
   justify-content: start;
   align-items: flex-start;
@@ -149,7 +149,7 @@ const Info = styled.li<{ $variant?: InfoVariant }>`
   }}
 `;
 
-const GetButton = styled.div<{ $itemType?: CosmeticVariant }>`
+const GetButton = styled('div')<{ $itemType?: CosmeticVariant }>`
   display: flex;
   justify-content: center;
   align-items: center;

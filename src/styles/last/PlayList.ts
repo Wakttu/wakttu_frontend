@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components';
+import { styled, keyframes } from 'goober';
 import { COLORS, FONT_SIZES } from '../theme';
 
 const DROM_SHADOW = '0px 1px 10px 0px rgba(0, 0, 0, 0.15)';
@@ -14,7 +14,7 @@ const moveUpAndFadeOut = keyframes`
   }
 `;
 
-export const CPlayerList = styled.div`
+export const CPlayerList = styled('div')`
   position: relative;
   display: flex;
   width: 100%;
@@ -28,7 +28,7 @@ export const CPlayerList = styled.div`
   background: linear-gradient(180deg, #c0b0ff 0%, #92aaff 100%);
 `;
 
-export const CPlayer = styled.div<{
+export const CPlayer = styled('div')<{
   $turn?: boolean;
   $fail?: boolean;
   $end?: boolean;
@@ -63,7 +63,7 @@ export const CPlayer = styled.div<{
   }}
 `;
 
-export const PlusScore = styled.div<{ plus: boolean }>`
+export const PlusScore = styled('div')<{ plus: boolean }>`
   position: absolute;
   top: 10%;
   right: 0.25rem;
@@ -77,14 +77,14 @@ export const PlusScore = styled.div<{ plus: boolean }>`
   animation: ${moveUpAndFadeOut} 2s ease-out forwards;
 `;
 
-export const CName = styled.div`
+export const CName = styled('div')`
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 0.4375rem;
 `;
 
-export const Name = styled.h5`
+export const Name = styled('h5')`
   color: ${COLORS.text};
   text-align: center;
 
@@ -92,7 +92,7 @@ export const Name = styled.h5`
   font-weight: 600;
 `;
 
-export const Score = styled.h3<{ team?: string }>`
+export const Score = styled('h3')<{ team?: string }>`
   color: ${({ team }) => {
     switch (team) {
       case 'woo':
@@ -113,7 +113,7 @@ export const Score = styled.h3<{ team?: string }>`
   font-weight: 600;
 `;
 
-export const Host = styled.div`
+export const Host = styled('div')`
   display: flex;
   padding: 0.25rem 0.625rem;
   justify-content: center;
@@ -133,7 +133,7 @@ export const Host = styled.div`
   }
 `;
 
-export const TeamTag = styled.div<{ team: string }>`
+export const TeamTag = styled('div')<{ team: string }>`
   position: absolute;
   left: 0.5rem;
   top: 0.7432rem;

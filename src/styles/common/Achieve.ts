@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components';
+import { styled, keyframes } from 'goober';
 import { COLORS, FONT_SIZES } from '../theme';
 
 const keyframe = keyframes`
@@ -10,7 +10,7 @@ const keyframe = keyframes`
 }
 `;
 
-export const Box = styled.div<{ idx?: number }>`
+export const Box = styled('div')<{ idx?: number }>`
   position: fixed;
   bottom: ${({ idx }) => (idx ? idx * 5.5 + 'rem' : '0')};
   right: 0;
@@ -22,7 +22,7 @@ export const Box = styled.div<{ idx?: number }>`
   opacity: 1;
 `;
 
-export const CAchieve = styled.div`
+export const CAchieve = styled('div')`
   position: relative;
   display: flex;
   width: 21.75rem;
@@ -43,7 +43,7 @@ export const CAchieve = styled.div`
     ${COLORS.bg};
 `;
 
-export const Left = styled.div`
+export const Left = styled('div')`
   position: absolute;
   left: -0.5rem;
   width: 0.5rem;
@@ -55,18 +55,18 @@ export const Left = styled.div`
   border-left: 2px solid rgba(0, 0, 0, 0.1);
 `;
 
-export const CTitle = styled.div`
+export const CTitle = styled('div')`
   display: flex;
   align-items: center;
   gap: 0.25rem;
 `;
 
-export const Trophy = styled.img`
+export const Trophy = styled('img')`
   width: 1.5rem;
   height: 1.5rem;
 `;
 
-export const Title = styled.h6`
+export const Title = styled('h6')`
   color: ${COLORS.bg};
 
   font-family: 'Wanted Sans Variable', 'Wanted Sans', sans-serif;
@@ -74,28 +74,28 @@ export const Title = styled.h6`
   font-weight: 500;
 `;
 
-export const Content = styled.div`
+export const Content = styled('div')`
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 0.625rem;
 `;
 
-export const Badge = styled.img`
+export const Badge = styled('img')`
   width: 4rem;
   height: 4rem;
 
   border-radius: 22.5rem;
 `;
 
-export const Info = styled.div`
+export const Info = styled('div')`
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 0.625rem;
 `;
 
-export const Name = styled.span`
+export const Name = styled('span')`
   color: ${COLORS.text};
 
   font-family: 'Wanted Sans Variable', 'Wanted Sans', sans-serif;
@@ -105,7 +105,7 @@ export const Name = styled.span`
   line-height: normal;
 `;
 
-export const Desc = styled.span`
+export const Desc = styled('span')`
   width: 13.6875rem;
 
   color: ${COLORS.text};

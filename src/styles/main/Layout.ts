@@ -1,6 +1,6 @@
-import styled from 'styled-components';
+import { styled } from 'goober';
 
-const Wrapper = styled.div`
+const Wrapper = styled('div')`
   display: flex;
   width: 88rem;
   height: auto;

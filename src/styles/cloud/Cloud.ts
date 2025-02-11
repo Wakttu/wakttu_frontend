@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components';
+import { styled, keyframes } from 'goober';
 import { getR2URL } from '@/services/api';
 import { COLORS } from '../theme';
 
@@ -91,13 +91,13 @@ const goldWindAnimation = keyframes`
   }
 `;
 
-export const Game = styled.div`
+export const Game = styled('div')`
   position: relative;
   width: 82rem;
   height: 32.6875rem;
 `;
 
-export const Cloud = styled.div<{
+export const Cloud = styled('div')<{
   x: string;
   y: string;
   duration: string;
@@ -160,7 +160,7 @@ export const GoldCloud = styled(Cloud)`
     ${(props) => props.duration} ease-in-out infinite;
 `;
 
-export const CloudText = styled.h4<{ type?: number }>`
+export const CloudText = styled('h4')<{ type?: number }>`
   max-width: 20rem;
   color: ${({ type }) => (type === 1 ? COLORS.bg : COLORS.text)};
   text-align: center;
@@ -171,7 +171,7 @@ export const CloudText = styled.h4<{ type?: number }>`
   line-height: normal;
 `;
 
-export const Ready = styled.img`
+export const Ready = styled('img')`
   width: 13.4375rem;
   height: 9.125rem;
   opacity: 0;

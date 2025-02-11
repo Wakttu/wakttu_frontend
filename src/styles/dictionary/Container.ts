@@ -1,6 +1,6 @@
-import styled from 'styled-components';
+import { styled } from 'goober';
 
-const ContainerMain = styled.div`
+const ContainerMain = styled('div')`
   height: 100vh;
   width: 100%;
   align-items: center;
@@ -9,7 +9,7 @@ const ContainerMain = styled.div`
   flex-grow: 1;
 `;
 
-const ContainerSub = styled.div`
+const ContainerSub = styled('div')`
   height: 100%;
   width: 100%;
   align-items: center;
@@ -18,7 +18,7 @@ const ContainerSub = styled.div`
   flex-grow: 1;
 `;
 
-const ContainerTop = styled.div`
+const ContainerTop = styled('div')`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -28,7 +28,7 @@ const ContainerTop = styled.div`
   padding: 3rem 32.5rem 0rem 32.5rem;
 `;
 
-const ContainerBottom = styled.div`
+const ContainerBottom = styled('div')`
   display: flex;
   width: 100%;
   padding: 3rem 0.625rem 0rem 0.625rem;
@@ -40,7 +40,7 @@ const ContainerBottom = styled.div`
   background: var(--Gray-5, #f7f7f7);
 `;
 
-const ContainerContent = styled.div`
+const ContainerContent = styled('div')`
   display: flex;
   width: 65.9375rem;
   height: 21.8125rem;

@@ -1,7 +1,7 @@
-import styled from 'styled-components';
+import { styled } from 'goober';
 import React from 'react';
 
-const ServiceContainer = styled.div`
+const ServiceContainer = styled('div')`
   max-width: 80rem;
   margin: 0 auto;
   padding: 2rem;
@@ -11,7 +11,7 @@ const ServiceContainer = styled.div`
   overflow-y: scroll;
 `;
 
-const Title = styled.h2`
+const Title = styled('h2')`
   font-size: 1.5rem;
   font-weight: bold;
   margin-bottom: 1.5rem;
@@ -19,25 +19,25 @@ const Title = styled.h2`
   border-bottom: 2px solid #333;
 `;
 
-const Section = styled.section`
+const Section = styled('section')`
   margin-bottom: 2rem;
 `;
 
-const Article = styled.article`
+const Article = styled('article')`
   margin-bottom: 1.5rem;
 `;
 
-const List = styled.ul`
+const List = styled('ul')`
   list-style-type: disc;
   margin-left: 1.5rem;
   margin-bottom: 1rem;
 `;
 
-const ListItem = styled.li`
+const ListItem = styled('li')`
   margin-bottom: 0.5rem;
 `;
 
-const MainHeader = styled.h1`
+const MainHeader = styled('h1')`
   font-size: 2rem;
   font-weight: bold;
   text-align: center;
