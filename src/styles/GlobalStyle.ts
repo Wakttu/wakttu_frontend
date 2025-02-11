@@ -1,9 +1,17 @@
 import { createGlobalStyle } from 'styled-components';
 import { COLORS } from './theme';
 
-export const GlobalStyle = createGlobalStyle`
+export const GlobalStyleForPdf = createGlobalStyle`
+  #__next,
+  body,
+  html {
+    margin: 0;
+    padding: 0;
+  }
+`;
 
-  *{
+export const GlobalStyle = createGlobalStyle`
+  * {
     box-sizing: border-box;
   }
   
@@ -15,8 +23,8 @@ export const GlobalStyle = createGlobalStyle`
     width: 100%;
     height: 100%;
     overflow: hidden;
-    /* -webkit-user-select: none;
-    -moz-user-select: none;*/
+    -webkit-user-select: none;
+    -moz-user-select: none;
     user-select: none; 
   }
 

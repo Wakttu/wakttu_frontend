@@ -101,7 +101,7 @@
     wrap-ansi "^8.1.0"
     wrap-ansi-cjs "npm:wrap-ansi@^7.0.0"
 
-"@naverpay/react-pdf@^0.3.3":
+"@naverpay/react-pdf@^0.3.4":
   version "0.3.4"
   resolved "https://registry.yarnpkg.com/@naverpay/react-pdf/-/react-pdf-0.3.4.tgz#000ed34b3cad1a2ca54626c6552eaccebcec05dc"
   integrity sha512-2Yud63nrG80gy4pQW7yz4F29TKAUeF74L3CVrznIo8c8/hAW8VkHJS6pJFNj9tZXr1cJ5FCqDIe64l/wiIH3cQ==

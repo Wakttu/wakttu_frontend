@@ -8,7 +8,7 @@ import { GoogleTagManager } from '@next/third-parties/google';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
-import { GlobalStyle } from '@/styles/GlobalStyle';
+import { GlobalStyle, GlobalStyleForPdf } from '@/styles/GlobalStyle';
 import { Container } from '@/components';
 
 import { CookiesProvider } from 'react-cookie';
@@ -58,19 +58,33 @@ const App = ({ Component, pageProps }: AppProps) => {
             <title>왁뚜 - 우리 모두 품어놀자!</title>
             <link rel="canonical" href={`https://www.wakttu.kr${path}`} />
 
-            <meta name="robots" content={`${
-              (path.includes('/main/') || path === '/') ? 'index' : 'noindex'
-            },follow`} />
+            <meta
+              name="robots"
+              content={`${
+                path.includes('/main/') || path === '/' ? 'index' : 'noindex'
+              },follow`}
+            />
           </Head>
 
-          <GlobalStyle />
-          <Container path={path}>
-            {isMobile ? (
-              <h1>PC로 접속해 주세요.</h1>
-            ) : (
+          {/* 2025-02-11 Ayaan: PDF에 Global Style 충돌로 수정 */}
+          {path !== '/info/privacy' ? (
+            <>
+              <GlobalStyle />
+
+              <Container path={path}>
+                {isMobile ? (
+                  <h1>PC로 접속해 주세요.</h1>
+                ) : (
+                  <Component {...pageProps} />
+                )}
+              </Container>
+            </>
+          ) : (
+            <>
+              <GlobalStyleForPdf />
               <Component {...pageProps} />
-            )}
-          </Container>
+            </>
+          )}
 
           <GoogleTagManager gtmId="GTM-PF5QTVJR" />
         </Provider>
