@@ -2,6 +2,8 @@ import { Html, Head, Main, NextScript } from 'next/document';
 import { extractCss } from 'goober';
 
 const Document = () => {
+  const css = extractCss();
+
   return (
     <Html lang="ko-kr" dir="ltr">
       <Head>
@@ -52,7 +54,11 @@ const Document = () => {
           href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css"
         />
 
-        <style id="_goober">{extractCss()}</style>
+        <style
+          id={'_goober'}
+          // And defined it in here
+          dangerouslySetInnerHTML={{ __html: ' ' + css }}
+        />
       </Head>
       <body>
         <Main />

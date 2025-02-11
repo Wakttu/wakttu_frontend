@@ -32,7 +32,7 @@ import { client, getR2URL } from '@/services/api';
 import { getIcon, getUserDesc } from '@/modules/UserInfo';
 import Character from '../common/Character';
 import Router from 'next/router';
-import Loading from '../common/Loding';
+import Loading from '../common/Loading';
 
 interface Props {
   user: any;

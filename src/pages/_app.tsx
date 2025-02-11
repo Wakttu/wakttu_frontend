@@ -11,8 +11,6 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { setup } from 'goober';
 import { prefix } from 'goober/prefixer';
 
-import { shouldForwardProp } from 'goober/should-forward-prop';
-
 import { GlobalStyle, GlobalStyleForPdf } from '@/styles/GlobalStyle';
 import { Container } from '@/components';
 
@@ -23,15 +21,10 @@ import store from '@/redux/store';
 import { fontSizeManager } from '@/modules/BaseFontSize';
 import { isMobileDevice } from '@/modules/Mobile';
 
-setup(
-  createElement,
-  prefix,
-  undefined,
-  shouldForwardProp((prop) => {
-    // Do NOT forward props that start with `$` symbol
-    return prop['0'] !== '$';
-  })
-);
+// goober's needs to know how to render the `styled` nodes.
+// So to let it know, we run the `setup` function with the
+// `createElement` function and prefixer function.
+setup(createElement, prefix);
 
 const App = ({ Component, pageProps }: AppProps) => {
   const { pathname: path } = useRouter();

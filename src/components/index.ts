@@ -13,7 +13,7 @@ export { default as Chat } from './common/Chat';
 export { default as Message } from './common/Message';
 export { default as Option } from './common/Option';
 export { default as Container } from './common/ContentContainer';
-export { default as Loading } from './common/Loding';
+export { default as Loading } from './common/Loading';
 
 export { default as ORoomDesc } from './room/RoomDesc';
 export { default as Ready } from './room/Ready';

@@ -1,21 +1,21 @@
 import { styled, keyframes } from 'goober';
 
 const motion = keyframes`
-0% {
-  transform: translateY(0);
-}
-25% {
-  transform: translateY(-2rem);
-}
-50% {
-  transform: translateY(0);
-}
-75%{
-    transform: translateY(+2rem);
-}
-100% {
-  transform: translateY(0);
-}
+  0% {
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(-2rem);
+  }
+  50% {
+    transform: translateY(0);
+  }
+  75%{
+      transform: translateY(+2rem);
+  }
+  100% {
+    transform: translateY(0);
+  }
 `;
 
 export const Container = styled('div')`
@@ -43,5 +43,3 @@ export const Logo = styled('img')`
 
   animation: ${motion} 1s linear infinite;
 `;
-
-export const Title = styled('h2')``;
