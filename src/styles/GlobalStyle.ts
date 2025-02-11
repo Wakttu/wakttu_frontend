@@ -1,3 +1,5 @@
+import type { FC } from 'react';
+
 import { createGlobalStyles } from 'goober/global';
 import { COLORS } from './theme';
 
@@ -8,7 +10,7 @@ export const GlobalStyleForPdf = createGlobalStyles`
     margin: 0;
     padding: 0;
   }
-`;
+` as FC;
 
 export const GlobalStyle = createGlobalStyles`
   * {
@@ -96,4 +98,4 @@ export const GlobalStyle = createGlobalStyles`
   a {
     text-decoration: none;
   }
-`;
+` as FC;

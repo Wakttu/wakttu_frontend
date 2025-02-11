@@ -22,8 +22,8 @@ interface Props {
   message: string;
   onChange: ChangeEventHandler;
   onClick: () => void;
-  chatBoxRef: RefObject<HTMLDivElement>;
-  inputRef: RefObject<HTMLInputElement>;
+  chatBoxRef: RefObject<HTMLDivElement | null>;
+  inputRef: RefObject<HTMLInputElement | null>;
 }
 
 const ChatBox = ({
@@ -79,7 +79,10 @@ const ChatBox = ({
           autoComplete="off"
         />
         <SendMessage onClick={onClick}>
-          <SendIcon src={R2_URL + '/assets/icons/send.svg'} alt="보내기 아이콘" />
+          <SendIcon
+            src={R2_URL + '/assets/icons/send.svg'}
+            alt="보내기 아이콘"
+          />
         </SendMessage>
       </MessageBlock>
     </CChat>

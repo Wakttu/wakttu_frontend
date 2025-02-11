@@ -25,7 +25,7 @@ import { handleKeyDown } from '@/utils/keyboard';
 import { RefObject } from 'react';
 
 interface Props {
-  modalRef: RefObject<HTMLDivElement>;
+  modalRef: RefObject<HTMLDivElement | null>;
   isDown: boolean[];
   onDropdown: (index: number) => void;
   roomInfo: RoomInfo;

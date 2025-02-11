@@ -12,7 +12,7 @@ const Last = () => {
   const answer = useSelector(selectAnswer);
   const history = useSelector(selectHistory);
 
-  const historyBoxRef = useRef<HTMLDivElement>(null);
+  const historyBoxRef = useRef<HTMLDivElement | null>(null);
 
   return (
     <CLast

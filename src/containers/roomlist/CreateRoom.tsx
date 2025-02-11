@@ -17,7 +17,7 @@ export interface RoomInfo {
 
 const CreateRoom = () => {
   const modal = useSelector(selectModal);
-  const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLDivElement | null>(null);
   const dispatch = useDispatch();
 
   const [room, setRoom] = useState<RoomInfo>({

@@ -45,7 +45,7 @@ const Cosmetic = () => {
   const voiceVolume = useSelector(selectVoiceVolume);
   const { play } = useClickSound(voiceVolume);
 
-  const dropDownRef = useRef<HTMLDivElement>(null);
+  const dropDownRef = useRef<HTMLDivElement | null>(null);
 
   const toggleDropdown = () => setIsOpen((prev) => !prev);
 

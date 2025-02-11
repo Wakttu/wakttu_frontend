@@ -13,14 +13,14 @@ const ContentContainer = styled('div')<{ path?: string }>`
   ${({ path }) => {
     if (path === '/' || path?.includes('rank'))
       return `height: 100vh;
-background: url('${R2_URL}/assets/main.png') no-repeat center center; 
+background: url('${R2_URL!}/assets/main.png') no-repeat center center; 
 background-size: cover;
 
 `;
     else if (path?.includes('/last'))
       return `height: 100vh;
     background-color : lightgray;
-    background-image :  url('${R2_URL}/assets/mypage-background.png') ,linear-gradient(180deg, #E4CEFF 0%, #AAF0FF 100%);
+    background-image :  url('${R2_URL!}/assets/mypage-background.png') ,linear-gradient(180deg, #E4CEFF 0%, #AAF0FF 100%);
     background-size: 50%;
     background-repeat: repeat;
     padding-bottom:0;
@@ -29,7 +29,7 @@ background-size: cover;
       return `height: 100vh; background: linear-gradient(180deg, #C3FFB4 0%, #C3FFB4 100%);  padding-bottom:0;`;
     else if (path?.includes('/bell'))
       return `height: 100vh;
-    background: url('${R2_URL}/assets/checker.png');
+    background: url('${R2_URL!}/assets/checker.png');
     background-repeat: no-repeat;
     background-size:cover;
     padding-bottom:0;`;

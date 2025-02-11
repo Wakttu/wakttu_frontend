@@ -41,7 +41,7 @@ interface Props {
   volume: number; // 볼륨 값 (0-100)
   playing: boolean; // 재생 상태
   isVideoVisible: boolean;
-  playerRef: React.RefObject<ReactPlayer>;
+  playerRef: React.RefObject<ReactPlayer | null>;
 }
 
 const MemoizedSystemTag = React.memo(({ singers }: { singers: string[] }) => (

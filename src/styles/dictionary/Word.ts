@@ -72,13 +72,13 @@ const RelevantWrapper = styled('div')`
   gap: 0.5rem;
 `;
 
-const RelevantBackgroundColor = css<{ $RelevantPerson: RelevantPerson }>`
-  ${({ $RelevantPerson }) => {
-    return css`
-      background-color: ${relevantInfo[$RelevantPerson].backgroundColor};
-      color: ${relevantInfo[$RelevantPerson].color};
-    `;
-  }}
+const RelevantBackgroundColor = ({
+  $RelevantPerson,
+}: {
+  $RelevantPerson: RelevantPerson;
+}) => css`
+  background-color: ${relevantInfo[$RelevantPerson].backgroundColor};
+  color: ${relevantInfo[$RelevantPerson].color};
 `;
 
 const RelevantBdage = styled('div')<{ $RelevantPerson: RelevantPerson }>`

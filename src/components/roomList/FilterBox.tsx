@@ -14,7 +14,7 @@ import {
 import React, { MouseEvent, RefObject } from 'react';
 
 interface Props {
-  modalRef: RefObject<HTMLDivElement>;
+  modalRef: RefObject<HTMLDivElement | null>;
   onDropdown: (index: number) => void;
   isDown: boolean[];
   onSelect: (e: any, index: number) => void;
@@ -31,7 +31,10 @@ const FilterBox = ({
   return (
     <CSelect ref={modalRef}>
       <FilterWithText>
-        <Icon src={getR2URL('/assets/icons/filter-green.svg')} alt="필터 아이콘" />
+        <Icon
+          src={getR2URL('/assets/icons/filter-green.svg')}
+          alt="필터 아이콘"
+        />
         <FilterLabel>필터</FilterLabel>
       </FilterWithText>
       <CDropdown>
@@ -41,7 +44,8 @@ const FilterBox = ({
 
           <DropdownLine
             isOpen={isDown[0]}
-            src={getR2URL('/assets/icons/down-line.svg')} alt="아래쪽 화살표 아이콘"
+            src={getR2URL('/assets/icons/down-line.svg')}
+            alt="아래쪽 화살표 아이콘"
           />
           {isDown[0] && (
             <>
@@ -67,7 +71,8 @@ const FilterBox = ({
           <Selected>{selected[1]}</Selected>
           <DropdownLine
             isOpen={isDown[1]}
-            src={getR2URL('/assets/icons/down-line.svg')} alt="아래쪽 화살표 아이콘"
+            src={getR2URL('/assets/icons/down-line.svg')}
+            alt="아래쪽 화살표 아이콘"
           />
           {isDown[1] && (
             <>
@@ -96,7 +101,8 @@ const FilterBox = ({
           <Selected>{selected[2]}</Selected>
           <DropdownLine
             isOpen={isDown[2]}
-            src={getR2URL('/assets/icons/down-line.svg')} alt="아래쪽 화살표 아이콘"
+            src={getR2URL('/assets/icons/down-line.svg')}
+            alt="아래쪽 화살표 아이콘"
           />
           {isDown[2] && (
             <>

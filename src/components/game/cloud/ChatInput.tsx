@@ -11,7 +11,7 @@ import { ChangeEventHandler, RefObject } from 'react';
 interface Props {
   pause: boolean;
   message: string;
-  inputRef: RefObject<HTMLInputElement>;
+  inputRef: RefObject<HTMLInputElement | null>;
   onChange: ChangeEventHandler;
   onMessage: () => void;
   onAnswer: () => void;

@@ -12,7 +12,7 @@ interface Props {
 }
 
 const ChatLog = ({ logs }: Props) => {
-  const chatBoxRef = useRef<HTMLDivElement>(null);
+  const chatBoxRef = useRef<HTMLDivElement | null>(null);
 
   const scrollToBottom = useCallback(() => {
     if (chatBoxRef.current) {

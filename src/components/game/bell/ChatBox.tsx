@@ -20,8 +20,8 @@ interface Props {
   onMessage: () => void;
   onAnswer: () => void;
   handleEnter: (e: React.KeyboardEvent) => void;
-  chatBoxRef: RefObject<HTMLDivElement>;
-  inputRef: RefObject<HTMLInputElement>;
+  chatBoxRef: RefObject<HTMLDivElement | null>;
+  inputRef: RefObject<HTMLInputElement | null>;
   game: Game;
   answer: Answer;
   pause: boolean;

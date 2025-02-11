@@ -404,7 +404,7 @@ export const TimerText = styled('span')`
   font-size: ${FONT_SIZES['body-2']};
 `;
 
-export const RemainText = styled('span')<{ color: boolean }>`
+export const RemainText = styled<{ color: boolean }>('span')`
   color: ${({ color }) => (color ? '#FF4B4B' : '#FCFF62')};
   text-align: right;
 
@@ -439,11 +439,11 @@ const TimerAnimation = keyframes`
   }
 `;
 
-export const GaugeBar = styled('div')<{
+export const GaugeBar = styled<{
   gauge: number;
   pause: boolean;
   color: boolean;
-}>`
+}>('div')`
   width: 100%;
   height: 100%;
   border-radius: 6.25rem;

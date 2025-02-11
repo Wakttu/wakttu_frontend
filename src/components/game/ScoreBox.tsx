@@ -6,7 +6,7 @@ interface Props {
 
 const Score = ({ score }: Props) => {
   const [data, setData] = useState(0);
-  const ref = useRef<NodeJS.Timeout>();
+  const ref = useRef<NodeJS.Timeout>(undefined);
 
   useEffect(() => {
     let count = score - data;

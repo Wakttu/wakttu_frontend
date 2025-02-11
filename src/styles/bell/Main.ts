@@ -229,7 +229,7 @@ export const Board = styled('div')`
   width: 47.68744rem;
   height: 23.02538rem;
 
-  background: url(${R2_URL}/assets/game/bell-board.svg);
+  background: url(${R2_URL!}/assets/game/bell-board.svg);
   background-size: cover;
 `;
 
