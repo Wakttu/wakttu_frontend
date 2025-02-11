@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components';
+import { styled, keyframes } from 'goober';
 import { COLORS, FONT_SIZES } from '../theme';
 import { getR2URL, R2_URL } from '@/services/api';
 
@@ -15,7 +15,7 @@ const BAN = [
   '#8DFFF1',
 ];
 
-export const CKung = styled.div`
+export const CKung = styled('div')`
   display: flex;
   height: 32rem;
   padding: 0.625rem 2.5rem;
@@ -23,7 +23,7 @@ export const CKung = styled.div`
   align-items: center;
 `;
 
-export const Left = styled.div`
+export const Left = styled('div')`
   position: relative;
   display: flex;
   justify-content: flex-end;
@@ -32,7 +32,7 @@ export const Left = styled.div`
   height: 25.0625rem;
 `;
 
-export const Right = styled.div`
+export const Right = styled('div')`
   position: relative;
   display: flex;
   width: 33.25rem;
@@ -43,7 +43,7 @@ export const Right = styled.div`
   flex-wrap: wrap;
 `;
 
-export const Speaker = styled.img<{ reverse: boolean }>`
+export const Speaker = styled('img')<{ reverse: boolean }>`
   position: absolute;
   top: 0;
   ${({ reverse }) => (reverse ? 'right:0' : 'left:0')};
@@ -52,7 +52,7 @@ export const Speaker = styled.img<{ reverse: boolean }>`
   flex-shrink: 0;
 `;
 
-export const Tv = styled.div`
+export const Tv = styled('div')`
   display: flex;
   justify-content: center;
   padding-top: 1.1rem;
@@ -64,17 +64,17 @@ export const Tv = styled.div`
   background-size: cover;
 `;
 
-export const Logo = styled.img`
+export const Logo = styled('img')`
   width: 20.6875rem;
   height: 12.25rem;
 `;
 
-export const PauseTv = styled.img`
+export const PauseTv = styled('img')`
   width: 20.625rem;
   height: 12.25rem;
 `;
 
-export const Board = styled.div`
+export const Board = styled('div')`
   display: flex;
   width: 46rem;
   height: 24.5625rem;
@@ -87,7 +87,7 @@ export const Board = styled.div`
   background-size: cover;
 `;
 
-export const Info = styled.div`
+export const Info = styled('div')`
   display: flex;
   width: 46rem;
   height: 5.125rem;
@@ -97,7 +97,7 @@ export const Info = styled.div`
   flex-shrink: 0;
 `;
 
-export const Object = styled.div`
+export const Object = styled('div')`
   display: flex;
   width: 7.375rem;
   height: 2.8125rem;
@@ -112,13 +112,13 @@ export const Object = styled.div`
   background: linear-gradient(0deg, #a4ff95 0%, #edff7e 100%);
 `;
 
-export const Pen = styled.img`
+export const Pen = styled('img')`
   width: 1.4375rem;
   height: 1.4375rem;
   flex-shrink: 0;
 `;
 
-export const ObjectText = styled.h5`
+export const ObjectText = styled('h5')`
   color: ${COLORS.text};
   text-align: right;
 
@@ -126,7 +126,7 @@ export const ObjectText = styled.h5`
   font-weight: 600;
 `;
 
-export const Round = styled.div`
+export const Round = styled('div')`
   display: flex;
   height: 3rem;
   padding: 0rem 0.0625rem;
@@ -137,7 +137,7 @@ export const Round = styled.div`
   border-bottom: 1px solid #fff;
 `;
 
-export const RoundText = styled.h3<{ target?: boolean }>`
+export const RoundText = styled('h3')<{ target?: boolean }>`
   color: ${({ target }) => (target ? '#ffffff' : '#ffffff99')};
   text-align: center;
 
@@ -145,7 +145,7 @@ export const RoundText = styled.h3<{ target?: boolean }>`
   font-weight: 600;
 `;
 
-export const ChainText = styled.h4`
+export const ChainText = styled('h4')`
   color: rgba(155, 255, 119, 0.8);
   text-align: center;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -154,7 +154,7 @@ export const ChainText = styled.h4`
   font-weight: 600;
 `;
 
-export const Main = styled.div`
+export const Main = styled('div')`
   display: flex;
   height: 8.1875rem;
   padding: 0rem 6.9375rem;
@@ -164,7 +164,7 @@ export const Main = styled.div`
   flex-shrink: 0;
 `;
 
-export const History = styled.div`
+export const History = styled('div')`
   display: flex;
   width: 13.4375rem;
   height: 8rem;
@@ -176,7 +176,7 @@ export const History = styled.div`
   flex-shrink: 0;
 `;
 
-export const HistroyText = styled.h3`
+export const HistroyText = styled('h3')`
   position: relative;
   display: flex;
   justify-content: center;
@@ -191,7 +191,7 @@ export const HistroyText = styled.h3`
   font-weight: 600;
 `;
 
-export const Desc = styled.div`
+export const Desc = styled('div')`
   display: flex;
   height: 2.25rem;
   justify-content: center;
@@ -200,7 +200,7 @@ export const Desc = styled.div`
   flex-shrink: 0;
 `;
 
-export const LeftDesc = styled.div`
+export const LeftDesc = styled('div')`
   display: flex;
   width: 0.875rem;
   height: 0.875rem;
@@ -221,7 +221,7 @@ export const LeftDesc = styled.div`
   background: #a377ff;
 `;
 
-export const RightDesc = styled.span`
+export const RightDesc = styled('span')`
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
@@ -236,7 +236,7 @@ export const RightDesc = styled.span`
   font-size: ${FONT_SIZES.caption};
 `;
 
-export const Turn = styled.div`
+export const Turn = styled('div')`
   position: relative;
 
   display: flex;
@@ -250,7 +250,7 @@ export const Turn = styled.div`
   flex-shrink: 0;
 `;
 
-export const Target = styled.h3`
+export const Target = styled('h3')`
   position: relative;
   width: 100%;
   height: 2.2rem;
@@ -261,7 +261,7 @@ export const Target = styled.h3`
   font-weight: 600;
 `;
 
-export const Typing = styled.div`
+export const Typing = styled('div')`
   display: flex;
   height: 1.75rem;
   justify-content: center;
@@ -271,7 +271,7 @@ export const Typing = styled.div`
   align-self: stretch;
 `;
 
-export const Name = styled.span`
+export const Name = styled('span')`
   color: #9bff77;
   text-align: center;
 
@@ -280,7 +280,7 @@ export const Name = styled.span`
   font-size: ${FONT_SIZES['subtitle-1']};
 `;
 
-export const TypingText = styled.span`
+export const TypingText = styled('span')`
   color: ${COLORS.bg};
   text-align: center;
 
@@ -289,13 +289,13 @@ export const TypingText = styled.span`
   font-size: ${FONT_SIZES['subtitle-1']};
 `;
 
-export const Frame = styled.img`
+export const Frame = styled('img')`
   width: 6.75rem;
   height: 4.9375rem;
   flex-shrink: 0;
 `;
 
-export const CPost = styled.div`
+export const CPost = styled('div')`
   display: flex;
   width: 33.25rem;
   padding: 0.8125rem 0.9375rem 0.5rem 0.9375rem;
@@ -308,7 +308,7 @@ export const CPost = styled.div`
   background: #b25a08;
 `;
 
-export const Post = styled.div`
+export const Post = styled('div')`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -320,7 +320,7 @@ export const Post = styled.div`
   fill: linear-gradient(180deg, #00c944 -1.1%, #006322 98.9%);
 `;
 
-export const CPostTitle = styled.div`
+export const CPostTitle = styled('div')`
   display: flex;
   width: 31.375rem;
   padding: 0.625rem;
@@ -329,7 +329,7 @@ export const CPostTitle = styled.div`
   gap: 0.625rem;
 `;
 
-export const PostTitle = styled.h6`
+export const PostTitle = styled('h6')`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -345,7 +345,7 @@ export const PostTitle = styled.h6`
   background: #fb5e3c;
 `;
 
-export const CList = styled.div`
+export const CList = styled('div')`
   display: flex;
   width: 31.375rem;
   height: 13.6875rem;
@@ -358,12 +358,12 @@ export const CList = styled.div`
   flex-wrap: wrap;
 `;
 
-export const Emergency = styled.img`
+export const Emergency = styled('img')`
   width: 13.8125rem;
   height: 9.6875rem;
 `;
 
-export const CTimer = styled.div`
+export const CTimer = styled('div')`
   display: flex;
   width: 34.25rem;
   height: 3.5rem;
@@ -372,30 +372,30 @@ export const CTimer = styled.div`
   align-items: center;
 `;
 
-export const TimerItem = styled.div`
+export const TimerItem = styled('div')`
   display: flex;
   justify-content: space-between;
   width: 100%;
 `;
 
-export const LeftTimer = styled.div`
+export const LeftTimer = styled('div')`
   display: inline-flex;
   align-items: center;
   gap: 0.3125rem;
 `;
 
-export const RightTimer = styled.div`
+export const RightTimer = styled('div')`
   display: inline-flex;
   align-items: center;
   gap: 0.3125rem;
 `;
 
-export const TimerIcon = styled.img`
+export const TimerIcon = styled('img')`
   width: 1.5rem;
   height: 1.5rem;
 `;
 
-export const TimerText = styled.span`
+export const TimerText = styled('span')`
   color: ${COLORS.bg};
   text-align: center;
 
@@ -404,7 +404,7 @@ export const TimerText = styled.span`
   font-size: ${FONT_SIZES['body-2']};
 `;
 
-export const RemainText = styled.span<{ color: boolean }>`
+export const RemainText = styled<{ color: boolean }>('span')`
   color: ${({ color }) => (color ? '#FF4B4B' : '#FCFF62')};
   text-align: right;
 
@@ -413,7 +413,7 @@ export const RemainText = styled.span<{ color: boolean }>`
   font-size: ${FONT_SIZES['body-2']};
 `;
 
-export const TimerBar = styled.div`
+export const TimerBar = styled('div')`
   display: flex;
   width: 19.25rem;
   height: 0.625rem;
@@ -439,11 +439,11 @@ const TimerAnimation = keyframes`
   }
 `;
 
-export const GaugeBar = styled.div<{
+export const GaugeBar = styled<{
   gauge: number;
   pause: boolean;
   color: boolean;
-}>`
+}>('div')`
   width: 100%;
   height: 100%;
   border-radius: 6.25rem;

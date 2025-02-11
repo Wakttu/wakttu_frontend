@@ -1,7 +1,7 @@
-import styled from 'styled-components';
+import { styled } from 'goober';
 import { COLORS, FONT_SIZES } from '../theme';
 
-const Modal = styled.form`
+const Modal = styled('form')`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -16,7 +16,7 @@ const Modal = styled.form`
   background: rgb(0, 0, 0, 0.1);
 `;
 
-const Container = styled.div`
+const Container = styled('div')`
   display: flex;
   width: 22.5rem;
   padding: 1.75rem;
@@ -30,7 +30,7 @@ const Container = styled.div`
   background: ${COLORS.bg};
 `;
 
-const Text = styled.h6`
+const Text = styled('h6')`
   color: ${COLORS['gray-2']};
   text-align: center;
 
@@ -38,12 +38,12 @@ const Text = styled.h6`
   font-weight: 500;
 `;
 
-const CButton = styled.div`
+const CButton = styled('div')`
   display: flex;
 
   gap: 0.75rem;
 `;
-const ConfirmButton = styled.button`
+const ConfirmButton = styled('button')`
   display: flex;
 
   flex: 1 0 0;
@@ -63,7 +63,7 @@ const ConfirmButton = styled.button`
   }
 `;
 
-const ConfrimText = styled.span`
+const ConfrimText = styled('span')`
   color: ${COLORS.bg};
   text-align: center;
 
@@ -72,7 +72,7 @@ const ConfrimText = styled.span`
   font-size: ${FONT_SIZES['subtitle-1']};
 `;
 
-const CancleButton = styled.button`
+const CancleButton = styled('button')`
   display: flex;
 
   flex: 1 0 0;
@@ -88,7 +88,7 @@ const CancleButton = styled.button`
   background: ${COLORS['gray-4']};
 `;
 
-const CancleText = styled.span`
+const CancleText = styled('span')`
   color: ${COLORS['gray-2']};
   text-align: center;
 
@@ -97,7 +97,7 @@ const CancleText = styled.span`
   font-size: ${FONT_SIZES['subtitle-1']};
 `;
 
-const Dropdown = styled.ul`
+const Dropdown = styled('ul')`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -117,7 +117,7 @@ const Dropdown = styled.ul`
   }
 `;
 
-const DropdownItem = styled.li`
+const DropdownItem = styled('li')`
   width: 12.5rem;
 
   padding: 0.375rem 1rem;
@@ -139,7 +139,7 @@ const DropdownItem = styled.li`
   }
 `;
 
-const DropdownLine = styled.img<{ isopen: boolean }>`
+const DropdownLine = styled('img')<{ isopen: boolean }>`
   width: 1.5rem;
   height: 1.5rem;
   margin-right: 1rem;
@@ -150,7 +150,7 @@ const DropdownLine = styled.img<{ isopen: boolean }>`
   transition: transform 0.3s ease;
 `;
 
-const Selected = styled.span`
+const Selected = styled('span')`
   color: ${COLORS.text};
 
   font-family: 'Wanted Sans Variable', 'Wanted Sans', sans-serif;

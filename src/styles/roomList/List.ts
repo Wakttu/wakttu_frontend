@@ -1,7 +1,7 @@
-import styled from 'styled-components';
+import { styled } from 'goober';
 import { COLORS, FONT_SIZES } from '../theme';
 
-const CList = styled.div`
+const CList = styled('div')`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -15,7 +15,7 @@ const CList = styled.div`
   border: 2px solid ${COLORS['gray-4']};
 `;
 
-const CItem = styled.div`
+const CItem = styled('div')`
   display: flex;
   flex-flow: wrap;
 
@@ -44,7 +44,7 @@ const CItem = styled.div`
   }
 `;
 
-const Item = styled.div`
+const Item = styled('div')`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -62,26 +62,26 @@ const Item = styled.div`
   }
 `;
 
-const Summary = styled.div`
+const Summary = styled('div')`
   display: flex;
   align-items: center;
   gap: 1rem;
 `;
 
-const RoomInfo = styled.div`
+const RoomInfo = styled('div')`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 0.625rem;
 `;
 
-const RoomNameCount = styled.div`
+const RoomNameCount = styled('div')`
   display: flex;
   align-items: center;
   gap: 0.625rem;
 `;
 
-const RoomName = styled.h5`
+const RoomName = styled('h5')`
   max-width: 10rem;
 
   color: ${COLORS.text};
@@ -93,19 +93,19 @@ const RoomName = styled.h5`
   white-space: nowrap;
 `;
 
-const RoomCount = styled.div`
+const RoomCount = styled('div')`
   display: flex;
   align-items: center;
   gap: 0.25rem;
 `;
 
-const RoomGame = styled.div`
+const RoomGame = styled('div')`
   display: flex;
   align-items: center;
   gap: 0.625rem;
 `;
 
-const SemiText = styled.span<{ $color?: boolean }>`
+const SemiText = styled('span')<{ $color?: boolean }>`
   color: ${({ $color }) => ($color ? COLORS['gray-3'] : COLORS.text)};
 
   font-family: 'Wanted Sans Variable', 'Wanted Sans', sans-serif;
@@ -113,7 +113,7 @@ const SemiText = styled.span<{ $color?: boolean }>`
   font-size: ${FONT_SIZES['subtitle-1']};
 `;
 
-const MediumText = styled.span<{ $color?: boolean }>`
+const MediumText = styled('span')<{ $color?: boolean }>`
   color: ${({ $color }) => ($color ? COLORS['gray-3'] : COLORS.text)};
 
   font-family: 'Wanted Sans Variable', 'Wanted Sans', sans-serif;
@@ -121,7 +121,7 @@ const MediumText = styled.span<{ $color?: boolean }>`
   font-size: ${FONT_SIZES['body-2']};
 `;
 
-const Status = styled.div<{ $status?: string }>`
+const Status = styled('div')<{ $status?: string }>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -147,7 +147,7 @@ const Status = styled.div<{ $status?: string }>`
   }};
 `;
 
-const Lock = styled.img`
+const Lock = styled('img')`
   width: 0.8484rem;
   height: 0.9422rem;
 

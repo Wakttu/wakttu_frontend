@@ -1,7 +1,7 @@
-import styled from 'styled-components';
+import { styled } from 'goober';
 import { COLORS, FONT_SIZES } from '../theme';
 
-const Wrapper = styled.div`
+const Wrapper = styled('div')`
   display: flex;
   width: 68.75rem;
   height: 52.125rem;
@@ -16,7 +16,7 @@ const Wrapper = styled.div`
   box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.01);
 `;
 
-const Title = styled.h2`
+const Title = styled('h2')`
   color: ${COLORS.text};
   text-align: center;
 
@@ -26,7 +26,7 @@ const Title = styled.h2`
   line-height: normal;
 `;
 
-const Body = styled.div`
+const Body = styled('div')`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -35,7 +35,7 @@ const Body = styled.div`
   align-self: stretch;
 `;
 
-const Nav = styled.div`
+const Nav = styled('div')`
   display: flex;
   padding: 0.75rem;
   align-items: center;
@@ -49,7 +49,7 @@ const Nav = styled.div`
   background: ${COLORS.bg};
 `;
 
-const Button = styled.button<{ isClicked?: boolean }>`
+const Button = styled('button')<{ isClicked?: boolean }>`
   display: flex;
   padding: 0.75rem 0rem;
   justify-content: center;
@@ -78,7 +78,7 @@ const Button = styled.button<{ isClicked?: boolean }>`
   }
 `;
 
-const Content = styled.div`
+const Content = styled('div')`
   display: flex;
   padding: 2rem;
   flex-direction: column;
@@ -92,7 +92,7 @@ const Content = styled.div`
   box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.05);
 `;
 
-const List = styled.div`
+const List = styled('div')`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -100,7 +100,7 @@ const List = styled.div`
   align-self: stretch;
 `;
 
-const Item = styled.div`
+const Item = styled('div')`
   display: flex;
   padding: 1rem 1.5rem;
   justify-content: space-between;
@@ -112,13 +112,13 @@ const Item = styled.div`
   background: ${COLORS.bg};
 `;
 
-const Left = styled.div`
+const Left = styled('div')`
   display: flex;
   align-items: center;
   gap: 1rem;
 `;
 
-const Rank = styled.div<{ index: number }>`
+const Rank = styled('div')<{ index: number }>`
   display: flex;
   padding: 0.375rem 1rem;
   justify-content: center;
@@ -145,18 +145,18 @@ const Rank = styled.div<{ index: number }>`
   border: ${({ index }) => (index > 2 ? '1px solid #EAEAEA' : 'none')};
 `;
 
-const Info = styled.div`
+const Info = styled('div')`
   display: flex;
   align-items: center;
   gap: 0.25rem;
 `;
 
-const Grade = styled.img`
+const Grade = styled('img')`
   width: 1.125rem;
   height: 1.125rem;
 `;
 
-const Name = styled.h5`
+const Name = styled('h5')`
   color: ${COLORS.text};
 
   font-family: 'Wanted Sans Variable', 'Wanted Sans', sans-serif;
@@ -165,7 +165,7 @@ const Name = styled.h5`
   line-height: normal;
 `;
 
-const Right = styled.div`
+const Right = styled('div')`
   color: ${COLORS['gray-3']};
 
   font-family: 'Wanted Sans Variable', 'Wanted Sans', sans-serif;

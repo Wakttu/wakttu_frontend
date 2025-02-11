@@ -32,7 +32,7 @@ interface Props {
   game: Type;
   answer: any;
   name: string;
-  historyBoxRef?: RefObject<HTMLDivElement>;
+  historyBoxRef?: RefObject<HTMLDivElement | null>;
 }
 
 const Game = ({ history, game, answer, name, historyBoxRef }: Props) => {

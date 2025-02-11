@@ -1,7 +1,7 @@
-import styled from 'styled-components';
+import { styled } from 'goober';
 import { COLORS, FONT_SIZES } from '../theme';
 
-const CPlayerList = styled.article`
+const CPlayerList = styled('article')`
   display: flex;
   align-items: flex-start;
   align-self: stretch;
@@ -12,7 +12,7 @@ const CPlayerList = styled.article`
   border: 2px solid ${COLORS['gray-4']};
 `;
 
-const WrapPlayerList = styled.div`
+const WrapPlayerList = styled('div')`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -23,7 +23,7 @@ const WrapPlayerList = styled.div`
   gap: 0.875rem;
 `;
 
-const CPlayer = styled.div`
+const CPlayer = styled('div')`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -32,7 +32,7 @@ const CPlayer = styled.div`
   width: 23.8%;
 `;
 
-const PlayerInfo = styled.div<{ host?: boolean }>`
+const PlayerInfo = styled('div')<{ host?: boolean }>`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -52,26 +52,26 @@ const PlayerInfo = styled.div<{ host?: boolean }>`
   background: ${COLORS['gray-5']};
 `;
 
-const PlayerProfile = styled.img`
+const PlayerProfile = styled('img')`
   flex-shrink: 0;
 
   width: 6.625rem;
   height: 6.6875rem;
 `;
 
-const CBadge = styled.div`
+const CBadge = styled('div')`
   display: flex;
   align-items: center;
 
   gap: 0.375rem;
 `;
 
-const PlayerIcon = styled.img`
+const PlayerIcon = styled('img')`
   width: 1.125rem;
   height: 1.125rem;
 `;
 
-const PlayerName = styled.h6`
+const PlayerName = styled('h6')`
   color: ${COLORS.text};
 
   font-family: 'Wanted Sans Variable', 'Wanted Sans', sans-serif;
@@ -79,7 +79,7 @@ const PlayerName = styled.h6`
   font-weight: 500;
 `;
 
-const PlayerReady = styled.div<{ $ready?: boolean }>`
+const PlayerReady = styled('div')<{ $ready?: boolean }>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -103,7 +103,7 @@ const PlayerReady = styled.div<{ $ready?: boolean }>`
   }
 `;
 
-const KickIcon = styled.img`
+const KickIcon = styled('img')`
   width: 1.5rem;
   height: 1.5rem;
 
@@ -114,7 +114,7 @@ const KickIcon = styled.img`
   cursor: pointer;
 `;
 
-const TeamTag = styled.div<{ team: string }>`
+const TeamTag = styled('div')<{ team: string }>`
   position: absolute;
   left: 0.5rem;
   top: 0.7432rem;

@@ -1,9 +1,9 @@
-import styled, { css } from 'styled-components';
+import { styled, css } from 'goober';
 import { COLORS, FONT_SIZES } from '@/styles/theme';
 
 export type InfoVariant = 'title' | 'desc';
 
-const CRoomDesc = styled.article`
+const CRoomDesc = styled('article')`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -19,7 +19,7 @@ const CRoomDesc = styled.article`
   background: ${COLORS.bg};
 `;
 
-const WrapRoomTitle = styled.section`
+const WrapRoomTitle = styled('section')`
   display: flex;
   align-self: stretch;
   align-items: center;
@@ -33,12 +33,12 @@ const WrapRoomTitle = styled.section`
   background: ${COLORS.bg};
 `;
 
-const TitleText = styled.h5`
+const TitleText = styled('h5')`
   color: ${COLORS.text};
   font-family: 'Wanted Sans Variable', 'Wanted Sans', sans-serif;
 `;
 
-const WrapGameInfo = styled.section`
+const WrapGameInfo = styled('section')`
   display: flex;
   flex-direction: column;
 
@@ -48,12 +48,12 @@ const WrapGameInfo = styled.section`
   border: 1px solid rgba(0, 0, 0, 0.1);
 `;
 
-const GameInfo = styled.img`
+const GameInfo = styled('img')`
   display: flex;
   align-self: stretch;
 `;
 
-const RoomInfo = styled.div`
+const RoomInfo = styled('div')`
   display: flex;
   align-self: stretch;
   align-items: center;
@@ -65,7 +65,7 @@ const RoomInfo = styled.div`
   border-radius: 1rem;
 `;
 
-const WrapInfo = styled.ul`
+const WrapInfo = styled('ul')`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -74,7 +74,7 @@ const WrapInfo = styled.ul`
   gap: 0.5rem;
 `;
 
-const Info = styled.li<{ $variant?: InfoVariant }>`
+const Info = styled('li')<{ $variant?: InfoVariant }>`
   font-family: 'Wanted Sans Variable', 'Wanted Sans', sans-serif;
   font-weight: 600;
   font-size: ${FONT_SIZES['subtitle-2']};
@@ -90,7 +90,7 @@ const Info = styled.li<{ $variant?: InfoVariant }>`
   }}
 `;
 
-const WrapMod = styled.section`
+const WrapMod = styled('section')`
   display: flex;
   align-self: stretch;
   align-items: center;
@@ -99,7 +99,7 @@ const WrapMod = styled.section`
   gap: 0.75rem;
 `;
 
-const Mod = styled.div`
+const Mod = styled('div')`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -114,11 +114,11 @@ const Mod = styled.div`
   background: ${COLORS.bg};
 `;
 
-const ModText = styled.h5`
+const ModText = styled('h5')`
   color: ${COLORS['gray-2']};
 `;
 
-const WatingLarge = styled.div<{ $start?: boolean }>`
+const WatingLarge = styled('div')<{ $start?: boolean }>`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -132,11 +132,11 @@ const WatingLarge = styled.div<{ $start?: boolean }>`
   background: ${({ $start }) => ($start ? '#FFF6A2' : COLORS['gray-5'])};
 `;
 
-const WatingText = styled.h5`
+const WatingText = styled('h5')`
   color: rgba(0, 0, 0, 0.5);
 `;
 
-const JoinButton = styled.button<{ start?: boolean }>`
+const JoinButton = styled('button')<{ start?: boolean }>`
   display: flex;
   align-self: stretch;
   align-items: center;
@@ -157,7 +157,7 @@ const JoinButton = styled.button<{ start?: boolean }>`
   }
 `;
 
-const JoinText = styled.h4`
+const JoinText = styled('h4')`
   color: ${COLORS.bg};
 `;
 

@@ -6,7 +6,7 @@ interface Props {
 }
 const BubbleBox = ({ chat }: Props) => {
   const [data, setData] = useState('');
-  let timeId = useRef<NodeJS.Timeout | undefined>();
+  let timeId = useRef<NodeJS.Timeout | undefined>(undefined);
   useEffect(() => {
     if (chat.trim() === '') return;
     if (timeId) clearTimeout(timeId.current);

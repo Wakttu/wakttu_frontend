@@ -14,7 +14,7 @@ const createVoiceArray = (
     id: item.id,
     src: item.src
       ? item.src
-      : `${R2_URL}/assets/voice/${characterName}/${item.id}.webm`,
+      : `${R2_URL!}/assets/voice/${characterName}/${item.id}.webm`,
   }));
 };
 

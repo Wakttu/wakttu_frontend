@@ -1,6 +1,6 @@
-import styled from 'styled-components';
+import { styled } from 'goober';
 
-const Wrapper = styled.div`
+const Wrapper = styled('div')`
   display: flex;
   width: 52.625rem;
   margin: 3rem 0;
@@ -14,7 +14,7 @@ const Wrapper = styled.div`
   border: 2px solid var(--Primary, #00bfa3);
 `;
 
-const Input = styled.input`
+const Input = styled('input')`
   width: 47.8125rem;
   flex-shrink: 0;
 
@@ -36,7 +36,7 @@ const Input = styled.input`
   }
 `;
 
-const SearchButton = styled.button`
+const SearchButton = styled('button')`
   display: flex;
   width: 2.125rem;
   height: 2.125rem;
@@ -49,7 +49,7 @@ const SearchButton = styled.button`
   cursor: pointer;
 `;
 
-const SearchIcon = styled.img`
+const SearchIcon = styled('img')`
   width: 1.19425rem;
   height: 1.19431rem;
   flex-shrink: 0;

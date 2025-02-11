@@ -1,6 +1,6 @@
-import styled from 'styled-components';
+import { styled } from 'goober';
 
-const Container = styled.div`
+const Container = styled('div')`
   display: flex;
   flex-direction: column;
   align-items: center;

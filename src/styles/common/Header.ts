@@ -1,7 +1,7 @@
-import styled from 'styled-components';
+import { styled } from 'goober';
 import { COLORS, FONT_SIZES } from '@/styles/theme';
 
-const HeaderBlock = styled.div`
+const HeaderBlock = styled('div')`
   display: flex;
   flex-shrink: 0;
   align-items: center;
@@ -17,7 +17,7 @@ const HeaderBlock = styled.div`
   background: ${COLORS.bg};
 `;
 
-const HeaderLogo = styled.img`
+const HeaderLogo = styled('img')`
   width: 42px;
   height: 42px;
   flex-shrink: 0;
@@ -25,7 +25,7 @@ const HeaderLogo = styled.img`
   cursor: pointer;
 `;
 
-const WrapContent = styled.ul`
+const WrapContent = styled('ul')`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -33,7 +33,7 @@ const WrapContent = styled.ul`
   gap: 1.5rem;
 `;
 
-const Content = styled.div`
+const Content = styled('div')`
   font-family: 'Wanted Sans Variable', 'Wanted Sans', sans-serif;
   font-size: 16px;
   font-weight: 500;
@@ -42,7 +42,7 @@ const Content = styled.div`
   cursor: pointer;
 `;
 
-const Player = styled.div`
+const Player = styled('div')`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -54,12 +54,12 @@ const Player = styled.div`
   background: ${COLORS['gray-1']};
 `;
 
-const Rank = styled.img`
+const Rank = styled('img')`
   width: 18px;
   height: 18px;
 `;
 
-const Line = styled.div`
+const Line = styled('div')`
   width: 0.0625rem;
   height: 0.875rem;
 
@@ -67,7 +67,7 @@ const Line = styled.div`
   background: ${COLORS['gray-2']};
 `;
 
-const PlayerName = styled.span`
+const PlayerName = styled('span')`
   font-family: 'Wanted Sans Variable', 'Wanted Sans', sans-serif;
   font-size: 16px;
   font-weight: 500;

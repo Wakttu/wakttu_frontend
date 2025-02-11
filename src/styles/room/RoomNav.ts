@@ -1,19 +1,19 @@
-import styled from 'styled-components';
+import { styled } from 'goober';
 import { COLORS, FONT_SIZES } from '../theme';
 
-const CRoomNav = styled.div`
+const CRoomNav = styled('div')`
   display: flex;
   justify-content: space-between;
   align-items: center;
 `;
 
-const CButton = styled.div`
+const CButton = styled('div')`
   display: flex;
   align-items: center;
   gap: 0.5rem;
 `;
 
-const ExitButton = styled.button`
+const ExitButton = styled('button')`
   display: flex;
   padding: 0.5rem 0.75rem;
   align-items: center;
@@ -26,12 +26,12 @@ const ExitButton = styled.button`
   background: #ff6565;
 `;
 
-const ExitIcon = styled.img`
+const ExitIcon = styled('img')`
   width: 0.7012rem;
   height: 0.75rem;
 `;
 
-const ButtonText = styled.span`
+const ButtonText = styled('span')`
   color: ${COLORS.bg};
 
   font-family: 'Wanted Sans Variable', 'Wanted Sans', sans-serif;
@@ -39,7 +39,7 @@ const ButtonText = styled.span`
   font-size: ${FONT_SIZES['subtitle-2']};
 `;
 
-const ChangeButton = styled.button`
+const ChangeButton = styled('button')`
   display: flex;
   padding: 0.5rem 0.75rem;
   align-items: center;
@@ -52,12 +52,12 @@ const ChangeButton = styled.button`
   background: ${COLORS.blue};
 `;
 
-const ChangeIcon = styled.img`
+const ChangeIcon = styled('img')`
   width: 0.7012rem;
   height: 0.75rem;
 `;
 
-const UpdateButton = styled.button`
+const UpdateButton = styled('button')`
   display: flex;
   padding: 0.5rem 0.75rem;
   align-items: center;
@@ -70,7 +70,7 @@ const UpdateButton = styled.button`
   background: ${COLORS.primary};
 `;
 
-const UpdateIcon = styled.img`
+const UpdateIcon = styled('img')`
   width: 0.8738rem;
   height: 0.8738rem;
 `;

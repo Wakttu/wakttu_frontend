@@ -1,8 +1,8 @@
-import styled, { css } from 'styled-components';
+import { styled, css } from 'goober';
 import { COLORS, FONT_SIZES } from '@/styles/theme';
 import { InfoVariant } from './RoomDesc';
 
-const CPlayerInfo = styled.article`
+const CPlayerInfo = styled('article')`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -17,7 +17,7 @@ const CPlayerInfo = styled.article`
   background: ${COLORS.bg};
 `;
 
-const PlayerProfile = styled.div`
+const PlayerProfile = styled('div')`
   position: relative;
   flex-shrink: 0;
 
@@ -25,7 +25,7 @@ const PlayerProfile = styled.div`
   height: 7.3705rem;
 `;
 
-const Info = styled.div`
+const Info = styled('div')`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -33,7 +33,7 @@ const Info = styled.div`
   gap: 0.625rem;
 `;
 
-const WrapPlayerName = styled.div`
+const WrapPlayerName = styled('div')`
   display: flex;
   align-self: stretch;
   align-items: center;
@@ -41,12 +41,12 @@ const WrapPlayerName = styled.div`
   gap: 0.625rem;
 `;
 
-const PlayerIcon = styled.img`
+const PlayerIcon = styled('img')`
   width: 1.5rem;
   height: 1.5rem;
 `;
 
-const PlayerName = styled.h5`
+const PlayerName = styled('h5')`
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 1;
@@ -57,7 +57,7 @@ const PlayerName = styled.h5`
   text-overflow: ellipsis;
 `;
 
-const Level = styled.section`
+const Level = styled('section')`
   display: flex;
   align-self: stretch;
   align-items: flex-start;
@@ -66,7 +66,7 @@ const Level = styled.section`
   gap: 0.625rem;
 `;
 
-const LevelBar = styled.div`
+const LevelBar = styled('div')`
   width: 11.875rem;
   height: 0.5rem;
 
@@ -74,7 +74,7 @@ const LevelBar = styled.div`
   background: ${COLORS['gray-4']};
 `;
 
-const GaugeBar = styled.div<{ $exp: number }>`
+const GaugeBar = styled('div')<{ $exp: number }>`
   width: ${({ $exp }) => {
     return $exp + '%';
   }};
@@ -83,7 +83,7 @@ const GaugeBar = styled.div<{ $exp: number }>`
   background: ${COLORS.primary};
 `;
 
-const LevelInfo = styled.ul`
+const LevelInfo = styled('ul')`
   display: flex;
   align-self: stretch;
   align-items: center;
@@ -91,14 +91,14 @@ const LevelInfo = styled.ul`
   gap: 0.2rem;
 `;
 
-const WrapText = styled.div`
+const WrapText = styled('div')`
   display: flex;
   align-items: center;
 
   gap: 0.2rem;
 `;
 
-const LevelText = styled.li<{ $variant?: InfoVariant }>`
+const LevelText = styled('li')<{ $variant?: InfoVariant }>`
   font-weight: 600;
   color: ${COLORS.text};
 
@@ -112,7 +112,7 @@ const LevelText = styled.li<{ $variant?: InfoVariant }>`
   }}
 `;
 
-const WrapCoin = styled.div`
+const WrapCoin = styled('div')`
   display: flex;
   align-self: stretch;
   align-items: center;
@@ -120,12 +120,12 @@ const WrapCoin = styled.div`
   gap: 0.25rem;
 `;
 
-const Wallet = styled.img`
+const Wallet = styled('img')`
   width: 1.5rem;
   height: 1.5rem;
 `;
 
-const Coin = styled.span`
+const Coin = styled('span')`
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 1;

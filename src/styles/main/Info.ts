@@ -1,7 +1,7 @@
-import styled from 'styled-components';
+import { styled } from 'goober';
 import { COLORS, FONT_SIZES } from '../theme';
 
-const Info = styled.div`
+const Info = styled('div')`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -11,7 +11,7 @@ const Info = styled.div`
   margin-bottom: 2rem;
 `;
 
-const CopyRight = styled.span`
+const CopyRight = styled('span')`
   color: ${COLORS['gray-1']};
   text-align: center;
 
@@ -24,7 +24,7 @@ const CopyRight = styled.span`
   cursor: pointer;
 `;
 
-const Pdf = styled.span`
+const Pdf = styled('span')`
   color: ${COLORS['gray-2']};
   text-align: center;
 
@@ -37,7 +37,7 @@ const Pdf = styled.span`
   cursor: pointer;
 `;
 
-const Flex = styled.div`
+const Flex = styled('div')`
   display: flex;
   gap: 0.5rem;
 `;

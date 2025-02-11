@@ -27,7 +27,7 @@ const ChatInput = () => {
 
   const [isPenalty, setPenalty] = useState(false);
 
-  const inputRef = useRef<HTMLInputElement>(null);
+  const inputRef = useRef<HTMLInputElement | null>(null);
 
   const onSendAnswer = useCallback(() => {
     if (inputs.chat) {

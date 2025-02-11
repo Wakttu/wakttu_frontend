@@ -30,7 +30,7 @@ const ChatInput = () => {
     chat: '',
   });
 
-  const inputRef = useRef<HTMLInputElement>(null);
+  const inputRef = useRef<HTMLInputElement | null>(null);
 
   const onSendAnswer = useCallback(() => {
     if (inputs.chat) {

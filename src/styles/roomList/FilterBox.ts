@@ -1,8 +1,8 @@
-import styled from 'styled-components';
+import { styled } from 'goober';
 import { COLORS, FONT_SIZES } from '../theme';
 import { FilterIcon } from './GameNav';
 
-const CSelect = styled.div`
+const CSelect = styled('div')`
   display: flex;
   width: 16.125rem;
   flex-direction: column;
@@ -19,7 +19,7 @@ const CSelect = styled.div`
   background: ${COLORS.bg};
 `;
 
-const CDropdown = styled.div`
+const CDropdown = styled('div')`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -27,13 +27,13 @@ const CDropdown = styled.div`
   align-self: stretch;
 `;
 
-const DropdownLabel = styled.span`
+const DropdownLabel = styled('span')`
   color: ${COLORS.text};
 
   font-family: 'WantedSans-Medium';
   font-size: ${FONT_SIZES['body-2']};
 `;
-const Dropdown = styled.ul`
+const Dropdown = styled('ul')`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -54,7 +54,7 @@ const Dropdown = styled.ul`
   }
 `;
 
-const DropdownItem = styled.li`
+const DropdownItem = styled('li')`
   width: 12.5rem;
   height: 1.9375rem;
   padding: 0.375rem 1rem;
@@ -76,7 +76,7 @@ const DropdownItem = styled.li`
   }
 `;
 
-const DropdownLine = styled.img<{ isOpen: boolean }>`
+const DropdownLine = styled('img')<{ isOpen: boolean }>`
   width: 1.5rem;
   height: 1.5rem;
   margin-right: 1rem;
@@ -87,7 +87,7 @@ const DropdownLine = styled.img<{ isOpen: boolean }>`
   transition: transform 0.3s ease;
 `;
 
-const Selected = styled.span`
+const Selected = styled('span')`
   color: ${COLORS.text};
 
   font-family: 'Wanted Sans Variable', 'Wanted Sans', sans-serif;
@@ -95,13 +95,13 @@ const Selected = styled.span`
   font-size: ${FONT_SIZES['body-1']};
 `;
 
-const FilterWithText = styled.div`
+const FilterWithText = styled('div')`
   display: flex;
   align-items: center;
   gap: 0.375rem;
 `;
 
-const FilterLabel = styled.h5`
+const FilterLabel = styled('h5')`
   color: ${COLORS.text};
 
   font-family: 'Wanted Sans Variable', 'Wanted Sans', sans-serif;

@@ -1,7 +1,7 @@
-import styled from 'styled-components';
+import { styled } from 'goober';
 import { COLORS } from '../theme';
 
-export const CMain = styled.div`
+export const CMain = styled('div')`
   position: relative;
   display: flex;
   width: 120rem;
@@ -12,7 +12,7 @@ export const CMain = styled.div`
   flex-shrink: 0;
 `;
 
-export const SLeft = styled.div`
+export const SLeft = styled('div')`
   position: relative;
   display: flex;
   width: 31.25rem;
@@ -23,12 +23,12 @@ export const SLeft = styled.div`
   flex-shrink: 0;
 `;
 
-export const GameImg = styled.img`
+export const GameImg = styled('img')`
   width: 4rem;
   height: 4rem;
 `;
 
-export const TimerOverlay = styled.div<{ $isVisible: boolean }>`
+export const TimerOverlay = styled('div')<{ $isVisible: boolean }>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -49,19 +49,19 @@ export const TimerOverlay = styled.div<{ $isVisible: boolean }>`
   display: ${(props) => (props.$isVisible ? 'none' : 'block')};
 `;
 
-export const CTimer = styled.div`
+export const CTimer = styled('div')`
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 1rem;
 `;
 
-export const TimerImg = styled.img`
+export const TimerImg = styled('img')`
   width: 3.5rem;
   height: 3.5rem;
 `;
 
-export const Middle = styled.div`
+export const Middle = styled('div')`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -72,7 +72,7 @@ export const Middle = styled.div`
   gap: 1.1875rem;
 `;
 
-export const YoutubeWrapper = styled.div`
+export const YoutubeWrapper = styled('div')`
   display: flex;
   width: 40rem;
   height: 22.5rem;
@@ -82,7 +82,7 @@ export const YoutubeWrapper = styled.div`
   gap: 0.625rem;
 `;
 
-export const VideoScreen = styled.div<{ $isVisible: boolean }>`
+export const VideoScreen = styled('div')<{ $isVisible: boolean }>`
   display: flex;
   width: 100%;
   flex-direction: column;
@@ -101,7 +101,7 @@ export const VideoScreen = styled.div<{ $isVisible: boolean }>`
   }
 `;
 
-export const Song = styled.div`
+export const Song = styled('div')`
   display: flex;
   width: 40rem;
   height: 7.5rem;
@@ -113,7 +113,7 @@ export const Song = styled.div`
   background: ${COLORS.bg};
 `;
 
-export const SongIcon = styled.img`
+export const SongIcon = styled('img')`
   width: 3.25rem;
   height: 3.25rem;
   flex-shrink: 0;
@@ -121,7 +121,7 @@ export const SongIcon = styled.img`
   border-radius: 1.625rem;
 `;
 
-export const SongInfo = styled.div`
+export const SongInfo = styled('div')`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -130,7 +130,7 @@ export const SongInfo = styled.div`
   flex: 1 0 0;
 `;
 
-export const SongText = styled.h4`
+export const SongText = styled('h4')`
   max-width: 21rem;
 
   color: ${COLORS.text};
@@ -146,7 +146,7 @@ export const SongText = styled.h4`
   width: 100%;
 `;
 
-export const SongSmallText = styled.span`
+export const SongSmallText = styled('span')`
   color: ${COLORS['gray-3']};
 
   font-family: 'Wanted Sans Variable', 'Wanted Sans', sans-serif;
@@ -156,7 +156,7 @@ export const SongSmallText = styled.span`
   line-height: normal;
 `;
 
-export const SRight = styled.div`
+export const SRight = styled('div')`
   display: flex;
   width: 31.125rem;
   flex-direction: column;
@@ -165,7 +165,7 @@ export const SRight = styled.div`
   flex-shrink: 0;
 `;
 
-export const Systemlog = styled.div`
+export const Systemlog = styled('div')`
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -176,7 +176,7 @@ export const Systemlog = styled.div`
   flex-shrink: 0;
 `;
 
-export const SystemlogItem = styled.div`
+export const SystemlogItem = styled('div')`
   display: flex;
   padding: 1.25rem 4.125rem;
   flex-direction: column;
@@ -211,7 +211,7 @@ export const SystemlogItem = styled.div`
   }
 `;
 
-export const SystemTag = styled.div`
+export const SystemTag = styled('div')`
   display: flex;
   padding: 1.5rem;
   justify-content: center;
@@ -248,7 +248,7 @@ export const SystemTag = styled.div`
   }
 `;
 
-export const SystemHint = styled.div`
+export const SystemHint = styled('div')`
   display: flex;
   padding: 1.5rem;
   flex-direction: column;
@@ -282,7 +282,7 @@ export const SystemHint = styled.div`
   }
 `;
 
-export const HintText = styled.div`
+export const HintText = styled('div')`
   display: flex;
   padding: 0.75rem 1.5rem;
   justify-content: center;
@@ -302,7 +302,7 @@ export const HintText = styled.div`
   line-height: normal;
 `;
 
-export const Tag = styled.div<{ tag: string }>`
+export const Tag = styled('div')<{ tag: string }>`
   display: inline-flex;
   padding: 0.375rem 0.75rem;
   align-items: center;
@@ -350,7 +350,7 @@ export const Tag = styled.div<{ tag: string }>`
   line-height: normal;
 `;
 
-export const VolumeControl = styled.div`
+export const VolumeControl = styled('div')`
   display: flex;
   width: 10.75rem;
   align-items: center;
@@ -358,13 +358,13 @@ export const VolumeControl = styled.div`
   flex-shrink: 0;
 `;
 
-export const VolumeImg = styled.img`
+export const VolumeImg = styled('img')`
   width: 2rem;
   height: 2rem;
   flex-shrink: 0;
 `;
 
-export const VolumeSlider = styled.input`
+export const VolumeSlider = styled('input')`
   -webkit-appearance: none;
   width: 8.0625rem;
   height: 0.375rem;

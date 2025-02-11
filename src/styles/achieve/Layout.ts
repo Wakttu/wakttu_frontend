@@ -1,14 +1,14 @@
-import styled from 'styled-components';
+import { styled } from 'goober';
 import { COLORS } from '@/styles/theme';
 
-const Container = styled.div`
+const Container = styled('div')`
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 3.375rem;
 `;
 
-const ContainerContent = styled.div`
+const ContainerContent = styled('div')`
   display: flex;
 
   width: 65.875rem;
@@ -20,7 +20,7 @@ const ContainerContent = styled.div`
   border: 2px solid ${COLORS['gray-4']};
 `;
 
-const LeftWrapper = styled.div`
+const LeftWrapper = styled('div')`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -35,7 +35,7 @@ const LeftWrapper = styled.div`
   border: 1px solid ${COLORS['gray-4']};
 `;
 
-const RightWrapper = styled.div`
+const RightWrapper = styled('div')`
   display: flex;
   flex-direction: column;
   align-items: flex-start;

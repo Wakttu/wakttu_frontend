@@ -1,9 +1,19 @@
-import { createGlobalStyle } from 'styled-components';
+import type { FC } from 'react';
+
+import { createGlobalStyles } from 'goober/global';
 import { COLORS } from './theme';
 
-export const GlobalStyle = createGlobalStyle`
+export const GlobalStyleForPdf = createGlobalStyles`
+  #__next,
+  body,
+  html {
+    margin: 0;
+    padding: 0;
+  }
+` as FC;
 
-  *{
+export const GlobalStyle = createGlobalStyles`
+  * {
     box-sizing: border-box;
   }
   
@@ -15,8 +25,8 @@ export const GlobalStyle = createGlobalStyle`
     width: 100%;
     height: 100%;
     overflow: hidden;
-    /* -webkit-user-select: none;
-    -moz-user-select: none;*/
+    -webkit-user-select: none;
+    -moz-user-select: none;
     user-select: none; 
   }
 
@@ -88,4 +98,4 @@ export const GlobalStyle = createGlobalStyle`
   a {
     text-decoration: none;
   }
-`;
+` as FC;

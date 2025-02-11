@@ -1,7 +1,7 @@
-import styled from "styled-components";
-import { FONT_SIZES } from "../theme";
+import { styled } from 'goober';
+import { FONT_SIZES } from '../theme';
 
-const WrapRoomList = styled.div`
+const WrapRoomList = styled('div')`
   display: grid;
   grid-template-columns: 2.5fr 7.5fr;
 
@@ -10,28 +10,28 @@ const WrapRoomList = styled.div`
   gap: 1rem;
 `;
 
-const LeftWrapper = styled.div`
+const LeftWrapper = styled('div')`
   display: flex;
   flex-direction: column;
 
   gap: 1rem;
 `;
 
-const RightWrapper = styled.div`
+const RightWrapper = styled('div')`
   display: flex;
   flex-direction: column;
 
   gap: 1rem;
 `;
 
-const Copyright = styled.span`
+const Copyright = styled('span')`
   display: flex;
   justify-content: center;
 
   width: 25rem;
 
   text-align: center;
-  font-size: ${FONT_SIZES["body-2"]};
+  font-size: ${FONT_SIZES['body-2']};
 `;
 
 export { WrapRoomList, LeftWrapper, RightWrapper, Copyright };

@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components';
+import { styled, keyframes } from 'goober';
 import { COLORS } from '../theme';
 
 // 애니메이션 정의
@@ -11,7 +11,7 @@ const slideIn = keyframes`
   }
 `;
 
-export const ChatBox = styled.div`
+export const ChatBox = styled('div')`
   display: flex;
   width: 21.25rem;
   height: 35rem;
@@ -29,7 +29,7 @@ export const ChatBox = styled.div`
     display: none;
   }
 `;
-export const Log = styled.div`
+export const Log = styled('div')`
   display: flex;
   min-width: fit-content;
   max-width: 21.25rem;
@@ -44,7 +44,7 @@ export const Log = styled.div`
   animation: ${slideIn} 0.3s ease-in-out forwards; // 애니메이션 적용
 `;
 
-export const PlayerName = styled.h5<{ $color?: string }>`
+export const PlayerName = styled('h5')<{ $color?: string }>`
   display: flex;
   min-width: fit-content;
   color: ${({ $color }) => ($color ? $color : COLORS.text)};
@@ -55,7 +55,7 @@ export const PlayerName = styled.h5<{ $color?: string }>`
   line-height: normal;
 `;
 
-export const PlayerContent = styled.h5`
+export const PlayerContent = styled('h5')`
   color: ${COLORS.text};
 
   font-family: 'Wanted Sans Variable', 'Wanted Sans', sans-serif;

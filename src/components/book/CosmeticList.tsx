@@ -29,7 +29,7 @@ import Router from 'next/router';
 interface Props {
   dataset: any;
   isOpen: boolean;
-  dropDownRef: RefObject<HTMLDivElement>;
+  dropDownRef: RefObject<HTMLDivElement | null>;
   selectedOption: { category: string; name: string };
   toggleDropdown: () => void;
   handleOptionClick: ({

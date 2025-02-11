@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 const FilterBox = () => {
   const modal = useSelector(selectModal);
-  const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLDivElement | null>(null);
   const filter = useSelector(selectFilter);
   const dispatch = useDispatch();
 

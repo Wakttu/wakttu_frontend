@@ -1,12 +1,12 @@
-import styled from 'styled-components';
+import { styled } from 'goober';
 
-const CharacterImage = styled.div`
+const CharacterImage = styled('div')`
   position: relative;
   width: 11.25rem;
   height: 9.125rem;
 `;
 
-const SkinItem = styled.img<{ skin?: string }>`
+const SkinItem = styled('img')<{ skin?: string }>`
   position: absolute;
   bottom: 0;
   width: 11.25rem;
@@ -28,7 +28,7 @@ const SkinItem = styled.img<{ skin?: string }>`
   opacity: ${({ skin }) => (skin ? 1 : 0)};
 `;
 
-const HeadItem = styled.img<{ skin?: string; hand?: string }>`
+const HeadItem = styled('img')<{ skin?: string; hand?: string }>`
   position: absolute;
   z-index: ${({ hand }) => (hand === 'H-2' ? 5 : 3)};
   width: 11.25rem;
@@ -46,7 +46,7 @@ const HeadItem = styled.img<{ skin?: string; hand?: string }>`
 
   opacity: ${({ src }) => (src ? 1 : 0)};
 `;
-const HandItem = styled.img<{ skin?: string; item?: string }>`
+const HandItem = styled('img')<{ skin?: string; item?: string }>`
   position: absolute;
   bottom: 0;
   z-index: 4;
@@ -65,7 +65,7 @@ const HandItem = styled.img<{ skin?: string; item?: string }>`
   opacity: ${({ src }) => (src ? 1 : 0)};
 `;
 
-const EyeItem = styled.img<{ skin: string; eye?: string }>`
+const EyeItem = styled('img')<{ skin: string; eye?: string }>`
   position: absolute;
   bottom: 0;
   z-index: 5;

@@ -1,7 +1,7 @@
-import styled from 'styled-components';
+import { styled } from 'goober';
 import { COLORS } from '../theme';
 
-const MainHeaderBlock = styled.div`
+const MainHeaderBlock = styled('div')`
   display: flex;
   flex-shrink: 0;
   align-items: center;
@@ -17,7 +17,7 @@ const MainHeaderBlock = styled.div`
   background: none;
 `;
 
-const MainContent = styled.li`
+const MainContent = styled('li')`
   font-family: 'Wanted Sans Variable', 'Wanted Sans', sans-serif;
   font-size: 16px;
   font-weight: 500;
@@ -26,7 +26,7 @@ const MainContent = styled.li`
   cursor: pointer;
 `;
 
-const MainHeaderLogo = styled.img`
+const MainHeaderLogo = styled('img')`
   width: 42px;
   height: 42px;
   cursor: pointer;

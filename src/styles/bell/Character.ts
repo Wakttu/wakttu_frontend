@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components';
+import { styled, keyframes } from 'goober';
 import { COLORS } from '../theme';
 
 const fadeInOut = keyframes`
@@ -19,7 +19,7 @@ const wobble = keyframes`
   75% { transform: rotate(3deg); }
 `;
 
-export const Box = styled.div<{ left?: number; right?: number }>`
+export const Box = styled('div')<{ left?: number; right?: number }>`
   width: 12rem;
   position: absolute;
   bottom: 0;
@@ -35,7 +35,7 @@ export const Box = styled.div<{ left?: number; right?: number }>`
   z-index: 50;
 `;
 
-export const Message = styled.div`
+export const Message = styled('div')`
   display: inline-flex;
   padding: 0.5rem 1.5rem;
   justify-content: flex-end;
@@ -56,7 +56,7 @@ export const Message = styled.div`
   animation: ${fadeInOut} 2s ease-in-out;
 `;
 
-export const Skin = styled.img<{ width?: number }>`
+export const Skin = styled('img')<{ width?: number }>`
   width: ${({ width }) => (width ? width + 'rem' : '4.375rem')};
   flex-shrink: 0;
   animation: ${bounce} 2s ease-in-out infinite,

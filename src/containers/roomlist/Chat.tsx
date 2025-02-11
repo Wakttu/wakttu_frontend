@@ -33,8 +33,8 @@ const Chat = () => {
   const { inputs, setInputs, onInputChange } = useInput<InputProps>({
     chat: '',
   });
-  const chatBoxRef = useRef<HTMLDivElement>(null);
-  const inputRef = useRef<HTMLInputElement>(null);
+  const chatBoxRef = useRef<HTMLDivElement | null>(null);
+  const inputRef = useRef<HTMLInputElement | null>(null);
 
   const playSound = useCallback(() => {
     if (logSound) {

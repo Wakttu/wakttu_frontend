@@ -1,6 +1,6 @@
-import styled from 'styled-components';
+import { styled } from 'goober';
 
-const FormContainer = styled.div`
+const FormContainer = styled("div")`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -15,7 +15,7 @@ const FormContainer = styled.div`
     0 0.75rem 0.75rem 0 rgba(0, 0, 0, 0.1);
 `;
 
-const FormSection = styled.form`
+const FormSection = styled("form")`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -27,14 +27,14 @@ const FormSection = styled.form`
   gap: 1rem;
 `;
 
-const ButtonWrapper = styled.div`
+const ButtonWrapper = styled("div")`
   display: flex;
   justify-content: center;
 
   width: 100%;
 `;
 
-const FormItem = styled.input`
+const FormItem = styled("input")`
   box-sizing: border-box;
 
   width: 18.75rem;
@@ -46,7 +46,7 @@ const FormItem = styled.input`
   outline: none;
 `;
 
-const LoginButton = styled.button`
+const LoginButton = styled("button")`
   box-sizing: border-box;
 
   width: 18.75rem;

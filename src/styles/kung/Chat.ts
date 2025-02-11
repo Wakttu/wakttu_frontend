@@ -1,7 +1,7 @@
-import styled from 'styled-components';
+import { styled } from 'goober';
 import { COLORS, FONT_SIZES } from '../theme';
 
-const CChat = styled.div`
+const CChat = styled('div')`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -16,7 +16,7 @@ const CChat = styled.div`
   background: ${COLORS.bg};
 `;
 
-const ChatLog = styled.div`
+const ChatLog = styled('div')`
   display: flex;
   flex-direction: column;
 
@@ -44,18 +44,18 @@ const ChatLog = styled.div`
   }
 `;
 
-const PlayerChat = styled.div`
+const PlayerChat = styled('div')`
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
 `;
 
-const CPlayer = styled.div`
+const CPlayer = styled('div')`
   display: flex;
   align-items: center;
 `;
 
-const PlayerName = styled.h5<{ $color: string }>`
+const PlayerName = styled('h5')<{ $color: string }>`
   margin-left: 0.375rem;
   color: ${({ $color }) => $color};
   font-family: 'Wanted Sans Variable', 'Wanted Sans', sans-serif;
@@ -63,13 +63,13 @@ const PlayerName = styled.h5<{ $color: string }>`
   white-space: nowrap;
 `;
 
-const PlayerIcon = styled.img`
+const PlayerIcon = styled('img')`
   width: 1.125rem;
   height: 1.125rem;
   min-width: 1.125rem;
 `;
 
-const ChatContent = styled.h6`
+const ChatContent = styled('h6')`
   align-self: flex-end;
   max-width: 90%;
   margin-left: 0.625rem;
@@ -79,7 +79,7 @@ const ChatContent = styled.h6`
   font-weight: 500;
 `;
 
-const DateContent = styled.h6`
+const DateContent = styled('h6')`
   display: inline-block;
 
   white-space: nowrap;
@@ -90,7 +90,7 @@ const DateContent = styled.h6`
   font-weight: 500;
 `;
 
-const MessageBlock = styled.div`
+const MessageBlock = styled('div')`
   display: flex;
   padding: 0.5rem 1rem;
   justify-content: space-between;
@@ -102,7 +102,7 @@ const MessageBlock = styled.div`
   background: ${COLORS['gray-5']};
 `;
 
-const MessageInput = styled.input`
+const MessageInput = styled('input')`
   display: -webkit-box;
   width: 100%;
   -webkit-box-orient: vertical;
@@ -127,7 +127,7 @@ const MessageInput = styled.input`
   }
 `;
 
-const SendMessage = styled.button`
+const SendMessage = styled('button')`
   display: flex;
   padding: 0.5rem 1rem;
   justify-content: center;
@@ -140,7 +140,7 @@ const SendMessage = styled.button`
   cursor: pointer;
 `;
 
-const SendIcon = styled.img`
+const SendIcon = styled('img')`
   fill: ${COLORS.bg};
   width: 1.1004rem;
   height: 1.1004rem;

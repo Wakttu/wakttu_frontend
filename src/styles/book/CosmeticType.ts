@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import { styled, css } from 'goober';
 import { getR2URL, R2_URL } from '@/services/api';
 
 export type CosmeticVariant = 'all' | 'skin' | 'head' | 'hand' | 'eye';
@@ -34,15 +34,13 @@ export const CosmeticStyles: Record<
   },
 };
 
-const CosmeticType = css<{ $itemType?: CosmeticVariant }>`
-  ${({ $itemType }) => {
-    const style = CosmeticStyles[$itemType || 'skin'];
-    return css`
-      background-color: ${style.backgroundColor};
-      color: ${style.color};
-    `;
-  }}
-`;
+const CosmeticType = ({ $itemType }: { $itemType?: CosmeticVariant }) => {
+  const style = CosmeticStyles[$itemType || 'skin'];
+  return css`
+    background-color: ${style.backgroundColor};
+    color: ${style.color};
+  `;
+};
 
 const BackgroundImage = css`
   &::before {
@@ -60,7 +58,7 @@ const BackgroundImage = css`
   }
 `;
 
-const CosmeticBackground = styled.div<{ $itemType?: CosmeticVariant }>`
+const CosmeticBackground = styled('div')<{ $itemType?: CosmeticVariant }>`
   position: absolute;
   top: 0;
   left: 0;

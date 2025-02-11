@@ -1,7 +1,7 @@
-import styled from 'styled-components';
+import { styled } from 'goober';
 import { COLORS } from '@/styles/theme';
 
-const WrapRoomNumber = styled.div`
+const WrapRoomNumber = styled('div')`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -13,7 +13,7 @@ const WrapRoomNumber = styled.div`
   background: ${COLORS['gray-4']};
 `;
 
-const RoomNum = styled.span`
+const RoomNum = styled('span')`
   font-size: 0.875rem;
   font-weight: 600;
 

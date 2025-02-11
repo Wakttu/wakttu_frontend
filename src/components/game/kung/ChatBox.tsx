@@ -20,8 +20,8 @@ interface Props {
   onMessage: () => void;
   onAnswer: () => void;
   handleEnter: (e: React.KeyboardEvent) => void;
-  chatBoxRef: RefObject<HTMLDivElement>;
-  inputRef: RefObject<HTMLInputElement>;
+  chatBoxRef: RefObject<HTMLDivElement | null>;
+  inputRef: RefObject<HTMLInputElement | null>;
   myTurn: boolean;
   game: Game;
   answer: Answer;
@@ -95,11 +95,17 @@ const ChatBox = ({
           />
           {pause && myTurn ? (
             <SendMessage onClick={onAnswer}>
-              <SendIcon src={R2_URL + '/assets/icons/send.svg'} alt="보내기 아이콘" />
+              <SendIcon
+                src={R2_URL + '/assets/icons/send.svg'}
+                alt="보내기 아이콘"
+              />
             </SendMessage>
           ) : (
             <SendMessage onClick={onMessage}>
-              <SendIcon src={R2_URL + '/assets/icons/send.svg'} alt="보내기 아이콘" />
+              <SendIcon
+                src={R2_URL + '/assets/icons/send.svg'}
+                alt="보내기 아이콘"
+              />
             </SendMessage>
           )}
         </MessageBlock>

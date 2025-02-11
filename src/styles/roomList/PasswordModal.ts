@@ -1,7 +1,7 @@
-import styled from 'styled-components';
+import { styled } from 'goober';
 import { COLORS, FONT_SIZES } from '../theme';
 
-const Modal = styled.form`
+const Modal = styled('form')`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -16,7 +16,7 @@ const Modal = styled.form`
   background: rgb(0, 0, 0, 0.1);
 `;
 
-const Container = styled.div`
+const Container = styled('div')`
   display: flex;
   width: 22.5rem;
   padding: 1.75rem;
@@ -30,7 +30,7 @@ const Container = styled.div`
   background: ${COLORS.bg};
 `;
 
-const Text = styled.span`
+const Text = styled('span')`
   color: ${COLORS['gray-2']};
   text-align: center;
 
@@ -39,13 +39,13 @@ const Text = styled.span`
   font-size: ${FONT_SIZES['body-1']};
 `;
 
-const CInput = styled.div`
+const CInput = styled('div')`
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
 
-const Input = styled.input<{ $error: boolean }>`
+const Input = styled('input')<{ $error: boolean }>`
   display: flex;
   width: 19rem;
   padding: 0.75rem 1rem;
@@ -63,7 +63,7 @@ const Input = styled.input<{ $error: boolean }>`
   outline: none;
 `;
 
-const Error = styled.span`
+const Error = styled('span')`
   color: #ff6565;
   text-align: right;
   font-family: 'Wanted Sans Variable', 'Wanted Sans', sans-serif;
@@ -71,13 +71,13 @@ const Error = styled.span`
   font-size: 0.75rem;
 `;
 
-const CButton = styled.div`
+const CButton = styled('div')`
   display: flex;
   align-items: center;
 
   gap: 1rem;
 `;
-const ConfirmButton = styled.button`
+const ConfirmButton = styled('button')`
   display: flex;
   width: 8.75rem;
   padding: 0.625rem;
@@ -93,7 +93,7 @@ const ConfirmButton = styled.button`
   }
 `;
 
-const ConfrimText = styled.span`
+const ConfrimText = styled('span')`
   color: ${COLORS.bg};
   text-align: center;
 
@@ -102,7 +102,7 @@ const ConfrimText = styled.span`
   font-size: ${FONT_SIZES['subtitle-1']};
 `;
 
-const CancleButton = styled.button`
+const CancleButton = styled('button')`
   display: flex;
   width: 8.75rem;
   padding: 0.625rem;
@@ -114,7 +114,7 @@ const CancleButton = styled.button`
   background: ${COLORS['gray-4']};
 `;
 
-const CancleText = styled.span`
+const CancleText = styled('span')`
   color: ${COLORS['gray-2']};
   text-align: center;
 

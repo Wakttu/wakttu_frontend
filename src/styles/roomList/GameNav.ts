@@ -1,7 +1,7 @@
-import styled from 'styled-components';
+import { styled } from 'goober';
 import { COLORS, FONT_SIZES } from '@/styles/theme';
 
-const CGameNav = styled.div`
+const CGameNav = styled('div')`
   display: flex;
   align-self: stretch;
   align-items: center;
@@ -13,13 +13,13 @@ const CGameNav = styled.div`
   background: ${COLORS.bg};
 `;
 
-const LeftIcons = styled.div`
+const LeftIcons = styled('div')`
   display: flex;
   align-items: center;
   gap: 1rem;
 `;
 
-const CreateRoomBtn = styled.button`
+const CreateRoomBtn = styled('button')`
   display: flex;
   align-items: center;
 
@@ -33,7 +33,7 @@ const CreateRoomBtn = styled.button`
   background: ${COLORS.primary};
 `;
 
-const PlusTitle = styled.span`
+const PlusTitle = styled('span')`
   color: ${COLORS.bg};
 
   font-family: 'Wanted Sans Variable', 'Wanted Sans', sans-serif;
@@ -41,12 +41,12 @@ const PlusTitle = styled.span`
   font-size: ${FONT_SIZES['subtitle-2']};
 `;
 
-const Plus = styled.img`
+const Plus = styled('img')`
   width: 1.125rem;
   height: 1.125rem;
 `;
 
-const CSearch = styled.div<{ $open: boolean }>`
+const CSearch = styled('div')<{ $open: boolean }>`
   display: flex;
   width: ${({ $open }) => {
     return $open ? '15.625rem' : 'auto';
@@ -65,13 +65,13 @@ const CSearch = styled.div<{ $open: boolean }>`
   background: ${COLORS.bg};
 `;
 
-const SearchBtn = styled.img`
+const SearchBtn = styled('img')`
   height: 1.2rem;
 
   cursor: pointer;
 `;
 
-const SearchInput = styled.input`
+const SearchInput = styled('input')`
   width: 100%;
   height: auto;
   margin: 0;
@@ -86,7 +86,7 @@ const SearchInput = styled.input`
   font-size: ${FONT_SIZES['body-1']};
 `;
 
-const CloseBtn = styled.img`
+const CloseBtn = styled('img')`
   position: absolute;
   right: 0.5rem;
   width: 1.3rem;
@@ -95,14 +95,14 @@ const CloseBtn = styled.img`
   cursor: pointer;
 `;
 
-const RefreshBtn = styled.img`
+const RefreshBtn = styled('img')`
   width: 1.5rem;
   height: 1.5rem;
 
   cursor: pointer;
 `;
 
-const FilterToggled = styled.button`
+const FilterToggled = styled('button')`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -118,7 +118,7 @@ const FilterToggled = styled.button`
   cursor: pointer;
 `;
 
-const FilterIcon = styled.img`
+const FilterIcon = styled('img')`
   width: 1.4rem;
   height: 1.4rem;
 `;

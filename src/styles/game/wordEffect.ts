@@ -1,4 +1,4 @@
-import styled, { keyframes, css } from 'styled-components';
+import { styled, css, keyframes } from 'goober';
 
 const typingAnimation = keyframes`
   0% {
@@ -29,7 +29,7 @@ const textDecorationEffect = keyframes`
   }
 `;
 
-const TypingContainer = styled.div`
+const TypingContainer = styled('div')`
   position: absolute;
 
   z-index: 2;
@@ -42,7 +42,7 @@ const TypingContainer = styled.div`
   justify-content: center;
 `;
 
-const TypingSpan = styled.span<{ isTyped: boolean }>`
+const TypingSpan = styled('span')<{ isTyped: boolean }>`
   white-space: nowrap;
   font: inherit;
   color: inherit;
@@ -56,7 +56,7 @@ const TypingSpan = styled.span<{ isTyped: boolean }>`
       : 'none'};
 `;
 
-const TypingWrong = styled.span`
+const TypingWrong = styled('span')`
   width: 100%;
   text-overflow: ellipsis;
   text-align: center;
@@ -67,7 +67,7 @@ const TypingWrong = styled.span`
   animation: ${textDecorationEffect} 0.7s step-end 3 forwards;
 `;
 
-const EndText = styled.div<{ end: boolean }>`
+const EndText = styled('div')<{ end: boolean }>`
   position: absolute;
 
   z-index: 1;
