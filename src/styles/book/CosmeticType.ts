@@ -34,13 +34,13 @@ export const CosmeticStyles: Record<
   },
 };
 
-const CosmeticType = ({ $itemType }: { $itemType?: CosmeticVariant }) => {
+const CosmeticType = (({ $itemType }: { $itemType?: CosmeticVariant }) => {
   const style = CosmeticStyles[$itemType || 'skin'];
   return css`
     background-color: ${style.backgroundColor};
     color: ${style.color};
   `;
-};
+})();
 
 const BackgroundImage = css`
   &::before {

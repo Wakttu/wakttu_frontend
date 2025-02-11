@@ -72,15 +72,6 @@ const RelevantWrapper = styled('div')`
   gap: 0.5rem;
 `;
 
-const RelevantBackgroundColor = ({
-  $RelevantPerson,
-}: {
-  $RelevantPerson: RelevantPerson;
-}) => css`
-  background-color: ${relevantInfo[$RelevantPerson].backgroundColor};
-  color: ${relevantInfo[$RelevantPerson].color};
-`;
-
 const RelevantBdage = styled('div')<{ $RelevantPerson: RelevantPerson }>`
   display: flex;
   padding: 0.375rem 0.75rem;
@@ -88,7 +79,10 @@ const RelevantBdage = styled('div')<{ $RelevantPerson: RelevantPerson }>`
   gap: 0.625rem;
   border-radius: 1.875rem;
 
-  ${RelevantBackgroundColor};
+  ${({ $RelevantPerson }) => css`
+    background-color: ${relevantInfo[$RelevantPerson].backgroundColor};
+    color: ${relevantInfo[$RelevantPerson].color};
+  `};
 `;
 
 const RelevantText = styled('span')`

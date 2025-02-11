@@ -31,7 +31,7 @@ const Tag = styled('div')<{ $itemType?: CosmeticVariant }>`
   font-size: 0.875rem;
   font-weight: 600;
 
-  ${CosmeticType}
+  ${({ $itemType }) => CosmeticType({ $itemType })}
 `;
 
 const Title = styled('div')`
@@ -166,7 +166,7 @@ const GetButton = styled('div')<{ $itemType?: CosmeticVariant }>`
   font-size: 1.5rem;
   font-weight: 600;
 
-  ${CosmeticType}
+  ${({ $itemType }) => CosmeticType({ $itemType })}
 `;
 
 export {
